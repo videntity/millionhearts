@@ -1,0 +1,2 @@
+python-omhe
+Django==1.4.1

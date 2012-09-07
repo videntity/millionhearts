@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>
+        {% block pretitle %}{%  endblock %}
+        {% block title %}Twitter Bootstrap Hello World{% endblock %}
+        </title>
+
+    {% block head %}
+        {% include "include/head.html" %}
+    {% endblock %}
+
+    {% block extra_head %}
+    {% endblock %}
+
+</head>
+<body{% block bodyclassmodify %}{% endblock %}>
+
+    <div class="container-fluid">
+        {% include "include/top-nav.html" %}
+        <div class="content behind-image">
+            <div class="wrapper">
+                <div class="proper-content">
+                    <div class="row">
+                        <div class="span12">
+                {% block left %}
+                {% endblock %}
+	
+                {% block middle %}
+                {% endblock %}
+	
+                {% block right %}
+                {% endblock %}
+                        </div><!-- /.span12 -->
+                    </div><!-- /.row -->
+                </div><!-- /.proper-content -->
+                <div class="push"></div>
+            </div><!-- /.wrapper -->
+        </div><!-- /.content -->
+        {% include "include/footer.html" %}
+    </div><!-- /.container-fluid -->
+</body>
+
+</html>
