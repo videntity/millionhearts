@@ -1,0 +1,588 @@
+[
+    {
+        "pk": 2, 
+        "model": "organizations.service", 
+        "fields": {
+            "name": "Clothing", 
+            "slug": "clothing"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "organizations.service", 
+        "fields": {
+            "name": "Confirmatory Testing", 
+            "slug": "confirmatory-testing"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "organizations.service", 
+        "fields": {
+            "name": "CRCS", 
+            "slug": "crcs"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "organizations.service", 
+        "fields": {
+            "name": "EIS Services", 
+            "slug": "eis-services"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "organizations.service", 
+        "fields": {
+            "name": "Food", 
+            "slug": "food"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "organizations.service", 
+        "fields": {
+            "name": "Hepatitis Screening", 
+            "slug": "hepatitis-screening"
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "organizations.service", 
+        "fields": {
+            "name": "Housing", 
+            "slug": "housing"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "organizations.service", 
+        "fields": {
+            "name": "Individual Group Counseling", 
+            "slug": "individual-group-counseling"
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "organizations.service", 
+        "fields": {
+            "name": "Medical services", 
+            "slug": "medical-services"
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "organizations.service", 
+        "fields": {
+            "name": "Mental Health Services", 
+            "slug": "mental-health-services"
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "organizations.service", 
+        "fields": {
+            "name": "Needle Exchange", 
+            "slug": "needle-exchange"
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "organizations.service", 
+        "fields": {
+            "name": "PCRS", 
+            "slug": "pcrs"
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "organizations.service", 
+        "fields": {
+            "name": "Primary Care", 
+            "slug": "primary-care"
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "organizations.service", 
+        "fields": {
+            "name": "Rental Utility Assistance Service", 
+            "slug": "rental-utility-assistance-service"
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "organizations.service", 
+        "fields": {
+            "name": "STD Screening", 
+            "slug": "std-screening"
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "organizations.service", 
+        "fields": {
+            "name": "Substance Abuse Treatment", 
+            "slug": "substance-abuse-treatment"
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "organizations.service", 
+        "fields": {
+            "name": "Transitional Housing", 
+            "slug": "transitional-housing"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "organizations.organization", 
+        "fields": {
+            "city": "Washington", 
+            "verified": true, 
+            "name": "Allen Chapel Evening Academy", 
+            "zip": "20020", 
+            "address1": "2498 Alabama Avenue SE", 
+            "address2": "", 
+            "creation_date": "2012-03-05", 
+            "note": "The food pantry is open every Friday for distribution from 9am \u2013 12noon.  All food is on a first come first serve basis.  The 1st and 3rd Wednesdays a truck delivers fresh produce from 9am \u2013 12noon (on the church parking lot). Also, on the 2nd and 4th Wednesdays you can get a bag of food items from the Ainger Place Food Pantry from 9am \u2013 12noon.", 
+            "org_type": "FAITH-NON-PROFIT", 
+            "state": "DC", 
+            "is_accepting_new_clients": false, 
+            "services": [
+                6
+            ], 
+            "contact_person": "Ainger Place Food Pantry", 
+            "accepts_insurance": [], 
+            "phone_2": "", 
+            "slug": "allen-chapel-evening-academy", 
+            "phone_1": "202-610-9995"
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "organizations.organization", 
+        "fields": {
+            "city": "Washington", 
+            "verified": false, 
+            "name": "APRA's Assessment and and Referral Center (ARC) (O/I)", 
+            "zip": "20002", 
+            "address1": "1300 First Street NE", 
+            "address2": "", 
+            "creation_date": "2012-03-05", 
+            "note": "", 
+            "org_type": "NON-PROFIT", 
+            "state": "DC", 
+            "is_accepting_new_clients": false, 
+            "services": [
+                14
+            ], 
+            "contact_person": "", 
+            "accepts_insurance": [], 
+            "phone_2": "", 
+            "slug": "apras-assessment-and-and-referral-center", 
+            "phone_1": "202-727-8609"
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "organizations.organization", 
+        "fields": {
+            "city": "Washington", 
+            "verified": true, 
+            "name": "Bread for the City", 
+            "zip": "20020", 
+            "address1": "1640 Good Hope Road SE", 
+            "address2": "", 
+            "creation_date": "2012-03-05", 
+            "note": "Clothing is given out on Tuesday, Wednesday and Thursday from 10am to 2pm.  If you are not in the system you MUST bring DC photo ID, proof of address and proof of income.\r\n\r\nFood distributed to persons who are 60 years of age and older, have children under 18 years old, or who receive SSI or Disability monthly.  Monday through Thursday @ 9am (1st twelve people serviced).", 
+            "org_type": "NON-PROFIT", 
+            "state": "DC", 
+            "is_accepting_new_clients": false, 
+            "services": [
+                2, 
+                6
+            ], 
+            "contact_person": "", 
+            "accepts_insurance": [], 
+            "phone_2": "", 
+            "slug": "bread-city", 
+            "phone_1": ""
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "organizations.organization", 
+        "fields": {
+            "city": "Washington", 
+            "verified": true, 
+            "name": "Calvary Women's Shelter", 
+            "zip": "20001", 
+            "address1": "928 5th Street NW", 
+            "address2": "", 
+            "creation_date": "2012-03-05", 
+            "note": "Must be a woman, homeless, and over 18 years old", 
+            "org_type": "NON-PROFIT", 
+            "state": "DC", 
+            "is_accepting_new_clients": false, 
+            "services": [
+                15
+            ], 
+            "contact_person": "Director Robyn Aycock", 
+            "accepts_insurance": [], 
+            "phone_2": "", 
+            "slug": "calvary-womens-shelter", 
+            "phone_1": "202-289-2111"
+        }
+    }, 
+    {
+        "pk": 8, 
+        "model": "organizations.organization", 
+        "fields": {
+            "city": "Washington", 
+            "verified": true, 
+            "name": "Cataada House", 
+            "zip": "20002", 
+            "address1": "802 Rhode Island Avenue NE", 
+            "address2": "", 
+            "creation_date": "2012-03-05", 
+            "note": "Hours: Monday, Tuesday, Wednesday, and Friday 9am \u2013 8pm and Thursday 9am \u2013 5pm", 
+            "org_type": "NON-PROFIT", 
+            "state": "DC", 
+            "is_accepting_new_clients": false, 
+            "services": [
+                14
+            ], 
+            "contact_person": "Mother Belcher", 
+            "accepts_insurance": [], 
+            "phone_2": "", 
+            "slug": "cataada-house", 
+            "phone_1": "202-832-8336"
+        }
+    }, 
+    {
+        "pk": 9, 
+        "model": "organizations.organization", 
+        "fields": {
+            "city": "Washington", 
+            "verified": false, 
+            "name": "CMS Health Initiatives", 
+            "zip": "20002", 
+            "address1": "1307 H Street NE", 
+            "address2": "", 
+            "creation_date": "2012-03-05", 
+            "note": "", 
+            "org_type": "FED-GOV", 
+            "state": "DC", 
+            "is_accepting_new_clients": false, 
+            "services": [
+                12
+            ], 
+            "contact_person": "", 
+            "accepts_insurance": [], 
+            "phone_2": "", 
+            "slug": "cms-health-initiatives", 
+            "phone_1": "202-396-5404"
+        }
+    }, 
+    {
+        "pk": 10, 
+        "model": "organizations.organization", 
+        "fields": {
+            "city": "Washington", 
+            "verified": false, 
+            "name": "Community Action Group", 
+            "zip": "20020", 
+            "address1": "335 8th Street SE", 
+            "address2": "", 
+            "creation_date": "2012-03-05", 
+            "note": "", 
+            "org_type": "NON-PROFIT", 
+            "state": "DC", 
+            "is_accepting_new_clients": false, 
+            "services": [
+                14
+            ], 
+            "contact_person": "", 
+            "accepts_insurance": [], 
+            "phone_2": "", 
+            "slug": "community-action-group", 
+            "phone_1": ""
+        }
+    }, 
+    {
+        "pk": 11, 
+        "model": "organizations.organization", 
+        "fields": {
+            "city": "Washington", 
+            "verified": true, 
+            "name": "Community Connections", 
+            "zip": "20003", 
+            "address1": "801 Pennsylvania Avenue SE", 
+            "address2": "Suite 201", 
+            "creation_date": "2012-03-05", 
+            "note": "Services provided for the Uninsured and with straight Medicaid.", 
+            "org_type": "NON-PROFIT", 
+            "state": "DC", 
+            "is_accepting_new_clients": false, 
+            "services": [
+                9
+            ], 
+            "contact_person": "Susan Bechard", 
+            "accepts_insurance": [], 
+            "phone_2": "202-608-4743", 
+            "slug": "community-connections", 
+            "phone_1": "202-546-1512"
+        }
+    }, 
+    {
+        "pk": 12, 
+        "model": "organizations.organization", 
+        "fields": {
+            "city": "Washington", 
+            "verified": true, 
+            "name": "Community for Creative Non-Violence", 
+            "zip": "20001", 
+            "address1": "425 2nd Street NW", 
+            "address2": "", 
+            "creation_date": "2012-03-05", 
+            "note": "Security Intake.\r\nMen and Women are welcome anytime and beds based on availability. Please call first.", 
+            "org_type": "NON-PROFIT", 
+            "state": "DC", 
+            "is_accepting_new_clients": false, 
+            "services": [
+                7
+            ], 
+            "contact_person": "", 
+            "accepts_insurance": [], 
+            "phone_2": "", 
+            "slug": "community-creative-non-violence", 
+            "phone_1": "202-393-1909"
+        }
+    }, 
+    {
+        "pk": 13, 
+        "model": "organizations.organization", 
+        "fields": {
+            "city": "Washington", 
+            "verified": true, 
+            "name": "Community of ERAP", 
+            "zip": "20018", 
+            "address1": "920-A Rhode Island Avenue NE", 
+            "address2": "", 
+            "creation_date": "2012-03-05", 
+            "note": "Intake\r\nERAP serves low-income DC households with children, elderly households (age 60 or older), and people with disabilities. ERAP payments can only be used once per year for each eligible household.  Rental assistance \u2013 Court Writ, proof of income, proof of residency (1st 10 people)", 
+            "org_type": "NON-PROFIT", 
+            "state": "DC", 
+            "is_accepting_new_clients": false, 
+            "services": [
+                17
+            ], 
+            "contact_person": "", 
+            "accepts_insurance": [], 
+            "phone_2": "", 
+            "slug": "community-erap", 
+            "phone_1": "202-526-0017"
+        }
+    }, 
+    {
+        "pk": 14, 
+        "model": "organizations.organization", 
+        "fields": {
+            "city": "Washington", 
+            "verified": true, 
+            "name": "Concerned Citizens on Alcohol and Drug Abuse (CCADA)", 
+            "zip": "20032", 
+            "address1": "3115 Martin Luther King Jr. Avenue SE", 
+            "address2": "", 
+            "creation_date": "2012-03-05", 
+            "note": "", 
+            "org_type": "NON-PROFIT", 
+            "state": "DC", 
+            "is_accepting_new_clients": false, 
+            "services": [
+                14
+            ], 
+            "contact_person": "Mr. Massey", 
+            "accepts_insurance": [], 
+            "phone_2": "", 
+            "slug": "concerned-citizens-alcohol-and-drug-abuse-ccada", 
+            "phone_1": "202-563-3209"
+        }
+    }, 
+    {
+        "pk": 15, 
+        "model": "organizations.organization", 
+        "fields": {
+            "city": "2001 Mississippi Avenue SE", 
+            "verified": true, 
+            "name": "Covenant House", 
+            "zip": "20020", 
+            "address1": "2001 Mississippi Avenue SE", 
+            "address2": "", 
+            "creation_date": "2012-03-05", 
+            "note": "", 
+            "org_type": "NON-PROFIT", 
+            "state": "DC", 
+            "is_accepting_new_clients": false, 
+            "services": [
+                15
+            ], 
+            "contact_person": "Charlene Taylor ROP Coordinator", 
+            "accepts_insurance": [], 
+            "phone_2": "", 
+            "slug": "covenant-house", 
+            "phone_1": "202-610-9648"
+        }
+    }, 
+    {
+        "pk": 16, 
+        "model": "organizations.organization", 
+        "fields": {
+            "city": "Washington", 
+            "verified": true, 
+            "name": "Covenant House - Support Services", 
+            "zip": "20002", 
+            "address1": "7 New York Avenue NE", 
+            "address2": "", 
+            "creation_date": "2012-03-05", 
+            "note": "Alt Location: 2001 Mississippi Avenue SE, Washington DC 20032\r\n\r\nWalk-in intakes, provides case management, educational, vocation, life skills and substance prevention services for youth ages 18- to 24.", 
+            "org_type": "NON-PROFIT", 
+            "state": "DC", 
+            "is_accepting_new_clients": false, 
+            "services": [], 
+            "contact_person": "Service Manager on Duty", 
+            "accepts_insurance": [], 
+            "phone_2": "", 
+            "slug": "covenant-house-support-services", 
+            "phone_1": "202-610-6900"
+        }
+    }, 
+    {
+        "pk": 17, 
+        "model": "organizations.organization", 
+        "fields": {
+            "city": "Washington", 
+            "verified": true, 
+            "name": "Crisis Center Shelter", 
+            "zip": "20032", 
+            "address1": "Mellon Street SE", 
+            "address2": "", 
+            "creation_date": "2012-03-05", 
+            "note": "Must be under 18 years old\r\nThis program provides housing, educational and employment services for youth ages 16 to ", 
+            "org_type": "NON-PROFIT", 
+            "state": "DC", 
+            "is_accepting_new_clients": false, 
+            "services": [
+                15
+            ], 
+            "contact_person": "Vernell Payton", 
+            "accepts_insurance": [], 
+            "phone_2": "", 
+            "slug": "crisis-center-shelter", 
+            "phone_1": "202-610-9600"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "organizations.organization", 
+        "fields": {
+            "city": "Washington", 
+            "verified": false, 
+            "name": "DC Medicaid", 
+            "zip": "20020", 
+            "address1": "unknown", 
+            "address2": "", 
+            "creation_date": "2012-03-04", 
+            "note": "", 
+            "org_type": "STATE-GOV-PAYER", 
+            "state": "DC", 
+            "is_accepting_new_clients": false, 
+            "services": [], 
+            "contact_person": "", 
+            "accepts_insurance": [
+                1
+            ], 
+            "phone_2": "", 
+            "slug": "dc-medicaid", 
+            "phone_1": ""
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "organizations.organization", 
+        "fields": {
+            "city": "Washington", 
+            "verified": false, 
+            "name": "Medicare", 
+            "zip": "20020", 
+            "address1": "none", 
+            "address2": "", 
+            "creation_date": "2012-03-04", 
+            "note": "", 
+            "org_type": "FED-GOV-PAYER", 
+            "state": "DC", 
+            "is_accepting_new_clients": false, 
+            "services": [], 
+            "contact_person": "", 
+            "accepts_insurance": [
+                1
+            ], 
+            "phone_2": "", 
+            "slug": "medicare", 
+            "phone_1": ""
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "organizations.organization", 
+        "fields": {
+            "city": "Washington", 
+            "verified": true, 
+            "name": "Whitman-Walker Health Max Robinson Center", 
+            "zip": "20020", 
+            "address1": "2301 Martin Luther King Junior Avenue SE", 
+            "address2": "", 
+            "creation_date": "2012-03-04", 
+            "note": "", 
+            "org_type": "PROVIDER-PRIMARY", 
+            "state": "DC", 
+            "is_accepting_new_clients": true, 
+            "services": [
+                1, 
+                5
+            ], 
+            "contact_person": "", 
+            "accepts_insurance": [
+                2, 
+                3
+            ], 
+            "phone_2": "", 
+            "slug": "whitman-walker-health-max-robinson-center", 
+            "phone_1": "202-678-8877"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "organizations.provider", 
+        "fields": {
+            "city": "Washington", 
+            "first_name": "Trapper", 
+            "last_name": "John", 
+            "npi": "12345678", 
+            "zip": "20001", 
+            "address1": "1600 Pennsylvannia Ave", 
+            "address2": "", 
+            "verified": false, 
+            "creation_date": "2012-03-07", 
+            "note": "This is an important note.", 
+            "state": "DC", 
+            "is_accepting_new_clients": false, 
+            "organization": 2, 
+            "contact_person": "", 
+            "phone_2": "", 
+            "phone_1": ""
+        }
+    }
+]

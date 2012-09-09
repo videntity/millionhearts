@@ -1,0 +1,33 @@
+[
+    {
+        "pk": 1, 
+        "model": "services.serviceorg", 
+        "fields": {
+            "city": "Washington", 
+            "name": "Safeway", 
+            "zip": "20007", 
+            "address1": "4100 Branch Ave, SE", 
+            "address2": "", 
+            "creation_date": "2012-01-05", 
+            "note": "This is a food Service", 
+            "state": "DC",
+            "federal_government_service": false,
+            "state_government_service": false,
+            "local_government_service": false,
+            "support_service": false,
+            "medical_service": false,
+            "food_service": true,
+            "clothing_service": false,
+            "housing_service": false,
+            "transitional_housing_service": false,
+            "rental_utility_assistance_service": false,
+            "mental_health_service": false,
+            "substance_abuse_treatment": false,
+            "medical_service": false,
+            "contact_person": "",
+            "phone_2": "", 
+            "slug": "safeway", 
+            "phone_1": ""
+        }
+    }
+]

@@ -2,7 +2,6 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from apps.main.views import home
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -15,8 +14,13 @@ urlpatterns = patterns('',
     
     
     url(r'^$', home, name='home'),
-    # url(r'^millionhearts/', include('millionhearts.foo.urls')),
-
+    
+    url(r'^risk-assessments/', include('apps.riskassessments.urls')),
+    url(r'^dashboard/', include('apps.riskassessments.urls')),
+    #url(r'^accounts/', include('apps.accounts.urls')),
+    #url(r'^intake/', include('apps.intake.urls')),
+    
+    
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

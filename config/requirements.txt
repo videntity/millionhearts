@@ -1,2 +1,11 @@
 python-omhe
 Django==1.4.1
+twilio
+boto
+django-extensions
+xlwt==0.7.2
+pylibmc
+django-ses
+sorl-thumbnail
+pycurl
+PIL

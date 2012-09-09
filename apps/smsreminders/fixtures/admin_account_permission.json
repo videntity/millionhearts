@@ -1,0 +1,10 @@
+[
+    {
+        "pk":33,
+        "model":"accounts.permission",
+        "fields":{
+            "user":7,
+            "permission_name":"admin"
+        }
+    }
+]

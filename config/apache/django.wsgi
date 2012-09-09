@@ -1,7 +1,7 @@
 import os
 import sys
 
-sys.path.append('/home/ubuntu/django-apps/millionhearts/')
+sys.path.append('/home/ubuntu/django-apps/millionhearts')
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'millionhearts.settings'
 

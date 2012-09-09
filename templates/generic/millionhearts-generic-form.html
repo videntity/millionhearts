@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block middle %}
+<br><br>
+
+<div class="header-box">
+    <h1>{{name}}</h1>
+</div>
+
+<div class="content-box">
+
+    {% if toptext %}
+        <p class="legal-footnote">{{toptext}}</p>
+        <hr/>
+    {% endif %}
+
+    <form enctype="multipart/form-data" action="" method="POST" class="hive-form">
+        {% if form.errors %}
+          <p >Please correct the form errors below</span>
+        {% endif %}
+
+        {% load bootstrap %}
+            {{ form|bootstrap }}
+
+        {% csrf_token %}
+
+        <br/>
+        <p>
+            <input class="button" type="submit" value="{{submit_button_text}}" />
+        </p>
+    </form>
+
+    {% if bottomtext %}
+        <p class="legal-footnote">{{bottomtext}}</p>
+        <hr/>
+    {% endif %}
+
+</div>
+
+{% endblock %}
+
+
