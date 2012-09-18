@@ -1,42 +1,37 @@
 {% extends "base.html" %}
+{% load i18n %}
 
-{% block middle %}
-<br><br>
+{% block content %}
+<section id="register">
+  <div class="page-header">
+    <h1>{% trans "Take the Survey" %}</h1>
+  </div>
 
-<div class="header-box">
-    <h1>{{name}}</h1>
-</div>
-
-<div class="content-box">
-
-    {% if toptext %}
-        <p class="legal-footnote">{{toptext}}</p>
-        <hr/>
-    {% endif %}
-
-    <form enctype="multipart/form-data" action="" method="POST" class="hive-form">
-        {% if form.errors %}
-          <p >Please correct the form errors below</span>
-        {% endif %}
-
-        {% load bootstrap %}
-            {{ form|bootstrap }}
-
+  
+<div class="row">
+    <div class="span8">
+      <form class="well" method="post" action="">
         {% csrf_token %}
-
-        <br/>
-        <p>
-            <input class="button" type="submit" value="{{submit_button_text}}" />
-        </p>
-    </form>
-
-    {% if bottomtext %}
-        <p class="legal-footnote">{{bottomtext}}</p>
-        <hr/>
-    {% endif %}
-
-</div>
-
+        <p>{% trans "Fields marked wth an asterisk (*) are required." %}</p>
+        <table>
+        {% for field in form %}
+            <tr>
+                <td>
+                    {{ field.label_tag }}
+                </td>
+                <td>
+                    {{ field.errors }}
+                    {{ field }}
+                    {% if field.field.required %}*{% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+	<p>{% blocktrans %}Disclaimer.{% endblocktrans %}</p>
+        <input type="submit" class="btn large btn-primary" value="{% trans 'Continue' %}" />
+      </form>
+    </div>
+  </div>
+</section>
 {% endblock %}
-
 

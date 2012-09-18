@@ -12,7 +12,7 @@ from utils import ArchimedesAssessmentAPI
 from ..intake.models import PatientProfile
 import framingham10yr
 import json
-
+from utils import create_anonymous_patient_id
 
 YN_CHOICES = (('1', 'Yes'), ('0', 'No'))
 BOOL_CHOICES = ((True, "Yes"),(False, "No"))
@@ -90,7 +90,8 @@ ETHNICITY_CHOICES = (('NON-HISPANIC', 'Non-Hispanic'), ('HISPANIC', 'Hispanic'),
 class ArchimedesRiskAssessment(models.Model):
     
     #Control fields
-    patient_id       = models.CharField(max_length=20)
+    patient_id       = models.CharField(max_length=20,
+                                        default=create_anonymous_patient_id)
     creation_date    = models.DateField(default=datetime.date.today)
     trackingid       = models.CharField(max_length=30, default="", blank=True)
     

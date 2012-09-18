@@ -9,12 +9,9 @@ urlpatterns = patterns('',
     url(r'archimedes$', archimedes_assessment,
         name='archimedes_assessment'),
     
-    
-    url(r'(?P<pat_id>\S+)$', patient_dashboard,
-        name='patient_dashboard'),
-    
-    
-    
+    url(r'hello$', archimedes_assessment_1,
+        name='archimedes_assessment_1'),
+
     
     url(r'view/cageaid-screen/(?P<pat_id>\S+)$', cageaid_screen_view,
         name='cageaid_screen_view'),    

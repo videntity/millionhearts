@@ -12,6 +12,14 @@ except ImportError:
     from StringIO import StringIO
 
 
+
+import uuid
+
+
+def create_anonymous_patient_id():
+    return str(uuid.uuid4()).replace('-', '').upper()[0:13]
+
+
 def ArchimedesAssessmentAPI(post_dict):
     
     print "Archimendes : " #, post_dict

@@ -3,7 +3,7 @@
 <head>
         <title>
         {% block pretitle %}{%  endblock %}
-        {% block title %}Twitter Bootstrap Hello World{% endblock %}
+        {% block title %}Be Heart Smart{% endblock %}
         </title>
 
     {% block head %}
@@ -14,31 +14,20 @@
     {% endblock %}
 
 </head>
-<body{% block bodyclassmodify %}{% endblock %}>
+<body>
 
-    <div class="container-fluid">
         {% include "include/top-nav.html" %}
-        <div class="content behind-image">
-            <div class="wrapper">
-                <div class="proper-content">
-                    <div class="row">
-                        <div class="span12">
-                {% block left %}
-                {% endblock %}
-	
-                {% block middle %}
-                {% endblock %}
-	
-                {% block right %}
-                {% endblock %}
-                        </div><!-- /.span12 -->
-                    </div><!-- /.row -->
-                </div><!-- /.proper-content -->
-                <div class="push"></div>
-            </div><!-- /.wrapper -->
-        </div><!-- /.content -->
+       
+               <div class="container">
+      
+      {% block content %}
+        {% if template %}{% include template %}{% endif %}
+        {{ content|safe }}
+      {% endblock %}
+    </div>
+                        
         {% include "include/footer.html" %}
-    </div><!-- /.container-fluid -->
+
 </body>
 
 </html>

@@ -74,11 +74,11 @@ class ValidPasswordResetKey(models.Model):
 
 class UserProfile(models.Model):
     user                = models.ForeignKey(User, unique=True)
-    organization        = models.CharField(max_length=100)
-    mobile_phone_number = PhoneNumberField(max_length=15)
-    worker_id           = models.CharField(max_length=4)
-    photo               = models.ImageField(upload_to="worker-avatars/",
-        blank=True)
+    pin                 = models.CharField(max_length=4, blank=True)
+    mobile_phone_number = PhoneNumberField(max_length=15, blank=True)
+    patient_id          = models.CharField(max_length=20)
+    twitter_handle      = models.CharField(max_length=4, blank=True, default="")
+
     def __unicode__(self):
         return '%s %s (%s)' % (self.user.first_name, self.user.last_name,
                                self.worker_id)

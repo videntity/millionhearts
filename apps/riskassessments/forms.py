@@ -13,12 +13,21 @@ import datetime
 
 
 
-
 class ArchimedesRiskAssessmentForm(ModelForm):
     class Meta:
         model = ArchimedesRiskAssessment
-        exclude = ('creation_date', 'trackingid')
+        exclude = ('creation_date', 'trackingid', 'archimedes_json_result')
     required_css_class = 'required'
+
+
+#The first form
+class ArchimedesRequiredForm(ModelForm):
+    class Meta:
+        model = ArchimedesRiskAssessment
+        fields = ('sex', 'age', 'height', 'weight','smoker', 'diabetes',
+                  'stroke')
+    required_css_class = 'required'
+
 
 
 

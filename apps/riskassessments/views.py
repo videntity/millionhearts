@@ -23,8 +23,57 @@ from forms import *
 from models import *
 
 
-def patient_dashboard(request, pat_id):
-    pass
+def archimedes_assessment_1(request):
+    if request.method == 'POST':
+        form =  ArchimedesRequiredForm(request.POST)
+        
+        if form.is_valid():  
+            patient = form.save()
+            print "patient_id : ", patient.patient_id
+            
+            return HttpResponseRedirect(reverse('patient_dashboard',
+                                                args=(patient.patient_id,)))
+                            
+        else:
+            messages.error(request, "Oops. The form had errors.")
+            return render_to_response("generic/millionhearts-generic-form.html",
+                              RequestContext(request,
+                                             {'form': form,}))
+    
+    
+    
+    #Just a GET Display and unbound form
+    return render_to_response("generic/millionhearts-generic-form.html",
+                             {'name': "Tell us some basic information",
+                              'submit_button_text': "Go On",
+                              'form': ArchimedesRequiredForm(),},
+                              context_instance = RequestContext(request))
+
+
+
+def archimedes_assessment_2(request, patient_id):
+    if request.method == 'POST':
+        form =  ArchimedesBloodPressureForm(request.POST)
+        
+        if form.is_valid():  
+            patient_id = form.save()
+            return HttpResponseRedirect(reverse('achimedes_blood_pressure',args=(patient_id,)))
+                            
+        else:
+            messages.error(request, "Oops. The form had errors.")
+            return render_to_response("generic/millionhearts-generic-form.html",
+                              RequestContext(request,
+                                             {'form': form,}))
+    
+    
+    
+    #Just a GET Display and unbound form
+    return render_to_response("generic/millionhearts-generic-form.html",
+                             {'name': "Tell us some basic information",
+                              'submit_button_text': "Go On",
+                              'form': ArchimedesRequiredForm(),},
+                              context_instance = RequestContext(request))
+
 
 
 
