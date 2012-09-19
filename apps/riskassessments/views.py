@@ -23,7 +23,7 @@ from forms import *
 from models import *
 
 
-def archimedes_assessment_1(request):
+def archimedes_hello(request):
     if request.method == 'POST':
         form =  ArchimedesRequiredForm(request.POST)
         
@@ -51,14 +51,111 @@ def archimedes_assessment_1(request):
 
 
 
-def archimedes_assessment_2(request, patient_id):
+
+
+def archimedes_basic_info(request, patient_id):
+    
+    patient = get_latest_object_or_404(ArchimedesRiskAssessment,
+                                       patient_id=patient_id)
+
     if request.method == 'POST':
-        form =  ArchimedesBloodPressureForm(request.POST)
+        form =  ArchimedesRequiredForm(request.POST, instance=patient)
+        
+
+        if form.is_valid():  
+            patient_id = form.save()
+            return HttpResponseRedirect(reverse('patient_dashboard',
+                                                args=(patient_id,)))
+                            
+        else:
+            messages.error(request, "Oops. The form had errors.")
+            return render_to_response("generic/millionhearts-generic-form.html",
+                              RequestContext(request,
+                                             {'form': form,}))
+     #Just a GET Display a bound form
+    return render_to_response("generic/millionhearts-generic-form.html",
+                             {'name': "Tell us some basic information",
+                              'submit_button_text': "Go On",
+                              'form': ArchimedesRequiredForm(instance=patient),},
+                              context_instance = RequestContext(request))
+
+
+
+
+def archimedes_blood_pressure(request, patient_id):
+
+    
+    patient = get_latest_object_or_404(ArchimedesRiskAssessment,
+                                       patient_id=patient_id)
+
+    if request.method == 'POST':
+        form =  ArchimedesBloodPressureForm(request.POST, instance=patient)
         
         if form.is_valid():  
             patient_id = form.save()
-            return HttpResponseRedirect(reverse('achimedes_blood_pressure',args=(patient_id,)))
-                            
+            return HttpResponseRedirect(reverse('patient_dashboard',
+                                                args=(patient.patient_id,)))
+
+        else:
+            messages.error(request, "Oops. The form had errors.")
+            return render_to_response("generic/millionhearts-generic-form.html",
+                              RequestContext(request,
+                                             {'form': form,}))
+    
+    #Just a GET Display a bound form
+    return render_to_response("generic/millionhearts-generic-form.html",
+                             {'name': "Tell us some basic information",
+                              'submit_button_text': "Go On",
+                              'form': ArchimedesBloodPressureForm(instance=patient),},
+                              context_instance = RequestContext(request))
+
+
+
+
+def archimedes_cholesterol(request, patient_id):
+
+    
+    patient = get_latest_object_or_404(ArchimedesRiskAssessment,
+                                       patient_id=patient_id)
+
+    if request.method == 'POST':
+        form =  ArchimedesCholesterolForm(request.POST, instance=patient)
+        
+        if form.is_valid():  
+            patient_id = form.save()
+            return HttpResponseRedirect(reverse('patient_dashboard',
+                                                args=(patient.patient_id,)))
+
+        else:
+            messages.error(request, "Oops. The form had errors.")
+            return render_to_response("generic/millionhearts-generic-form.html",
+                              RequestContext(request,
+                                             {'form': form,}))
+    
+    
+    #Just a GET Display a bound form
+    return render_to_response("generic/millionhearts-generic-form.html",
+                        {'name': "Tell us some basic information",
+                        'submit_button_text': "Go On",
+                        'form': ArchimedesCholesterolForm(instance=patient),},
+                              context_instance = RequestContext(request))
+
+
+
+def archimedes_more(request, patient_id):
+
+    
+    patient = get_latest_object_or_404(ArchimedesRiskAssessment,
+                                       patient_id=patient_id)
+
+    if request.method == 'POST':
+        form =  ArchimedesMoreForm(request.POST, instance=patient)
+        
+        if form.is_valid():  
+            patient_id = form.save()
+            return HttpResponseRedirect(reverse('patient_dashboard',
+                                                args=(patient.patient_id,)))
+
         else:
             messages.error(request, "Oops. The form had errors.")
             return render_to_response("generic/millionhearts-generic-form.html",
@@ -69,9 +166,9 @@ def archimedes_assessment_2(request, patient_id):
     
     #Just a GET Display and unbound form
     return render_to_response("generic/millionhearts-generic-form.html",
-                             {'name': "Tell us some basic information",
-                              'submit_button_text': "Go On",
-                              'form': ArchimedesRequiredForm(),},
+                        {'name': "Tell us some basic information",
+                        'submit_button_text': "Go On",
+                        'form': ArchimedesMoreForm(instance=patient),},
                               context_instance = RequestContext(request))
 
 

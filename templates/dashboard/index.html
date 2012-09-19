@@ -6,42 +6,46 @@
   <h1>Dashboard</h1>
   <p>Complete All of the tasks below or <a href ="/accounts/signin">sign in</a> to fetch your previous information.</p>
   <p>
-    <a class="btn btn-primary btn-large" href="/risk-assessments/archimedes">
+    <a class="btn btn-primary btn-large" href="/risk-assessments/basic-info/{{patient.patient_id}}">
       Basic Info
     </a>
   </p>
   
-     <p>
-    <a class="btn btn-primary btn-large" href="/risk-assessments/archimedes">
-      Family History
-    </a>
-  </p>
-  
-  
-  
+       
   <p>
-    <a class="btn btn-primary btn-large" href="/risk-assessments/archimedes">
+    <a class="btn btn-primary btn-large" href="/risk-assessments/blood-pressure/{{patient.patient_id}}">
       Blood Pressure
     </a>
   </p>
+  
    <p>
-    <a class="btn btn-primary btn-large" href="/risk-assessments/archimedes">
+    <a class="btn btn-primary btn-large" href="/risk-assessments/cholesterol/{{patient.patient_id}}">
       Cholesterol
     </a>
   </p>
    
-   <p>
-    <a class="btn btn-primary btn-large" href="/risk-assessments/archimedes">
-      Follow-up
+    <p>
+    <a class="btn btn-primary btn-large" href="/risk-assessments/more/{{patient.patient_id}}">
+      More
     </a>
   </p>
-     
-
-
-  
-  
+   
+   
+   
+   
+   <p>
+    <a class="btn btn-primary btn-large" href="/risk-assessments/follow-up">
+      Follow Up
+    </a>
+  </p>
+    
+    
+    
+    
+       
 </div>
 
 
+{{patient.archimedes_json_result}}
 
 {% endblock %}

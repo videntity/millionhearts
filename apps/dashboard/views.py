@@ -11,5 +11,6 @@ def patient_dashboard(request, patient_id):
     
     patient = get_latest_object_or_404(ArchimedesRiskAssessment,
                                        patient_id=patient_id)
+    
     return render_to_response("dashboard/index.html",
-                              RequestContext(request,{}))
+                              RequestContext(request,{'patient':patient}))

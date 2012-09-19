@@ -31,6 +31,31 @@ class ArchimedesRequiredForm(ModelForm):
 
 
 
+class ArchimedesBloodPressureForm(ModelForm):
+    class Meta:
+        model = ArchimedesRiskAssessment
+        fields = ('systolic', 'diastolic',)
+    required_css_class = 'required'
+
+
+
+class ArchimedesCholesterolForm(ModelForm):
+    class Meta:
+        model = ArchimedesRiskAssessment
+        fields = ('cholesterol', 'hdl', 'ldl',)
+    required_css_class = 'required'
+
+
+class ArchimedesMoreForm(ModelForm):
+    
+    class Meta:
+        model = ArchimedesRiskAssessment
+        fields = ('cholesterolmeds', 'bloodpressuremeds', 'bloodpressuremedcount',         
+                  'aspirin', 'moderateexercise', 'vigorousexercise',
+                  'familymihistory',)
+    required_css_class = 'required'
+
+
 
 class ADAType2DiabetesScreenForm(ModelForm):
     class Meta:

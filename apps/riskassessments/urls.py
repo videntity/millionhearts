@@ -6,12 +6,27 @@ from views import *
 urlpatterns = patterns('',
 
     
-    url(r'archimedes$', archimedes_assessment,
-        name='archimedes_assessment'),
+    #url(r'archimedes$', archimedes_assessment,
+    #    name='archimedes_assessment'),
     
-    url(r'hello$', archimedes_assessment_1,
-        name='archimedes_assessment_1'),
+    url(r'hello$', archimedes_hello,
+        name='archimedes_hello'),
 
+    url(r'basic-info/(?P<patient_id>\S+)$', archimedes_basic_info,
+        name='archimedes_blood_pressure'),
+
+    url(r'blood-pressure/(?P<patient_id>\S+)$', archimedes_blood_pressure,
+        name='archimedes_blood_pressure'),
+
+    url(r'cholesterol/(?P<patient_id>\S+)$', archimedes_cholesterol,
+        name='archimedes_cholesterol'),
+
+
+    url(r'more/(?P<patient_id>\S+)$', archimedes_more,
+        name='archimedes_more'),
+    
+
+    
     
     url(r'view/cageaid-screen/(?P<pat_id>\S+)$', cageaid_screen_view,
         name='cageaid_screen_view'),    
