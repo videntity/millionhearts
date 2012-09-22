@@ -10,7 +10,7 @@ from django.forms.extras.widgets import SelectDateWidget
 from apps.widgets import ClientSignatureWidget
 from models import *
 import datetime
-
+from django.utils.translation import ugettext_lazy as _
 
 
 class ArchimedesRiskAssessmentForm(ModelForm):
@@ -25,7 +25,7 @@ class ArchimedesRequiredForm(ModelForm):
     class Meta:
         model = ArchimedesRiskAssessment
         fields = ('sex', 'age', 'height', 'weight','smoker', 'diabetes',
-                  'stroke')
+                  'stroke', 'mi')
     required_css_class = 'required'
 
 
@@ -37,14 +37,57 @@ class ArchimedesBloodPressureForm(ModelForm):
         fields = ('systolic', 'diastolic',)
     required_css_class = 'required'
 
+    def clean(self):
+        cleaned_data  = super(ArchimedesBloodPressureForm, self).clean()
+        systolic      = cleaned_data.get("systolic", "")
+        diastolic     = cleaned_data.get("diastolic", "")
+    
+        if systolic and diastolic:
+            if int(diastolic) > int(systolic):
+                raise forms.ValidationError(_("Distolic may not exceed Systolic."))
+        return cleaned_data
 
+
+    def clean_systolic(self):
+        systolic     = self.cleaned_data.get("systolic", "")
+        if systolic:
+            if not 80 <= int(systolic) <= 220:
+                raise forms.ValidationError(_("Systolic pressure must be between 80 and 220."))
+        return systolic
+    
+    def clean_diastolic(self):
+        diastolic  = self.cleaned_data.get("diastolic", "")
+        if diastolic:
+            if not 40 <= int(diastolic) <= 130:
+                raise forms.ValidationError(_("Distolic pressure must be between 40 and 130."))
+        return diastolic
+        
 
 class ArchimedesCholesterolForm(ModelForm):
     class Meta:
         model = ArchimedesRiskAssessment
         fields = ('cholesterol', 'hdl', 'ldl',)
     required_css_class = 'required'
+    
+    
+    def clean(self):
+        cleaned_data = super(ArchimedesCholesterolForm, self).clean()
+        hdl           = cleaned_data.get("hdl", "")
+        ldl           = cleaned_data.get("ldl", "")
+        cholesterol   = cleaned_data.get("cholesterol", "")
+    
+        if cholesterol:
+            combined = int(hdl) + int(ldl)
+        
+            if combined > int(cholesterol):
+                raise forms.ValidationError(_("Total cholesterol cannot exceed the sum of HDL + LDL cholesterol."))
+        return cleaned_data
 
+    def clean_cholesterol(self):
+        cholesterol = self.cleaned_data.get("cholesterol", "")
+        if not 70 <= int(cholesterol) <= 500:    
+            raise forms.ValidationError(_("Total cholesterol must be between 70 and 500."))
+        return cholesterol
 
 class ArchimedesMoreForm(ModelForm):
     
@@ -54,6 +97,22 @@ class ArchimedesMoreForm(ModelForm):
                   'aspirin', 'moderateexercise', 'vigorousexercise',
                   'familymihistory',)
     required_css_class = 'required'
+
+
+class ArchimedesDiabetesForm(ModelForm):
+    
+    class Meta:
+        model = ArchimedesRiskAssessment
+        fields = ('hba1c',)
+    required_css_class = 'required'
+
+    def clean_hba1c(self):
+        hba1c     = self.cleaned_data.get("hba1c", "")
+        print "diab"
+        if hba1c:
+            if not 2 <= float(hba1c) <= 16:
+                raise forms.ValidationError(_("HbA1c must be between 2 and 16."))
+        return hba1c 
 
 
 

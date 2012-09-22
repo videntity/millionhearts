@@ -7,9 +7,8 @@ from views import *
 
 urlpatterns = patterns('',
 
-    url(r'login/', sms_login,  name="login"),
-    url(r'signup/', signup,  name="account_signup"),
-    url(r'smscode/', sms_code, name="sms_code"),
+    url(r'login/', simple_login,  name="login"),
+    url(r'signup/(?P<patient_id>\S+)', signup,  name="account_signup"),
     url(r'logout/', mylogout, name='mylogout'),
     url(r'password-reset-request/', password_reset_request,
         name='password_reset_request'),

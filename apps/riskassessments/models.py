@@ -13,6 +13,8 @@ from ..intake.models import PatientProfile
 import framingham10yr
 import json
 from utils import create_anonymous_patient_id
+from django.utils.translation import ugettext_lazy as _
+
 
 YN_CHOICES = (('1', 'Yes'), ('0', 'No'))
 BOOL_CHOICES = ((True, "Yes"),(False, "No"))
@@ -34,14 +36,21 @@ class Framingham10yrHeartRiskTest(models.Model):
     worker                       = models.ForeignKey(User)
     creation_date                = models.DateField(default=datetime.date.today)
     sex                          = models.CharField(choices=GENDER_CHOICES,
-                                                    max_length=6)
-    age                          = models.IntegerField(max_length=3)
-    total_cholesterol            = models.IntegerField(max_length=3)
-    hdl_cholesterol              = models.IntegerField(max_length=3)
-    systolic_blood_pressure      = models.IntegerField(max_length=3)
-    smoker                       = models.BooleanField(choices = SMOKER_CHOICES)
+                                    max_length=6,
+                                    verbose_name =_("What is your sex?"))
+    age                          = models.IntegerField(max_length=3,
+                                    verbose_name =_("What is your age?"))
+    total_cholesterol            = models.IntegerField(max_length=3,
+                                    verbose_name =_("What is your total choleterol?"))
+    hdl_cholesterol              = models.IntegerField(max_length=3,
+                                    verbose_name =_("What is your HDL cholesterol?"))
+    systolic_blood_pressure      = models.IntegerField(max_length=3,
+                                    verbose_name =_("What is your systolic blood pressure?"))
+    smoker                       = models.BooleanField(choices = SMOKER_CHOICES,
+                                    verbose_name =_("Do you smoke?"),
+                                    help_text=_('Anser yes if you have smoked at all in the past 30 days'))
     blood_pressure_med_treatment = models.BooleanField(choices = YES_NO_CHOICES,
-                                        verbose_name="Is the patient currently taking medication to lower blood pressure?")
+                                    verbose_name=_("Is the patient currently taking medication to lower blood pressure?"))
     points                       = models.IntegerField(default = 0,
                                                        blank = True,
                                                        max_length = 3 )
@@ -91,69 +100,84 @@ class ArchimedesRiskAssessment(models.Model):
     
     #Control fields
     patient_id       = models.CharField(max_length=20,
-                                        default=create_anonymous_patient_id)
+                            default=create_anonymous_patient_id)
     creation_date    = models.DateField(default=datetime.date.today)
     trackingid       = models.CharField(max_length=30, default="", blank=True)
     
     
     #Required assessment question fields ---------------------------------
-    sex         = models.CharField(choices=GENDER_CHOICES, max_length=6)
+    sex         = models.CharField(choices=GENDER_CHOICES, max_length=6,
+                    verbose_name=_('Whats is your sex?'))
     age         = models.IntegerField(max_length=3,
-                          verbose_name = "What is your age?")
+                    verbose_name = _("What is your age?"))
     height      = models.IntegerField(max_length=3,
-                          verbose_name = "What is your height?")
+                    verbose_name = _("What is your height?"))
     weight      = models.IntegerField(max_length=3,
-                          verbose_name = "What is your weight?")
+                    verbose_name = _("What is your weight?"))
     smoker      = models.CharField(choices=YES_NO_BINARY_CHOICES, max_length=5,
-                                   default="no")
+                    default="no",
+                    verbose_name = _("Do you smoke?"),
+                    help_text = _("Answer yes if you have smoked at all in the past 30 days."))
     diabetes    = models.CharField(choices=YES_NO_BINARY_CHOICES,max_length=5,
-                                   default="no")
+                    default="no",
+                    verbose_name=_("Has a doctor ever told you that you have diabetes?"))
     stroke      = models.CharField(choices=YES_NO_BINARY_CHOICES,max_length=5,
-                                   default="no")
+                    default="no",
+                    verbose_name=_("Has a doctor ever told you that you had a stroke?"))
     mi          = models.CharField(choices=YES_NO_BINARY_CHOICES, max_length=5,
-                                   default="no")
+                    default="no",
+                    verbose_name=_("Has a doctor ever told you that you had a heart attack (sometimes call a myocardial Infraction or MI)?"))
     
     
     #Optional Fields ---------------------------------------------------------
     systolic    = models.CharField(max_length=3,blank=True, default="",
-                    verbose_name = "What is your Systolic blood pressure (80-220) ?",)
+                    verbose_name = _("What is your Systolic blood pressure (80-220) ?"))
     diastolic   = models.CharField(max_length=3,  blank=True, default="",
-                    verbose_name = "What is your Diastolic blood pressure (40-130) ?")
+                    verbose_name = _("What is your Diastolic blood pressure (40-130) ?"))
+        
+    hdl         = models.CharField(max_length=3,blank=True, default="",
+                    verbose_name = _("What is your HDL Cholesterol (20-130) ?"))
+    ldl         = models.CharField(max_length=3, blank=True, default="",
+                    verbose_name = _("What is your LDL Cholesterol (40 -400) ?"))    
     
     cholesterol = models.CharField(max_length=3,  blank=True, default="",
-                    verbose_name = "What is your Total Cholesterol (70-500) ?")
+                    verbose_name = _("What is your Total Cholesterol (70-500) ?"))
     
-    hdl         = models.CharField(max_length=3,blank=True,
-                    verbose_name = "What is your HDL Cholesterol (20-130) ?")
-    ldl         = models.CharField(max_length=3, blank=True,
-                    verbose_name = "What is your LDL Cholesterol (40 -400) ?")
     hba1c       = models.CharField(max_length=4, blank=True,
-                    verbose_name = "What is your HbA1c (2-16) ?")
+                    verbose_name = _("What is your HbA1c (2-16) ?"))
     
     cholesterolmeds = models.CharField(choices=YES_NO_BINARY_CHOICES,
-                            max_length=5, default="", blank=True,
-                            verbose_name ="Are you currently taking medication to control cholesterol?",
-                            )
+                        max_length=5, default="", blank=True,
+                        verbose_name =_("Are you currently taking medication to control cholesterol?"))
     bloodpressuremeds = models.CharField(choices=YES_NO_BINARY_CHOICES,
                             max_length=5, default="", blank=True,
-                            verbose_name ="Are you currently taking medication to control your blood pressure?",)
+                            verbose_name =_("Are you currently taking medication to control your blood pressure?"))
     
     bloodpressuremedcount = models.CharField(max_length=3, blank=True, default="",
-                                verbose_name = "Blood Pressure Med Count (0-4)?")
+                                verbose_name = _("Blood Pressure Med Count (0-4)?"))
     aspirin = models.CharField(choices=YES_NO_BINARY_CHOICES,
                             max_length=5, default="", blank=True,
-                            verbose_name ="Do you take aspirin regularly?",)
+                            verbose_name =_("Do you take aspirin regularly?"))
     moderateexercise = models.CharField(max_length=3,  blank=True, default="",
-                            verbose_name = "How many hours of moderate exercise do you get per week (0-60)?")
+                            verbose_name = _("How many hours of moderate exercise do you get per week (0-60)?"))
     vigorousexercise = models.CharField(max_length=3,  blank=True, default="",
-                            verbose_name = "How many hours of vigorous exercise do you get per week (0-30)?")
+                            verbose_name = _("How many hours of vigorous exercise do you get per week (0-30)?"))
     familymihistory = models.CharField(choices=YES_NO_BINARY_CHOICES, max_length=5,
                             default="", blank=True,
-                            verbose_name="Immediate family history of MI before age 55?")
+                            verbose_name=_("Immediate family history of MI before age 55?"))
     
 
+    basic_info_complete = models.BooleanField(default=True)
+
+    blood_pressure_complete = models.BooleanField()
+
+    cholesterol_complete = models.BooleanField()
+
+    diabetes_complete = models.BooleanField()
     
-    
+    more_complete = models.BooleanField()
+
+    follow_up_complete = models.BooleanField()
     
     archimedes_json_result   = models.TextField(max_length=4096, default="",
                                                 blank=True)
@@ -165,6 +189,9 @@ class ArchimedesRiskAssessment(models.Model):
 
     def save(self, **kwargs):
         
+        if not self.trackingid:
+            self.trackingid = self.patient_id
+            
         query={'gender'   : self.sex,
                'age'      : self.age,
                'height'   : self.height,         
@@ -173,7 +200,10 @@ class ArchimedesRiskAssessment(models.Model):
                'diabetes' : self.diabetes, 
                'stroke'   : self.stroke,
                'mi'       : self.mi,
+               'trackingid': self.trackingid,
                }
+
+        
         #Add the optional values if they are populated
         if self.systolic:
             query['systolic'] = self.systolic
@@ -181,18 +211,32 @@ class ArchimedesRiskAssessment(models.Model):
         if self.diastolic:
             query['diastolic'] = self.diastolic
         
-        if self.cholesterol:
-            query['cholesterol'] = self.cholesterol
+
+
+        if self.systolic and self.diastolic:
+             self.blood_pressure_complete = True
+
 
         if self.hdl:
             query['hdl'] = self.hdl
         
         if self.ldl:
             query['ldl'] = self.ldl
+        
+
+        if self.cholesterol:
+            query['cholesterol'] = self.cholesterol
             
+        if self.hdl and self.ldl and self.cholesterol:
+             self.cholesterol_complete = True            
+
+    
         if self.hba1c:
             query['hba1c'] = self.hba1c
+            self.diabetes_complete = True  
             
+        
+        
         
         if self.cholesterolmeds:
             query['cholesterolmeds'] = self.cholesterolmeds
@@ -217,6 +261,12 @@ class ArchimedesRiskAssessment(models.Model):
             
         if self.familymihistory:
             query['familymihistory'] = self.familymihistory
+        
+        if self.cholesterolmeds and self.bloodpressuremeds and \
+           self.asprin and self.bloodpressuremedcount and \
+           self. self.moderateexercise and self.vigorousexercise and \
+           self.familymihistory:
+            self.more_complete = True
         
         result = ArchimedesAssessmentAPI(query)
         self.archimedes_json_result=result

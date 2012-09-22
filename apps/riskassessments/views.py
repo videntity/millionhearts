@@ -12,15 +12,27 @@ from django.contrib import messages
 from ..utils import build_pretty_data_view, get_latest_object_or_404
 from ..intake.models import PatientProfile
 from ..intake import formcopytext
-from ..accounts.decorators import access_required
 from ..accounts.models import UserProfile
 from ..generic.views import generic_form_view, generic_view, generic_view2
 from django.db import IntegrityError
+from twilio.rest import TwilioRestClient
 
 
 import json
 from forms import *
 from models import *
+
+def holler_back(request):
+    
+    # Get these credentials from http://twilio.com/user/account
+    client = TwilioRestClient(settings.TWILIO_SID, settings.TWILIO_AUTH_TOKEN)
+    # Make the call
+    call = client.calls.create(to="+13046853137", # Any phone number
+    from_=settings.TWILIO_DEFAULT_FROM , # Must be a valid Twilio number
+    url="http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient")
+    print call.sid
+    return HttpResponseRedirect(reverse('patient_dashboard',
+                                                args=(patient.patient_id,)))
 
 
 def archimedes_hello(request):
@@ -35,15 +47,14 @@ def archimedes_hello(request):
                                                 args=(patient.patient_id,)))
                             
         else:
-            messages.error(request, "Oops. The form had errors.")
-            return render_to_response("generic/millionhearts-generic-form.html",
+            return render_to_response("generic/bootstrapform.html",
                               RequestContext(request,
                                              {'form': form,}))
     
     
     
     #Just a GET Display and unbound form
-    return render_to_response("generic/millionhearts-generic-form.html",
+    return render_to_response("generic/bootstrapform.html",
                              {'name': "Tell us some basic information",
                               'submit_button_text': "Go On",
                               'form': ArchimedesRequiredForm(),},
@@ -65,7 +76,7 @@ def archimedes_basic_info(request, patient_id):
         if form.is_valid():  
             patient_id = form.save()
             return HttpResponseRedirect(reverse('patient_dashboard',
-                                                args=(patient_id,)))
+                                                args=(patient.patient_id,)))
                             
         else:
             messages.error(request, "Oops. The form had errors.")
@@ -97,13 +108,12 @@ def archimedes_blood_pressure(request, patient_id):
                                                 args=(patient.patient_id,)))
 
         else:
-            messages.error(request, "Oops. The form had errors.")
-            return render_to_response("generic/millionhearts-generic-form.html",
+            return render_to_response("generic/bootstrapform.html",
                               RequestContext(request,
                                              {'form': form,}))
     
     #Just a GET Display a bound form
-    return render_to_response("generic/millionhearts-generic-form.html",
+    return render_to_response("generic/bootstrapform.html",
                              {'name': "Tell us some basic information",
                               'submit_button_text': "Go On",
                               'form': ArchimedesBloodPressureForm(instance=patient),},
@@ -126,19 +136,48 @@ def archimedes_cholesterol(request, patient_id):
             return HttpResponseRedirect(reverse('patient_dashboard',
                                                 args=(patient.patient_id,)))
 
-        else:
-            messages.error(request, "Oops. The form had errors.")
-            return render_to_response("generic/millionhearts-generic-form.html",
+        else:            
+            return render_to_response("generic/bootstrapform.html",
                               RequestContext(request,
                                              {'form': form,}))
     
     
     #Just a GET Display a bound form
-    return render_to_response("generic/millionhearts-generic-form.html",
+    return render_to_response("generic/bootstrapform.html",
                         {'name': "Tell us some basic information",
                         'submit_button_text': "Go On",
                         'form': ArchimedesCholesterolForm(instance=patient),},
                               context_instance = RequestContext(request))
+
+
+
+def archimedes_diabetes(request, patient_id):
+
+    
+    patient = get_latest_object_or_404(ArchimedesRiskAssessment,
+                                       patient_id=patient_id)
+
+    if request.method == 'POST':
+        form =  ArchimedesDiabetesForm(request.POST, instance=patient)
+        
+        if form.is_valid():  
+            patient_id = form.save()
+            return HttpResponseRedirect(reverse('patient_dashboard',
+                                                args=(patient.patient_id,)))
+
+        else:            
+            return render_to_response("generic/bootstrapform.html",
+                              RequestContext(request,
+                                             {'form': form,}))
+    
+    
+    #Just a GET Display a bound form
+    return render_to_response("generic/bootstrapform.html",
+                        {'name': "Tell us some basic information",
+                        'submit_button_text': "Go On",
+                        'form': ArchimedesDiabetesForm(instance=patient),},
+                              context_instance = RequestContext(request))
+
 
 
 
@@ -157,15 +196,14 @@ def archimedes_more(request, patient_id):
                                                 args=(patient.patient_id,)))
 
         else:
-            messages.error(request, "Oops. The form had errors.")
-            return render_to_response("generic/millionhearts-generic-form.html",
+            return render_to_response("generic/bootstrapform.html",
                               RequestContext(request,
                                              {'form': form,}))
     
     
     
     #Just a GET Display and unbound form
-    return render_to_response("generic/millionhearts-generic-form.html",
+    return render_to_response("generic/bootstrapform.html",
                         {'name': "Tell us some basic information",
                         'submit_button_text': "Go On",
                         'form': ArchimedesMoreForm(instance=patient),},

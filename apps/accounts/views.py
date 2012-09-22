@@ -10,13 +10,13 @@ from django.views.decorators.http import require_POST
 from django.views.generic.list_detail import object_list
 from django.db.models import Sum
 from models import *
-from forms import SignupForm, LoginForm, SMSCodeForm, PasswordResetRequestForm, PasswordResetForm
+from forms import SignupForm, LoginForm, PasswordResetRequestForm, PasswordResetForm
 from emails import send_reply_email
 from django.core.urlresolvers import reverse
 from utils import verify
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from models import ValidSMSCode, ValidPasswordResetKey
+from models import ValidPasswordResetKey
 from datetime import datetime
 from django.contrib.auth import logout
 from django.contrib import messages
@@ -27,6 +27,41 @@ def mylogout(request):
                               context_instance = RequestContext(request))
 
     
+def simple_login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user=authenticate(username=username, password=password)
+            
+            if user is not None:
+
+                if user.is_active:
+                    login(request,user)
+                    patient = user.get_profile()
+                    messages.success(request, "Logged in successfully.")
+                    return HttpResponseRedirect(reverse('patient_dashboard',
+                                                args=(patient.patient_id,)))
+                else:
+                   messages.error(request, "Your account is inactive so you may not log in.")
+                   return render_to_response('accounts/login.html',
+                                            {'form': form},
+                                            RequestContext(request))
+            else:
+                messages.error(request, "Invalid username or password.")
+                return render_to_response('accounts/login.html',
+                                    {'form': form},
+                                    RequestContext(request))
+
+        else:
+         return render_to_response('accounts/login.html',
+                              RequestContext(request, {'form': form}))
+    #this is a GET
+    return render_to_response('accounts/login.html',
+                              {'form': LoginForm()},
+                              context_instance = RequestContext(request))
+
 
 
 
@@ -80,89 +115,6 @@ def password_reset_request(request):
                              {'form': PasswordResetRequestForm()},
                               context_instance = RequestContext(request))
     
-
-
-def validate_sms(username, smscode):
-    try:
-        u=User.objects.get(username=username)
-        vc=ValidSMSCode.objects.get(user=u, sms_code=smscode)
-        now=datetime.now()
-    
-        if vc.expires < now:
-            vc.delete()
-            return False
-    except(User.DoesNotExist):
-        return False        
-    except(ValidSMSCode.DoesNotExist):
-        return False  
-    vc.delete()
-    return True
-
-
-def sms_login(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            #print "Authenticate"
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']            
-            smscode  = form.cleaned_data['smscode']
-            if not validate_sms(username=username, smscode=smscode):
-                messages.error(request, "Invalid Access Code.")
-                return render_to_response('accounts/login.html',
-                                          {'form': LoginForm()},
-                              RequestContext(request)) 
-            
-            user=authenticate(username=username, password=password)
-            
-            if user is not None:
-
-                if user.is_active:
-                    login(request,user)
-                    return HttpResponseRedirect(reverse('home'))
-                else:
-                    
-                    messages.error(request, "Your account is not active.")
-                    return HttpResponseRedirect(reverse('sms_code'))
-            else:
-                messages.error(request, "Invalid username or password.")
-                return render_to_response('accounts/login.html',
-                                          {'form': LoginForm()},
-                              RequestContext(request)) 
-        else:
-            return render_to_response('accounts/login.html', {'form': form},
-                              RequestContext(request))
-    return render_to_response('accounts/login.html', {'form': LoginForm()},
-                              RequestContext(request)) 
-
-def sms_code(request):
-    
-    if request.method == 'POST':
-        form = SMSCodeForm(request.POST)
-        if form.is_valid():
-            try:
-                u=User.objects.get(username=form.cleaned_data['username'])
-                up=u.get_profile()
-                if u.is_active:
-                    ValidSMSCode.objects.create(user=u)
-                    messages.success(request, "A text message was sent to your mobile phone.")
-                else:
-                    messages.error(request, "Your account is inactive.")
-                    return HttpResponseRedirect(reverse('sms_code'))
-            except(User.DoesNotExist):
-                messages.error(request, "You are not recognized.")
-                return HttpResponseRedirect(reverse('sms_code'))
-            except(UserProfile.DoesNotExist):
-                messages.error(request, "You do not have a user profile.")
-                return HttpResponseRedirect(reverse('sms_code'))
-
-            return HttpResponseRedirect(reverse('login'))
-        else:
-         return render_to_response('accounts/smscode.html',
-                              RequestContext(request, {'form': form}))
-
-    return render_to_response('accounts/smscode.html',
-                              context_instance = RequestContext(request)) 
 
 
 def signup(request):

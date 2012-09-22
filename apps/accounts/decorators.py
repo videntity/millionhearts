@@ -13,7 +13,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 
-from utils import authorize, unauthorized_json_response, user_permissions
+from utils import authorize, unauthorized_json_response
 
 
 def json_login_required(func):
@@ -35,20 +35,6 @@ def json_login_required(func):
 
 
 
-
-
-def access_required(permission):
-    def decorator(func):
-        def inner_decorator(request, *args, **kwargs):
-            if permission in user_permissions(request):
-                    return func(request, *args, **kwargs)
-            else:
-                    return HttpResponse("Permission Denied.  Your account credentials \
-                            are valid but you do not have the permission \
-                            required to access this function.", status=401)
-        return wraps(func)(inner_decorator)
-
-    return decorator
 
 
 

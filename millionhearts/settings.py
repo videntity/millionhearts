@@ -66,6 +66,7 @@ MEDIA_URL = '/media/'
 # Example: "/home/media/media.lawrence.com/static/"
 #STATIC_ROOT = os.path.join(BASE_DIR, 'sitestatic')
 
+AUTH_PROFILE_MODULE = 'accounts.userprofile'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -147,6 +148,7 @@ INSTALLED_APPS = (
     'apps.generic',
     'apps.locations',
     'apps.dashboard',
+    'bootstrapform',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -207,6 +209,15 @@ REPORT_ERRATA_EMAIL = ["terrence@communityeducationgroup.org",]
 COUPON_EXPIRE_DAYS  = 365
 COUPON_NAME         = "SNS"
 COUPON_DETAIL       = "This is where details about the coupon go."
+
+
+#Twilio details
+# Twilio SMS Login Settings ---------------------------------------------------
+TWILIO_DEFAULT_FROM = "+12024992459"
+TWILIO_API_BASE = "https://api.twilio.com/2010-04-01"
+TWILIO_SID = "AC4d3f4dcee199445c45faa797c5c97898"
+TWILIO_AUTH_TOKEN = "d623565a60e77bb5902e1971948c6f17"
+TWILIO_API_VERSION = '2010-04-01'
 
 
 # Framingham

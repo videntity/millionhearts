@@ -11,7 +11,12 @@
     </a>
   </p>
   
-       
+   <p>
+    <a class="btn btn-primary btn-large" href="/accounts/signup/{{patient.patient_id}}">
+      Sign Up to get a Follow Up
+    </a>
+  </p>
+
   <p>
     <a class="btn btn-primary btn-large" href="/risk-assessments/blood-pressure/{{patient.patient_id}}">
       Blood Pressure
@@ -23,26 +28,27 @@
       Cholesterol
     </a>
   </p>
+
+  {% ifequal patient.diabetes "yes" %}
+   <p>
+    <a class="btn btn-primary btn-large" href="/risk-assessments/diabetes/{{patient.patient_id}}">
+      Diabetes
+    </a>
+  </p>
+  {% endifequal %}
    
     <p>
     <a class="btn btn-primary btn-large" href="/risk-assessments/more/{{patient.patient_id}}">
       More
     </a>
   </p>
-   
-   
-   
-   
-   <p>
-    <a class="btn btn-primary btn-large" href="/risk-assessments/follow-up">
-      Follow Up
-    </a>
-  </p>
     
-    
-    
-    
+  
        
+</div>
+
+<div class="progress progress-info progress-striped">
+<div class="bar" style="width: 20%"></div>
 </div>
 
 

@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     
     url(r'^risk-assessments/', include('apps.riskassessments.urls')),
     url(r'^dashboard/', include('apps.dashboard.urls')),
-    #url(r'^accounts/', include('apps.accounts.urls')),
+    url(r'^accounts/', include('apps.accounts.urls')),
     #url(r'^intake/', include('apps.intake.urls')),
     
     

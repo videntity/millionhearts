@@ -6,19 +6,7 @@ import json
 from django.contrib.auth import login, authenticate
 from httpauth import HttpBasicAuthentication
 from django.http import HttpResponse
-from models import Permission
 
-
-def user_permissions(request):
-    try:
-        p=Permission.objects.filter(user=request.user)
-        pl=[]
-        for i in p:
-            pl.append(i.permission_name)
-        return tuple(pl)
-    except(Permission.DoesNotExist):
-        return ()
-        
 
 
 
@@ -55,5 +43,4 @@ def verify(verification_key):
             profile.save()
             return user
     return False
-
 
