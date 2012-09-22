@@ -117,13 +117,18 @@ def password_reset_request(request):
     
 
 
-def signup(request):
+def signup(request, patient_id):
     if request.method == 'POST':
         form = SignupForm(request.POST)
+        
+        pw = request.POST['password1']
         if form.is_valid():
-          new_user = form.save()
-          return render_to_response('accounts/signup-complete.html',
-                                      RequestContext(request, {}))
+          new_user = form.save(patient_id)
+          user = authenticate(username=new_user.username,
+                            password=pw)
+          login(request, user)
+          return HttpResponseRedirect(reverse('patient_dashboard',
+                                                args=(patient_id,)))
         else:
             #return the bound form with errors
             return render_to_response('accounts/signup.html',

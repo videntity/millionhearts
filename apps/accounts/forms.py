@@ -70,7 +70,7 @@ class SignupForm(forms.Form):
         return username
 
 
-    def save(self, profile_callback=None):
+    def save(self, patient_id):
         new_user = User.objects.create_user(
                         username=self.cleaned_data['username'],
                         password=self.cleaned_data['password1'],
@@ -81,6 +81,7 @@ class SignupForm(forms.Form):
         
         up=UserProfile.objects.create(
             user=new_user,
+            patient_id = patient_id,
             preferred_contact_method=self.cleaned_data.get('preferred_contact_method=', ""),
             mobile_phone_number=self.cleaned_data.get('mobile_phone_number', ""),
             ) 

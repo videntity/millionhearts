@@ -1,14 +1,27 @@
-{% extends "layouts/1-column.html" %}
+{% extends "base.html" %}
+{% load i18n %}
 
-{% block middle %}
-<h1>Signup</h1>
-<p><em><strong>* All fields required</strong></em></p>
-    
-<form action='.' method='POST' class="tw-form">
-	{{ form.as_p }}
-	{% csrf_token %}
-	<input type="submit" value="Signup" class="button "/>
-</form>
+{% block content %}
+<section id="register">
+  <div class="page-header">
+    <h1>{% trans "Signup for a Follow Up" %}</h1>
+  </div>
 
+  
+<div class="row">
+    <div class="span8">
+      <form class="well" method="post" action="">
+        {% csrf_token %}
+        <table>
+        
+        {% load bootstrap %}
+        {{ form|bootstrap }}
 
+        </table>
+        <input type="submit" class="btn large btn-primary" value="{% trans 'Continue' %}" />
+      </form>
+    </div>
+  </div>
+</section>
 {% endblock %}
+
