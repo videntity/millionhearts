@@ -6,11 +6,35 @@ from ..utils import get_latest_object_or_404
 from ..riskassessments.models import ArchimedesRiskAssessment
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from ..accounts.models import UserProfile
+
+def calc_progress_percent(patient):
+    progress_percent = 0
+    if patient.basic_info_complete:
+        progress_percent += 20
+    if patient.blood_pressure_complete:
+        progress_percent += 20
+    if patient.cholesterol_complete:
+        progress_percent += 20
+    if patient.more_complete:
+        progress_percent += 20
+    
+    try:
+        up = UserProfile.objects.get(patient_id=patient.patient_id)
+        progress_percent += 20
+    except(UserProfile.DoesNotExist):
+        pass
+    
+    return progress_percent
 
 def patient_dashboard(request, patient_id):
     patient = get_latest_object_or_404(ArchimedesRiskAssessment,
                                  patient_id=patient_id)
     
+    progress_percent = calc_progress_percent(patient)
+    print "progress",progress_percent
+
+        
     
     ideal_high=2
     ideal_low=1
@@ -58,4 +82,5 @@ def patient_dashboard(request, patient_id):
                                 'guage_min':guage_min,
                                 'guage_max': guage_max,
                                 'bmi' : bmi,
+                                'progress_percent' : calc_progress_percent(patient),
                                 'height' : height}))

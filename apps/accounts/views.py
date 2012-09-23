@@ -10,7 +10,7 @@ from django.views.decorators.http import require_POST
 from django.views.generic.list_detail import object_list
 from django.db.models import Sum
 from models import *
-from forms import SignupForm, LoginForm, PasswordResetRequestForm, PasswordResetForm
+from forms import *
 from emails import send_reply_email
 from django.core.urlresolvers import reverse
 from utils import verify
@@ -20,11 +20,13 @@ from models import ValidPasswordResetKey
 from datetime import datetime
 from django.contrib.auth import logout
 from django.contrib import messages
+from django.utils.translation import ugettext_lazy as _
+
 
 def mylogout(request):
     logout(request)
-    return render_to_response('accounts/logout.html',
-                              context_instance = RequestContext(request))
+    messages.success(request, _("Logged out successfully."))
+    return HttpResponseRedirect(reverse('home'))
 
     
 def simple_login(request):
@@ -40,16 +42,17 @@ def simple_login(request):
                 if user.is_active:
                     login(request,user)
                     patient = user.get_profile()
-                    messages.success(request, "Logged in successfully.")
+                    messages.success(request, _("Logged in successfully."))
                     return HttpResponseRedirect(reverse('patient_dashboard',
                                                 args=(patient.patient_id,)))
                 else:
-                   messages.error(request, "Your account is inactive so you may not log in.")
+                   messages.error(request,
+                        _("Your account is inactive so you may not log in."))
                    return render_to_response('accounts/login.html',
                                             {'form': form},
                                             RequestContext(request))
             else:
-                messages.error(request, "Invalid username or password.")
+                messages.error(request, _("Invalid username or password."))
                 return render_to_response('accounts/login.html',
                                     {'form': form},
                                     RequestContext(request))
@@ -154,3 +157,47 @@ def verify_email(request, verification_key,
     return render_to_response(template_name,
                               { 'account': account},
                               context_instance=context)
+    
+
+@login_required
+def account_settings(request):
+
+    up = get_object_or_404(UserProfile, user=request.user)
+
+    if request.method == 'POST':
+        form = AccountSettingsForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            #update the user info
+            request.user.username   = data['username']
+            request.user.email       = data['email']
+            request.user.first_name = data['first_name']
+            request.user.last_name  = data['last_name']  
+            request.user.save()
+            #update the user profile
+            up.preferred_contact_method = data['preferred_contact_method']
+            up.mobile_phone_number      = data['mobile_phone_number']
+            up.save()
+            messages.success(request,'Your account settings have been updated.')  
+            return render_to_response('generic/bootstrapform.html',
+                            {'form': form,},
+                            RequestContext(request))
+        else:
+            #the form had errors
+            return render_to_response('generic/bootstrapform.html',
+                            {'form': form,},
+                            RequestContext(request))
+               
+
+    #this is an HTTP GET        
+    return render_to_response('generic/bootstrapform.html',
+        {'form': AccountSettingsForm(initial={ 'username':request.user.username,
+                                'email':request.user.email,
+                                'last_name':request.user.last_name,
+                                'first_name':request.user.first_name,
+                                'preferred_contact_method': up.preferred_contact_method,
+                                'mobile_phone_number': up.mobile_phone_number,
+                                'twitter':up.twitter,
+                                })},
+                              RequestContext(request))
+

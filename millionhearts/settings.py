@@ -95,7 +95,7 @@ SECRET_KEY = '@r_sdjk6f$r9)zafk7_vkp6fy0^m2$02k59b5)4oruoh0=xsv0'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    #'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -144,6 +144,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'apps.riskassessments',
     'apps.accounts',
+    'apps.pharmacy',
     'apps.intake',
     'apps.generic',
     'apps.locations',
@@ -155,8 +156,6 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
 )
 
-
-
 # --------------------------------------------------------------------------
 # Custom Project Settings --------------------------------------------------
 # --------------------------------------------------------------------------
@@ -164,14 +163,14 @@ INSTALLED_APPS = (
 
 # Email Settings -----------------------------------------------------------
 
-EMAIL_HOST_USER = 'millionhearts@videntity.com'
-#HOSTNAME_URL = 'https://millionhearts.videntity.com'
+EMAIL_HOST_USER = 'beheartsmart@videntity.com'
+#HOSTNAME_URL = 'https://beheartssmart.com'
 HOSTNAME_URL = 'http://127.0.0.1:8000'
 EMAIL_BACKEND = 'django_ses.SESBackend'
 AWS_ACCESS_KEY_ID = 'AKIAIE5XDCZ5PNK4RGOQ'
 AWS_SECRET_ACCESS_KEY = '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'
-DEFAULT_FROM_EMAIL='millionhearts@videntity.com'
-SERVER_EMAIL='millionhearts@videntity.com'
+DEFAULT_FROM_EMAIL='beheartsmart@videntity.com'
+SERVER_EMAIL='mneheartsmart@videntity.com'
 
 # Twilio SMS Login Settings -----------------------------------------------
 TWILIO_DEFAULT_FROM = "+12024992459"
@@ -182,9 +181,8 @@ TWILIO_API_VERSION = '2010-04-01'
 SMS_LOGIN_TIMEOUT_MIN = 10
 
 
-
 #Backup settings ----------------------------------------------------------
-AWS_BUCKET  = "cegphi"
+AWS_BUCKET  = "beheartsmartbackup"
 AWS_KEY     = AWS_ACCESS_KEY_ID
 AWS_SECRET  = AWS_SECRET_ACCESS_KEY
 AWS_PUBLIC  = False
@@ -197,18 +195,11 @@ AWS_LOCAL_BIN_FILEPATH = os.path.join(BASE_DIR, 'bin-backup.des3')
 #Account Activation Settings -------------------------------------------------
 ACCOUNT_ACTIVATION_DAYS = 2
 RESTRICT_REG_DOMAIN_TO = None
-MIN_PASSWORD_LEN = 10
+MIN_PASSWORD_LEN = 5
 
 #Org details
-ORGANIZATION_NAME = "Community Education Group (CEG)"
-LOCATION_NAME = "District of Columbia"
-REPORT_ERRATA_EMAIL = ["terrence@communityeducationgroup.org",]
-
-
-#Coupon details
-COUPON_EXPIRE_DAYS  = 365
-COUPON_NAME         = "SNS"
-COUPON_DETAIL       = "This is where details about the coupon go."
+ORGANIZATION_NAME = "Be Heart Smart"
+LOCATION_NAME = "Baltimore, MD"
 
 
 #Twilio details
@@ -226,6 +217,8 @@ FRAMINGHAM10YR_RETEST_DAYS          = 180
 
 # Archimedes
 ARCHIMEDES_API_URL = "https://demo-indigo4health.archimedesmodel.com/IndiGO4Health/IndiGO4Health"
+SURESCRIPTS_API_URL ="https://millionhearts.surescripts.net/test/Provider/Find"
+SURESCRIPTS_API_TOKEN = "3a0a572b-4f5d-47a2-9a75-819888576454"
 
 
 # A sample logging configuration. The only tangible logging

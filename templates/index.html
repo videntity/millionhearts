@@ -1,17 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
 
-
+{% load i18n %}
 <div class="hero-unit">
-  <h1>Be Heart Smart</h1>
-  <p>Reduce your risk for a heart attack.  Start by knowing your risk.</p>
+  <h1>{% trans "Be Heart Smart" %}</h1>
+  <p>{% trans "Reduce your risk for a heart attack.  Start by knowing your risk." %}</p>
   <p>
     <a class="btn btn-primary btn-large" href="/risk-assessments/hello">
-      Take the Survey
+      {% trans "Take the Survey" %}
     </a>
   </p>
 </div>
-
 
 
 {% endblock %}

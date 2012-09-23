@@ -10,6 +10,8 @@ from django.conf import settings
 from utils import ArchimedesAssessmentAPI 
 
 from ..intake.models import PatientProfile
+from ..accounts.models import UserProfile
+
 import framingham10yr
 import json
 from utils import create_anonymous_patient_id
@@ -95,6 +97,12 @@ RACE_CHOICES = (('BLACK', 'Black'), ('ASIAN', 'Asian'), ('WHITE', 'White'),
 
 ETHNICITY_CHOICES = (('NON-HISPANIC', 'Non-Hispanic'), ('HISPANIC', 'Hispanic'),  )
 
+HEIGHT_CHOICES = ((44,"""3' 8in""" ), (87,"7' 3in"))
+
+WEIGHT_CHOICES = zip(range(80, 601), range(80, 601))
+
+AGE_CHOICES = zip(range(18, 131), range(18, 131))
+
 
 class ArchimedesRiskAssessment(models.Model):
     
@@ -103,17 +111,16 @@ class ArchimedesRiskAssessment(models.Model):
                             default=create_anonymous_patient_id)
     creation_date    = models.DateField(default=datetime.date.today)
     trackingid       = models.CharField(max_length=30, default="", blank=True)
-    
-    
+        
     #Required assessment question fields ---------------------------------
     sex         = models.CharField(choices=GENDER_CHOICES, max_length=6,
                     verbose_name=_('Whats is your sex?'))
-    age         = models.IntegerField(max_length=3,
+    age         = models.IntegerField(max_length=3, choices = AGE_CHOICES,
                     verbose_name = _("What is your age?"))
-    height      = models.IntegerField(max_length=3,
+    height      = models.IntegerField(max_length=3, choices = HEIGHT_CHOICES,
                     verbose_name = _("What is your height?"))
-    weight      = models.IntegerField(max_length=3,
-                    verbose_name = _("What is your weight?"))
+    weight      = models.IntegerField(max_length=3, choices = WEIGHT_CHOICES,
+                    verbose_name = _("What is your weight in pounds?"))
     smoker      = models.CharField(choices=YES_NO_BINARY_CHOICES, max_length=5,
                     default="no",
                     verbose_name = _("Do you smoke?"),
@@ -127,7 +134,6 @@ class ArchimedesRiskAssessment(models.Model):
     mi          = models.CharField(choices=YES_NO_BINARY_CHOICES, max_length=5,
                     default="no",
                     verbose_name=_("Has a doctor ever told you that you had a heart attack (sometimes call a myocardial Infraction or MI)?"))
-    
     
     #Optional Fields ---------------------------------------------------------
     systolic    = models.CharField(max_length=3,blank=True, default="",
@@ -166,9 +172,8 @@ class ArchimedesRiskAssessment(models.Model):
                             default="", blank=True,
                             verbose_name=_("Immediate family history of MI before age 55?"))
     
-
     basic_info_complete = models.BooleanField(default=True)
-
+    
     blood_pressure_complete = models.BooleanField()
 
     cholesterol_complete = models.BooleanField()
@@ -177,6 +182,8 @@ class ArchimedesRiskAssessment(models.Model):
     
     more_complete = models.BooleanField()
 
+    signup_complete = models.BooleanField()
+    
     follow_up_complete = models.BooleanField()
     
     archimedes_json_result   = models.TextField(max_length=4096, default="",
@@ -203,6 +210,12 @@ class ArchimedesRiskAssessment(models.Model):
                'trackingid': self.trackingid,
                }
 
+        if not self.signup_complete:
+            try:
+                up = UserProfile.objects.get(patient_id=self.patient_id)
+                self.signup_complete = True
+            except(UserProfile.DoesNotExist):
+                pass
         
         #Add the optional values if they are populated
         if self.systolic:
@@ -263,8 +276,8 @@ class ArchimedesRiskAssessment(models.Model):
             query['familymihistory'] = self.familymihistory
         
         if self.cholesterolmeds and self.bloodpressuremeds and \
-           self.asprin and self.bloodpressuremedcount and \
-           self. self.moderateexercise and self.vigorousexercise and \
+           self.aspirin and self.bloodpressuremedcount and \
+           self.moderateexercise and self.vigorousexercise and \
            self.familymihistory:
             self.more_complete = True
         

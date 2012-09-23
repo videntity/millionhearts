@@ -4,29 +4,42 @@
 
 <div class="hero-unit">
   <h1>Dashboard</h1>
-  <p>Complete All of the tasks below or <a href ="/accounts/signin">sign in</a> to fetch your previous information.</p>
+  <p>For the most accurate risk assessment, complete all of the sections below.</p>
   <p>
     <a class="btn btn-primary btn-large" href="/risk-assessments/basic-info/{{patient.patient_id}}">
       Basic Info
     </a>
+    {% if patient.basic_info_complete %}
+       complete
+    {% endif %}
   </p>
   
+  {% if not user.is_authenticated %}
    <p>
     <a class="btn btn-primary btn-large" href="/accounts/signup/{{patient.patient_id}}">
       Sign Up to get a Follow Up
     </a>
   </p>
-
+  {% endif %}
+  
   <p>
     <a class="btn btn-primary btn-large" href="/risk-assessments/blood-pressure/{{patient.patient_id}}">
       Blood Pressure
     </a>
+    {% if patient.blood_pressure_complete %}
+       complete
+    {% endif %}
+    
   </p>
   
    <p>
     <a class="btn btn-primary btn-large" href="/risk-assessments/cholesterol/{{patient.patient_id}}">
       Cholesterol
     </a>
+    {% if patient.cholesterol_complete %}
+       complete
+    {% endif %}
+
   </p>
 
   {% ifequal patient.diabetes "yes" %}
@@ -34,6 +47,11 @@
     <a class="btn btn-primary btn-large" href="/risk-assessments/diabetes/{{patient.patient_id}}">
       Diabetes
     </a>
+    {% if patient.diabetes_complete %}
+       complete
+    {% endif %}    
+    
+    
   </p>
   {% endifequal %}
    
@@ -41,6 +59,10 @@
     <a class="btn btn-primary btn-large" href="/risk-assessments/more/{{patient.patient_id}}">
       More
     </a>
+    {% if patient.more_complete %}
+       complete
+    {% endif %}
+    
   </p>
     
   
@@ -48,7 +70,7 @@
 </div>
 
 <div class="progress progress-info progress-striped">
-<div class="bar" style="width: 20%"></div>
+<div class="bar" style="width: {{ progress_percent }}%"></div>
 </div>
 
 

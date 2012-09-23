@@ -80,11 +80,11 @@ def archimedes_basic_info(request, patient_id):
                             
         else:
             messages.error(request, "Oops. The form had errors.")
-            return render_to_response("generic/millionhearts-generic-form.html",
+            return render_to_response("generic/bootstrapform.html",
                               RequestContext(request,
                                              {'form': form,}))
      #Just a GET Display a bound form
-    return render_to_response("generic/millionhearts-generic-form.html",
+    return render_to_response("generic/bootstrapform.html",
                              {'name': "Tell us some basic information",
                               'submit_button_text': "Go On",
                               'form': ArchimedesRequiredForm(instance=patient),},

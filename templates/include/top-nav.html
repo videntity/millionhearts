@@ -1,11 +1,21 @@
+{% load i18n %}
 <ul class="nav nav-pills">
   <li class="active">
-    <a href="/">Home</a>
+    <a href="/">{% trans "Home" %}</a>
   </li>
-  <li><a href="/risk-assessments/hello">Take the Survey</a></li>
-  <li><a href="/pharmacy/find">Find a Pharmacy</a></li>
-  <li><a href="/accounts/login">Fetch Previous Information</a></li>
-  <li><a href="/espanol">Español</a></li>
+  {% if not user.is_authenticated %}
+  <li><a href="/risk-assessments/hello">{% trans "Take the Survey" %}</a></li>
+  {% endif %}
+  <li><a href="/pharmacy/find">{% trans "Find a Pharmacy" %}</a></li>
+  {% if user.is_authenticated %}
+      <li><a href="/accounts/account">{% trans "Account" %}</a></li>
+      <li><a href="/accounts/logout">{% trans "Logout" %}</a></li>
+      
+  {% else %}
+      <li><a href="/accounts/login">{% trans "Login" %}</a></li>
+  {% endif %}
+  
+  <li><a href="/espanol">{% trans "Español" %}</a></li>
 </ul>
 
 
