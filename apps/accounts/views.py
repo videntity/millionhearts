@@ -130,6 +130,7 @@ def signup(request, patient_id):
           user = authenticate(username=new_user.username,
                             password=pw)
           login(request, user)
+          messages.success(request, _("Your account has been created and you have been logged in."))
           return HttpResponseRedirect(reverse('patient_dashboard',
                                                 args=(patient_id,)))
         else:

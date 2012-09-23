@@ -7,6 +7,7 @@ from ..riskassessments.models import ArchimedesRiskAssessment
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from ..accounts.models import UserProfile
+from utils import fetch_risks
 
 def calc_progress_percent(patient):
     progress_percent = 0
@@ -32,25 +33,9 @@ def patient_dashboard(request, patient_id):
                                  patient_id=patient_id)
     
     progress_percent = calc_progress_percent(patient)
-    print "progress",progress_percent
+
 
         
-    
-    ideal_high=2
-    ideal_low=1
-    guage_max=1
-    guage_min=1
-    bmi=20
-    height=40
-        
-    all={ 'wt_numeric': 1,
-          'bmi':1, 
-          'ideal_high':2,
-          'ideal_low':1,
-          'guage_max':1,
-          'guage_min':1,}
-                  
-    
     # height is in inches
     # weight is in pounds (lbs.)
     bmi=(float(patient.weight) * 703) / (float(patient.height) * float(patient.height))
@@ -72,15 +57,24 @@ def patient_dashboard(request, patient_id):
     if guage_min > float(patient.weight):
         guage_min= float(ideal_low) - 20
               
+
+    risks = fetch_risks(patient.archimedes_json_result)
+    smoking=0
+    if patient.smoker=="yes":
+        smoking=1
+    
     
     return render_to_response("dashboard/index.html",
                               RequestContext(request,{'patient':patient,
-                                'all': all,
-                                'latest_wt' : patient.weight,
+                                'absolute_risk': risks['cvdrisk_upper']['rating'],
+                                'age_risk':  risks['cvdrisk_upper']['ratingForAge'],
+                                "smoking risk": 1,
+                                'weight' : patient.weight,
                                 'ideal_low' : ideal_low,
                                 'ideal_high' : ideal_high,
                                 'guage_min':guage_min,
                                 'guage_max': guage_max,
+                                'smoking': smoking,
                                 'bmi' : bmi,
                                 'progress_percent' : calc_progress_percent(patient),
-                                'height' : height}))
+                                'height' : patient.height}))

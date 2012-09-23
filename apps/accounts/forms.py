@@ -41,10 +41,11 @@ class LoginForm(forms.Form):
 class SignupForm(forms.Form):
     username = forms.CharField(max_length=30, label=_("Username"))
     email = forms.EmailField(max_length=75, label=_("Email"))
-    first_name = forms.CharField(max_length=30, label=_("First Name"))
-    last_name = forms.CharField(max_length=60, label=_("Last Name"))
+    first_name = forms.CharField(max_length=30, label=_("First Name"), required=False)
+    last_name = forms.CharField(max_length=60, label=_("Last Name"), required=False)
     mobile_phone_number = USPhoneNumberField(max_length=15,
-                                             label=_("Mobile Phone Number"))
+                                             label=_("Mobile Phone Number"),
+                                             required=False)
     preferred_contact_method = forms.TypedChoiceField(
                 label =_("Preferred Contact Method"),
                 choices = CONTACT_CHOICES)
@@ -99,12 +100,11 @@ class AccountSettingsForm(forms.Form):
 
     username = forms.CharField(max_length=30, label=_("Username"))
     email = forms.CharField(max_length=30, label=_("Email"))
-    first_name = forms.CharField(max_length=30, label=_("First Name"))
-    last_name = forms.CharField(max_length=60, label=_("Last Name"))
+    first_name = forms.CharField(max_length=30, label=_("First Name"), required=False)
+    last_name = forms.CharField(max_length=60, label=_("Last Name"), required=False)
     preferred_contact_method = forms.TypedChoiceField(
-        label =_("Preferred Contact Method"),
-        choices = CONTACT_CHOICES,
-        )
+                                label =_("Preferred Contact Method"),
+                                choices = CONTACT_CHOICES,)
     mobile_phone_number = USPhoneNumberField(max_length=12,
                     label=_("Mobile Phone Number"),
                     required=False)

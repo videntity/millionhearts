@@ -16,7 +16,7 @@ from ..accounts.models import UserProfile
 from ..generic.views import generic_form_view, generic_view, generic_view2
 from django.db import IntegrityError
 from twilio.rest import TwilioRestClient
-
+from django.utils.translation import ugettext_lazy as _
 
 import json
 from forms import *
@@ -41,7 +41,8 @@ def archimedes_hello(request):
         
         if form.is_valid():  
             patient = form.save()
-            print "patient_id : ", patient.patient_id
+            messages.success(request, _("Fantastic. You've taken the step. Your risk assessment is not as accurrate as it could be."))
+            messages.success(request, _("Complete blood pressure and cholesterol sections for a more accurate risk assessment."))
             
             return HttpResponseRedirect(reverse('patient_dashboard',
                                                 args=(patient.patient_id,)))
@@ -75,6 +76,7 @@ def archimedes_basic_info(request, patient_id):
 
         if form.is_valid():  
             patient_id = form.save()
+            messages.success(request, _("Your basic risk assessment information has been updated."))
             return HttpResponseRedirect(reverse('patient_dashboard',
                                                 args=(patient.patient_id,)))
                             
@@ -104,6 +106,7 @@ def archimedes_blood_pressure(request, patient_id):
         
         if form.is_valid():  
             patient_id = form.save()
+            messages.success(request, _("Your blood pressure information has been created/updated."))
             return HttpResponseRedirect(reverse('patient_dashboard',
                                                 args=(patient.patient_id,)))
 
@@ -133,6 +136,7 @@ def archimedes_cholesterol(request, patient_id):
         
         if form.is_valid():  
             patient_id = form.save()
+            messages.success(request, _("Your cholesterol information has been created/updated."))
             return HttpResponseRedirect(reverse('patient_dashboard',
                                                 args=(patient.patient_id,)))
 
@@ -162,6 +166,7 @@ def archimedes_diabetes(request, patient_id):
         
         if form.is_valid():  
             patient_id = form.save()
+            messages.success(request, _("Your HbA1c information has been created/updated."))
             return HttpResponseRedirect(reverse('patient_dashboard',
                                                 args=(patient.patient_id,)))
 
@@ -192,6 +197,7 @@ def archimedes_more(request, patient_id):
         
         if form.is_valid():  
             patient_id = form.save()
+            messages.success(request, _("Additonal risk information has been created/updated."))
             return HttpResponseRedirect(reverse('patient_dashboard',
                                                 args=(patient.patient_id,)))
 

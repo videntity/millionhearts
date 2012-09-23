@@ -109,7 +109,7 @@ class ArchimedesDiabetesForm(ModelForm):
 
     def clean_hba1c(self):
         hba1c     = self.cleaned_data.get("hba1c", "")
-        print "diab"
+
         if hba1c:
             if not 2 <= float(hba1c) <= 16:
                 raise forms.ValidationError(_("HbA1c must be between 2 and 16."))

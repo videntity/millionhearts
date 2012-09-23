@@ -97,11 +97,59 @@ RACE_CHOICES = (('BLACK', 'Black'), ('ASIAN', 'Asian'), ('WHITE', 'White'),
 
 ETHNICITY_CHOICES = (('NON-HISPANIC', 'Non-Hispanic'), ('HISPANIC', 'Hispanic'),  )
 
-HEIGHT_CHOICES = ((44,"""3' 8in""" ), (87,"7' 3in"))
+HEIGHT_CHOICES = ((44,"3' 8in" ),
+    (45,"3' 9 in" ),
+    (46,"3' 10 in" ),
+    (47,"3' 11 in" ),
+    (48,"4' 0 in" ),
+    (49,"4' 1 in" ),
+    (50,"4' 2 in" ),
+    (51,"4' 3 in" ),
+    (52,"4' 4 in" ),
+    (53,"4' 5 in" ), 
+    (54,"4' 6 in"),
+    (55,"4' 7 in"),
+    (56,"4' 8 in"),
+    (57,"4' 9 in"),
+    (58,"4' 10 in"),
+    (59,"4' 11 in"),
+    (60,"5' 0 in"),
+    (61,"5' 1 in" ),
+    (62,"5' 2 in" ),
+    (63,"5' 3 in" ),
+    (64,"5' 4 in" ),
+    (65,"5' 5 in" ), 
+    (66,"5' 6 in"),
+    (67,"5' 7 in"),
+    (68,"5' 8 in"),
+    (69,"5' 9 in"),
+    (70,"5' 10 in"),
+    (71,"5' 11 in"),
+    (72,"6' 0 in"),
+    (73,"6' 1 in" ),
+    (74,"6' 2 in" ),
+    (75,"6' 3 in" ),
+    (76,"6' 4 in" ),
+    (77,"6' 5 in" ), 
+    (78,"6' 6 in"),
+    (79,"6' 7 in"),
+    (80,"6' 8 in"),
+    (81,"6' 9 in"),
+    (82,"6' 10 in"),
+    (83,"6' 11 in"),
+    (84,"6' 11 in"),
+    (85,"7' 0 in"),
+    (86,"7' 1 in"),
+    (87,"7' 2 in"),
+    (88,"7' 3 in"),
+    
+    )
 
 WEIGHT_CHOICES = zip(range(80, 601), range(80, 601))
 
 AGE_CHOICES = zip(range(18, 131), range(18, 131))
+
+BLOOD_PRES_MEDS_CHOICES = (("0","0"),("1","1"),("2","2"),("3","3"),("4","4"),)
 
 
 class ArchimedesRiskAssessment(models.Model):
@@ -160,6 +208,7 @@ class ArchimedesRiskAssessment(models.Model):
                             verbose_name =_("Are you currently taking medication to control your blood pressure?"))
     
     bloodpressuremedcount = models.CharField(max_length=3, blank=True, default="",
+                                choices = BLOOD_PRES_MEDS_CHOICES,
                                 verbose_name = _("Blood Pressure Med Count (0-4)?"))
     aspirin = models.CharField(choices=YES_NO_BINARY_CHOICES,
                             max_length=5, default="", blank=True,
