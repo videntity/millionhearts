@@ -42,7 +42,7 @@ def simple_login(request):
                 if user.is_active:
                     login(request,user)
                     patient = user.get_profile()
-                    messages.success(request, _("Logged in successfully."))
+                    messages.success(request, _("You have logged in successfully."))
                     return HttpResponseRedirect(reverse('patient_dashboard',
                                                 args=(patient.patient_id,)))
                 else:

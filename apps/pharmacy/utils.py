@@ -20,9 +20,6 @@ def GoogleGeoCode(geocode_addr_str):
     body = StringIO()
     outfile = "out.json"
     f = open(outfile, "wb")
-    print URL, type(URL)
-
-       
     c = pycurl.Curl()
     c.setopt(c.SSL_VERIFYPEER, False) 
     c.setopt(pycurl.URL, URL)
@@ -42,11 +39,7 @@ def GoogleGeoCode(geocode_addr_str):
 
 
 def SureScriptsPharmacy(google_geocode_json):
-    result = json.loads(google_geocode_json)
-    lat = result['results'][0]
-    print type(lat), lat.keys()
-    
-    
+    result = json.loads(google_geocode_json)    
     lat = result['results'][0]['geometry']['location']['lat']
     lng = result['results'][0]['geometry']['location']['lng']
     
@@ -56,9 +49,6 @@ def SureScriptsPharmacy(google_geocode_json):
     body = StringIO()
     outfile = "out.json"
     f = open(outfile, "wb")
-    print URL, type(URL)
-
-       
     c = pycurl.Curl()
     c.setopt(c.SSL_VERIFYPEER, False) 
     c.setopt(pycurl.URL, URL)

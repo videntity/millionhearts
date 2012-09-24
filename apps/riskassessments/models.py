@@ -12,7 +12,8 @@ from utils import ArchimedesAssessmentAPI
 from ..intake.models import PatientProfile
 from ..accounts.models import UserProfile
 
-import framingham10yr
+from framingham10yr.framingham10yr import framingham_10year_risk
+
 import json
 from utils import create_anonymous_patient_id
 from django.utils.translation import ugettext_lazy as _
@@ -235,6 +236,9 @@ class ArchimedesRiskAssessment(models.Model):
     
     follow_up_complete = models.BooleanField()
     
+    #Framingham risk
+    framingham_risk  = models.CharField(max_length=20, blank=True, default="")    
+    
     archimedes_json_result   = models.TextField(max_length=4096, default="",
                                                 blank=True)
 
@@ -296,9 +300,6 @@ class ArchimedesRiskAssessment(models.Model):
         if self.hba1c:
             query['hba1c'] = self.hba1c
             self.diabetes_complete = True  
-            
-        
-        
         
         if self.cholesterolmeds:
             query['cholesterolmeds'] = self.cholesterolmeds
@@ -332,6 +333,22 @@ class ArchimedesRiskAssessment(models.Model):
         
         result = ArchimedesAssessmentAPI(query)
         self.archimedes_json_result=result
+    
+    
+        if  self.bloodpressuremeds and self.cholesterol and self.hdl  and \
+            self.age and self.sex and  self.systolic and self.smoker:
+            print "calc framingham"
+            fresult = framingham_10year_risk(self.sex,
+                                         int(self.age),
+                                        self.cholesterol,
+                                        self.hdl,
+                                        self.systolic,
+                                        self.smoker,
+                                        self.bloodpressuremeds
+                                        )
+            print fresult
+            if fresult.has_key("percent_risk"):
+                self.framingham_risk = fresult["percent_risk"]
     
         super(ArchimedesRiskAssessment, self).save(**kwargs)
     

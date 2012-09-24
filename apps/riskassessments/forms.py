@@ -26,7 +26,7 @@ class ArchimedesRequiredForm(ModelForm):
     class Meta:
         model = ArchimedesRiskAssessment
         fields = ('sex', 'age', 'height', 'weight','smoker', 'diabetes',
-                  'stroke', 'mi')
+                  'stroke', 'mi', 'bloodpressuremeds',)
     required_css_class = 'required'
 
 
@@ -94,7 +94,7 @@ class ArchimedesMoreForm(ModelForm):
     
     class Meta:
         model = ArchimedesRiskAssessment
-        fields = ('cholesterolmeds', 'bloodpressuremeds', 'bloodpressuremedcount',         
+        fields = ('cholesterolmeds', 'bloodpressuremedcount',         
                   'aspirin', 'moderateexercise', 'vigorousexercise',
                   'familymihistory',)
     required_css_class = 'required'
