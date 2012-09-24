@@ -89,11 +89,12 @@
   
 
   <h1>Dashboard</h1>
-  <h4>Your risk is {{absolute_risk}} out of 5. 5 inicates the highest risk category.
+  <h4>Your risk is {{absolute_risk}} out of 5. 1 is the lowest and 5 indicates
+  the highest risk category.
   {% if not patient.blood_pressure_complete %}
       {% if not patient.cholesterol_complete %}
            For a more accurate risk assessment, complete all of the sections below.
-           The blood pressure and cholesterol measurements are especialy important.
+           The blood pressure and cholesterol measurements are especially important.
            You might not have this information handy, so we can help you <a HREF="/pharmacy/find">find a pharmacy</a>
            who can provide you with a blood pressure and cholesterol screening services.
       {% endif %}
