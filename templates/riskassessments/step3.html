@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% load i18n %}
+<div class="hero-unit">
+  <h1>{% trans "Do you have recent blood pressure and cholesterol information handy?" %}</h1>
+  <p>
+    <a class="btn btn-primary btn-large" href="/risk-assessments/blood-pressure/{{patient.patient_id}}">
+      {% trans "Yes I have it" %}
+    </a>
+        <a class="btn btn-primary btn-large" href="/pharmacy/find/{{patient.patient_id}}">
+      {% trans "No. Help me get it" %}
+    </a>
+    
+  </p>
+</div>
+
+
+{% endblock %}

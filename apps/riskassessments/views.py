@@ -73,7 +73,7 @@ def archimedes_step2(request, patient_id):
         if form.is_valid():  
             patient_id = form.save()
             messages.success(request, _("Complete blood pressure and cholesterol sections for a more accurate risk assessment."))
-            return HttpResponseRedirect(reverse('patient_dashboard',
+            return HttpResponseRedirect(reverse('archimedes_step3',
                                                 args=(patient.patient_id,)))
 
         else:
@@ -86,6 +86,18 @@ def archimedes_step2(request, patient_id):
                              {'name': "Tell us some basic information",
                               'submit_button_text': "Go On",
                               'form': ArchimedesStep2Form(instance=patient),},
+                              context_instance = RequestContext(request))
+
+
+
+def archimedes_step3(request, patient_id):
+    """Do you have Blood pressure and cholesterol"""
+    
+    patient = get_latest_object_or_404(ArchimedesRiskAssessment,
+                                       patient_id=patient_id)
+    #Just a GET Display a bound form
+    return render_to_response("riskassessments/step3.html",
+                             {'patient': patient,},
                               context_instance = RequestContext(request))
 
 
