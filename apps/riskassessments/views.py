@@ -42,9 +42,8 @@ def archimedes_hello(request):
         if form.is_valid():  
             patient = form.save()
             messages.success(request, _("Fantastic. You've taken the step. Your risk assessment is not as accurrate as it could be."))
-            messages.success(request, _("Complete blood pressure and cholesterol sections for a more accurate risk assessment."))
             
-            return HttpResponseRedirect(reverse('patient_dashboard',
+            return HttpResponseRedirect(reverse('archimedes_step2',
                                                 args=(patient.patient_id,)))
                             
         else:
@@ -61,6 +60,33 @@ def archimedes_hello(request):
                               'form': ArchimedesRequiredForm(),},
                               context_instance = RequestContext(request))
 
+
+def archimedes_step2(request, patient_id):
+
+    
+    patient = get_latest_object_or_404(ArchimedesRiskAssessment,
+                                       patient_id=patient_id)
+
+    if request.method == 'POST':
+        form =  ArchimedesStep2Form(request.POST, instance=patient)
+        
+        if form.is_valid():  
+            patient_id = form.save()
+            messages.success(request, _("Complete blood pressure and cholesterol sections for a more accurate risk assessment."))
+            return HttpResponseRedirect(reverse('patient_dashboard',
+                                                args=(patient.patient_id,)))
+
+        else:
+            return render_to_response("generic/bootstrapform.html",
+                              RequestContext(request,
+                                             {'form': form,}))
+    
+    #Just a GET Display a bound form
+    return render_to_response("generic/bootstrapform.html",
+                             {'name': "Tell us some basic information",
+                              'submit_button_text': "Go On",
+                              'form': ArchimedesStep2Form(instance=patient),},
+                              context_instance = RequestContext(request))
 
 
 

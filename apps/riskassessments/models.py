@@ -137,7 +137,6 @@ HEIGHT_CHOICES = ((44,"3' 8in" ),
     (80,"6' 8 in"),
     (81,"6' 9 in"),
     (82,"6' 10 in"),
-    (83,"6' 11 in"),
     (84,"6' 11 in"),
     (85,"7' 0 in"),
     (86,"7' 1 in"),
@@ -174,8 +173,10 @@ class ArchimedesRiskAssessment(models.Model):
                     default="no",
                     verbose_name = _("Do you smoke?"),
                     help_text = _("Answer yes if you have smoked at all in the past 30 days."))
+    
+    #these are on the 2nd form ----------------------------------------------
     diabetes    = models.CharField(choices=YES_NO_BINARY_CHOICES,max_length=5,
-                    default="no",
+                    default="no", 
                     verbose_name=_("Has a doctor ever told you that you have diabetes?"))
     stroke      = models.CharField(choices=YES_NO_BINARY_CHOICES,max_length=5,
                     default="no",
@@ -183,6 +184,10 @@ class ArchimedesRiskAssessment(models.Model):
     mi          = models.CharField(choices=YES_NO_BINARY_CHOICES, max_length=5,
                     default="no",
                     verbose_name=_("Has a doctor ever told you that you had a heart attack (sometimes call a myocardial Infraction or MI)?"))
+    
+    bloodpressuremeds = models.CharField(choices=YES_NO_BINARY_CHOICES,
+                            max_length=5, default="no",
+                            verbose_name =_("Are you currently taking medication to control your blood pressure?"))
     
     #Optional Fields ---------------------------------------------------------
     systolic    = models.CharField(max_length=3,blank=True, default="",
@@ -204,9 +209,7 @@ class ArchimedesRiskAssessment(models.Model):
     cholesterolmeds = models.CharField(choices=YES_NO_BINARY_CHOICES,
                         max_length=5, default="", blank=True,
                         verbose_name =_("Are you currently taking medication to control cholesterol?"))
-    bloodpressuremeds = models.CharField(choices=YES_NO_BINARY_CHOICES,
-                            max_length=5, default="", blank=True,
-                            verbose_name =_("Are you currently taking medication to control your blood pressure?"))
+
     
     bloodpressuremedcount = models.CharField(max_length=3, blank=True, default="",
                                 choices = BLOOD_PRES_MEDS_CHOICES,
