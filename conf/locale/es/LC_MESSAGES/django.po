@@ -1,0 +1,366 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-05 13:33-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: apps/accounts/forms.py:13 apps/accounts/forms.py:43
+#: apps/accounts/forms.py:102
+msgid "Email"
+msgstr ""
+
+#: apps/accounts/forms.py:18
+msgid "Password*"
+msgstr ""
+
+#: apps/accounts/forms.py:20
+msgid "Password (again)*"
+msgstr ""
+
+#: apps/accounts/forms.py:27 apps/accounts/forms.py:62
+msgid "The two password fields didn't match."
+msgstr ""
+
+#: apps/accounts/forms.py:29
+#, python-format
+msgid "Password must be at least %s characters long. Be tricky!"
+msgstr ""
+
+#: apps/accounts/forms.py:35 apps/accounts/forms.py:42
+#: apps/accounts/forms.py:101
+msgid "Username"
+msgstr ""
+
+#: apps/accounts/forms.py:37 apps/accounts/forms.py:53
+msgid "Password"
+msgstr ""
+
+#: apps/accounts/forms.py:44 apps/accounts/forms.py:103
+msgid "First Name"
+msgstr ""
+
+#: apps/accounts/forms.py:45 apps/accounts/forms.py:104
+msgid "Last Name"
+msgstr ""
+
+#: apps/accounts/forms.py:47 apps/accounts/forms.py:109
+msgid "Mobile Phone Number"
+msgstr ""
+
+#: apps/accounts/forms.py:50 apps/accounts/forms.py:106
+msgid "Preferred Contact Method"
+msgstr ""
+
+#: apps/accounts/forms.py:55
+msgid "Password (again)"
+msgstr ""
+
+#: apps/accounts/forms.py:64
+#, python-format
+msgid "Password must be at least %s characters long.  Be tricky!"
+msgstr ""
+
+#: apps/accounts/forms.py:72 apps/accounts/forms.py:127
+msgid "This email address is already registered."
+msgstr ""
+
+#: apps/accounts/forms.py:78 apps/accounts/forms.py:134
+msgid "This username is already taken."
+msgstr ""
+
+#: apps/accounts/forms.py:111
+msgid "Twitter"
+msgstr ""
+
+#: apps/accounts/views.py:28
+msgid "Logged out successfully."
+msgstr ""
+
+#: apps/accounts/views.py:45
+msgid "You have logged in successfully."
+msgstr ""
+
+#: apps/accounts/views.py:50
+msgid "Your account is inactive so you may not log in."
+msgstr ""
+
+#: apps/accounts/views.py:55
+msgid "Invalid username or password."
+msgstr ""
+
+#: apps/accounts/views.py:133
+msgid "Your account has been created and you have been logged in."
+msgstr ""
+
+#: apps/pharmacy/forms.py:19
+msgid "Address"
+msgstr ""
+
+#: apps/pharmacy/forms.py:21
+msgid "City"
+msgstr ""
+
+#: apps/pharmacy/forms.py:23
+msgid "State"
+msgstr ""
+
+#: apps/pharmacy/forms.py:25
+msgid "Zip"
+msgstr ""
+
+#: apps/riskassessments/forms.py:56
+msgid "Distolic may not exceed Systolic."
+msgstr ""
+
+#: apps/riskassessments/forms.py:64
+msgid "Systolic pressure must be between 80 and 220."
+msgstr ""
+
+#: apps/riskassessments/forms.py:71
+msgid "Distolic pressure must be between 40 and 130."
+msgstr ""
+
+#: apps/riskassessments/forms.py:92
+msgid "Total cholesterol cannot exceed the sum of HDL + LDL cholesterol."
+msgstr ""
+
+#: apps/riskassessments/forms.py:98
+msgid "Total cholesterol must be between 70 and 500."
+msgstr ""
+
+#: apps/riskassessments/forms.py:123
+msgid "HbA1c must be between 2 and 16."
+msgstr ""
+
+#: apps/riskassessments/models.py:43
+msgid "What is your sex?"
+msgstr ""
+
+#: apps/riskassessments/models.py:45 apps/riskassessments/models.py:167
+msgid "What is your age?"
+msgstr ""
+
+#: apps/riskassessments/models.py:47
+msgid "What is your total choleterol?"
+msgstr ""
+
+#: apps/riskassessments/models.py:49
+msgid "What is your HDL cholesterol?"
+msgstr ""
+
+#: apps/riskassessments/models.py:51
+msgid "What is your systolic blood pressure?"
+msgstr ""
+
+#: apps/riskassessments/models.py:53 apps/riskassessments/models.py:174
+msgid "Do you smoke?"
+msgstr ""
+
+#: apps/riskassessments/models.py:54
+msgid "Anser yes if you have smoked at all in the past 30 days"
+msgstr ""
+
+#: apps/riskassessments/models.py:56
+msgid "Is the patient currently taking medication to lower blood pressure?"
+msgstr ""
+
+#: apps/riskassessments/models.py:165
+msgid "Whats is your sex?"
+msgstr ""
+
+#: apps/riskassessments/models.py:169
+msgid "What is your height?"
+msgstr ""
+
+#: apps/riskassessments/models.py:171
+msgid "What is your weight in pounds?"
+msgstr ""
+
+#: apps/riskassessments/models.py:175
+msgid "Answer yes if you have smoked at all in the past 30 days."
+msgstr ""
+
+#: apps/riskassessments/models.py:180
+msgid "Has a doctor ever told you that you have diabetes?"
+msgstr ""
+
+#: apps/riskassessments/models.py:183
+msgid "Has a doctor ever told you that you had a stroke?"
+msgstr ""
+
+#: apps/riskassessments/models.py:186
+msgid ""
+"Has a doctor ever told you that you had a heart attack (sometimes call a "
+"myocardial Infraction or MI)?"
+msgstr ""
+
+#: apps/riskassessments/models.py:190
+msgid "Are you currently taking medication to control your blood pressure?"
+msgstr ""
+
+#: apps/riskassessments/models.py:194
+msgid "What is your Systolic blood pressure (80-220) ?"
+msgstr ""
+
+#: apps/riskassessments/models.py:196
+msgid "What is your Diastolic blood pressure (40-130) ?"
+msgstr ""
+
+#: apps/riskassessments/models.py:199
+msgid "What is your HDL Cholesterol (20-130) ?"
+msgstr ""
+
+#: apps/riskassessments/models.py:201
+msgid "What is your LDL Cholesterol (40 -400) ?"
+msgstr ""
+
+#: apps/riskassessments/models.py:204
+msgid "What is your Total Cholesterol (70-500) ?"
+msgstr ""
+
+#: apps/riskassessments/models.py:207
+msgid "What is your HbA1c (2-16) ?"
+msgstr ""
+
+#: apps/riskassessments/models.py:211
+msgid "Are you currently taking medication to control cholesterol?"
+msgstr ""
+
+#: apps/riskassessments/models.py:216
+msgid "Blood Pressure Med Count (0-4)?"
+msgstr ""
+
+#: apps/riskassessments/models.py:219
+msgid "Do you take aspirin regularly?"
+msgstr ""
+
+#: apps/riskassessments/models.py:221
+msgid "How many hours of moderate exercise do you get per week (0-60)?"
+msgstr ""
+
+#: apps/riskassessments/models.py:223
+msgid "How many hours of vigorous exercise do you get per week (0-30)?"
+msgstr ""
+
+#: apps/riskassessments/models.py:226
+msgid "Immediate family history of MI before age 55?"
+msgstr ""
+
+#: apps/riskassessments/views.py:44
+msgid "Fantastic. You've taken the first step!"
+msgstr ""
+
+#: apps/riskassessments/views.py:117
+msgid "Your basic risk assessment information has been updated."
+msgstr ""
+
+#: apps/riskassessments/views.py:147
+msgid "Your blood pressure information has been created/updated."
+msgstr ""
+
+#: apps/riskassessments/views.py:177
+msgid "Your cholesterol information has been created/updated."
+msgstr ""
+
+#: apps/riskassessments/views.py:207
+msgid "Your HbA1c information has been created/updated."
+msgstr ""
+
+#: apps/riskassessments/views.py:238
+msgid "Additonal risk information has been created/updated."
+msgstr ""
+
+#: templates/index.html:6
+msgid "Be Heart Smart"
+msgstr ""
+
+#: templates/index.html:7
+msgid "Hello. Use this service to learn about your risk for heart disease."
+msgstr ""
+
+#: templates/index.html:10
+msgid "Take the Risk Assessment"
+msgstr ""
+
+#: templates/accounts/login.html:7
+msgid "Sign In"
+msgstr ""
+
+#: templates/accounts/login.html:21 templates/accounts/signup.html:21
+#: templates/generic/bootstrapform.html:26
+#: templates/generic/millionhearts-generic-form.html:35
+#: templates/pharmacy/find.html:23
+msgid "Continue"
+msgstr ""
+
+#: templates/accounts/signup.html:7
+msgid "Signup for a Follow Up"
+msgstr ""
+
+#: templates/generic/bootstrapform.html:7
+msgid "Risk Assessment"
+msgstr ""
+
+#: templates/generic/bootstrapform.html:15
+#: templates/generic/millionhearts-generic-form.html:15
+msgid "Fields marked wth an asterisk (*) are required."
+msgstr ""
+
+#: templates/generic/bootstrapform.html:25
+#: templates/generic/millionhearts-generic-form.html:34
+msgid "Disclaimer."
+msgstr ""
+
+#: templates/generic/millionhearts-generic-form.html:7
+#: templates/include/top-nav.html:7
+msgid "Take the Survey"
+msgstr ""
+
+#: templates/include/top-nav.html:4
+msgid "Home"
+msgstr ""
+
+#: templates/include/top-nav.html:9 templates/pharmacy/find.html:7
+msgid "Find a Pharmacy"
+msgstr ""
+
+#: templates/include/top-nav.html:11
+msgid "Account"
+msgstr ""
+
+#: templates/include/top-nav.html:12
+msgid "Logout"
+msgstr ""
+
+#: templates/include/top-nav.html:15
+msgid "Login"
+msgstr ""
+
+#: templates/include/top-nav.html:18
+msgid "Español"
+msgstr ""
+
+#: templates/riskassessments/step3.html:6
+msgid "Do you have recent blood pressure and cholesterol information handy?"
+msgstr ""
+
+#: templates/riskassessments/step3.html:9
+msgid "Yes I have it"
+msgstr ""
+
+#: templates/riskassessments/step3.html:12
+msgid "No. Help me get it"
+msgstr ""
