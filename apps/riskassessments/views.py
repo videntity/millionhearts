@@ -41,7 +41,7 @@ def archimedes_hello(request):
         
         if form.is_valid():  
             patient = form.save()
-            messages.success(request, _("Fantastic. You've taken the step. Your risk assessment is not as accurrate as it could be."))
+            messages.success(request, _("Fantastic. You've taken the first step!"))
             
             return HttpResponseRedirect(reverse('archimedes_step2',
                                                 args=(patient.patient_id,)))
@@ -72,7 +72,7 @@ def archimedes_step2(request, patient_id):
         
         if form.is_valid():  
             patient_id = form.save()
-            messages.success(request, _("Complete blood pressure and cholesterol sections for a more accurate risk assessment."))
+
             return HttpResponseRedirect(reverse('archimedes_step3',
                                                 args=(patient.patient_id,)))
 
