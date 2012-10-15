@@ -25,8 +25,26 @@ class ArchimedesRiskAssessmentForm(ModelForm):
 class ArchimedesRequiredForm(ModelForm):
     class Meta:
         model = ArchimedesRiskAssessment
-        fields = ('sex', 'age', 'height', 'weight','smoker',)
+        fields = ('sex', 'height', 'age', 'weight','smoker',)
     required_css_class = 'required'
+    
+    #sex  = forms.TypedChoiceField(choices = GENDER_CHOICES, initial = None,
+    #                              widget=forms.RadioSelect())
+    def clean_age(self):
+        age     = self.cleaned_data.get("age", "")
+        if age:
+            if not 18 <= int(age) <= 130:
+                raise forms.ValidationError(_("Age must be between 18 and 130 years."))
+        return age
+
+
+    def clean_weight(self):
+        weight     = self.cleaned_data.get("weight", "")
+        if weight:
+            if not 80 <= float(weight) <= 600:
+                raise forms.ValidationError(_("Weight must be between 80 and 600 lbs."))
+        return weight
+
 
 
 #The first form

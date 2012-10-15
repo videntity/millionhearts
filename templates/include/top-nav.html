@@ -4,7 +4,7 @@
     <a href="/">{% trans "Home" %}</a>
   </li>
   {% if not user.is_authenticated %}
-  <li><a href="/risk-assessments/hello">{% trans "Take the Survey" %}</a></li>
+  <li><a href="/risk-assessments/hello">{% trans "Take the Risk Assessment" %}</a></li>
   {% endif %}
   <li><a href="/pharmacy/find">{% trans "Find a Pharmacy" %}</a></li>
   {% if user.is_authenticated %}
@@ -12,10 +12,9 @@
       <li><a href="/accounts/logout">{% trans "Logout" %}</a></li>
       
   {% else %}
-      <li><a href="/accounts/login">{% trans "Login" %}</a></li>
+      <li><a href="/accounts/login">{% trans "Fetch Previous Info" %}</a></li>
   {% endif %}
-  
-  <li><a href="/espanol">{% trans "Español" %}</a></li>
+
 </ul>
 
 

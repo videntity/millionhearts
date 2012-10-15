@@ -163,14 +163,14 @@ class ArchimedesRiskAssessment(models.Model):
     #Required assessment question fields ---------------------------------
     sex         = models.CharField(choices=GENDER_CHOICES, max_length=6,
                     verbose_name=_('Whats is your sex?'))
-    age         = models.IntegerField(max_length=3, choices = AGE_CHOICES,
+    age         = models.IntegerField(max_length=3, #choices = AGE_CHOICES,
                     verbose_name = _("What is your age?"))
     height      = models.IntegerField(max_length=3, choices = HEIGHT_CHOICES,
                     verbose_name = _("What is your height?"))
-    weight      = models.IntegerField(max_length=3, choices = WEIGHT_CHOICES,
+    weight      = models.IntegerField(max_length=3, #choices = WEIGHT_CHOICES,
                     verbose_name = _("What is your weight in pounds?"))
     smoker      = models.CharField(choices=YES_NO_BINARY_CHOICES, max_length=5,
-                    default="no",
+                    #default="no",
                     verbose_name = _("Do you smoke?"),
                     help_text = _("Answer yes if you have smoked at all in the past 30 days."))
     
