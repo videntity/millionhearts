@@ -8,19 +8,18 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Label', 'Value'],
-          ['Risk', {{absolute_risk}}],
-          ['Age Risk', {{age_risk}}],
+          ['Risk', {{age_risk}}*20],
         
         ]);
 
         var options = {
           width: 800, height: 240,
           min: 1,
-          max: 5,
-          redFrom:  3, redTo: 5,
-          yellowFrom:2, yellowTo: 3,
-          greenFrom: 1, greenTo: 2,
-          minorTicks: 1
+          max: 100,
+          redFrom:  3*20, redTo: 5*20,
+          yellowFrom:2*20, yellowTo: 3*20,
+          greenFrom: 0, greenTo: 2*20,
+          minorTicks: 10
         };
 
         var chart = new google.visualization.Gauge(document.getElementById('risk_chart_div'));
@@ -28,29 +27,6 @@
       }
     </script>
 
-<script type='text/javascript'>
-      google.load('visualization', '1', {packages:['gauge']});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Label', 'Value'],
-          ['Smoking', {{ smoking }}],
-        
-        ]);
-
-        var options = {
-          width: 400, height: 240,
-          min: 0,
-          max: 1,
-          redFrom:  0.5, redTo: 1,
-          greenFrom: 0, greenTo: 0.5,
-          minorTicks: 1
-        };
-
-        var chart = new google.visualization.Gauge(document.getElementById('smoking_chart_div'));
-        chart.draw(data, options);
-      }
-    </script>
 
 
 <script type='text/javascript'>
@@ -89,35 +65,25 @@
   
 
   <h1>Dashboard</h1>
-  <h4>Your risk is {{absolute_risk}} out of 5. 1 is the lowest and 5 indicates
-  the highest risk category.
+  <h4>Your risk is {{age_risk}} out of 5. The lowest risk category is 1 and the highest is 5.
   {% if not patient.blood_pressure_complete %}
       {% if not patient.cholesterol_complete %}
-           For a more accurate risk assessment, complete all of the sections below.
-           The blood pressure and cholesterol measurements are especially important.
-           You might not have this information handy, so we can help you <a HREF="/pharmacy/find">find a pharmacy</a>
-           who can provide you with a blood pressure and cholesterol screening services.
+           You have not yet added your blood pressure and cholesterol infomation.
+           For a more accurate assessment, please complete all of the sections below,
+           although the blood pressure and cholesterol numbers are especially important.
+           If you don't have this information, we can  <a HREF="/pharmacy/find">help you find it at a participating nearby pharmacy.</a>
       {% endif %}
+        
   {% endif %}
-  {% if patient.framingham_risk %}
-      Your percent chance of having a heart attack in the next 10 years is
-      {{ patient.framingham_risk }}.
+  {% if not user.is_authenticated %}
+  If you don't have all of this information now, you can <a HREF="/accounts/signup/{{patient.patient_id}}">create an account
+  so you can retreive you infomation later.</a> 
   {% endif %}
-    
-  </h4>
-  <h4>
-    {% if not user.is_authenticated %}
-  Why not <a HREF="/accounts/signup/{{patient.patient_id}}">signup now</a> so
-  you can retreive your infomration later?
-  {% endif %}
-  </h4>
-  <h2>Progress: {{ progress_percent }}%<h2>
-<div class="progress progress-info progress-striped">
-<div class="bar" style="width: {{ progress_percent }}%"></div>
-</div>
 
- 
+  </h4>
   
+
+
   <p>
     <a class="btn btn-primary btn-large" href="/risk-assessments/blood-pressure/{{patient.patient_id}}">
       Blood Pressure
@@ -175,8 +141,20 @@
     
   </p>
 <p>    
-  </p>     
+
+<h2>Assesment Progress: {{ progress_percent }}%<h2>
+<div class="progress progress-info progress-striped">
+<div class="bar" style="width: {{ progress_percent }}%"></div>
 </div>
+  </p>     
+
+
+
+</div>
+
+
+
+
 
 
 {% endblock %}

@@ -189,6 +189,13 @@ class ArchimedesRiskAssessment(models.Model):
                             max_length=5, default="no",
                             verbose_name =_("Are you currently taking medication to control your blood pressure?"))
     
+    
+    have_bp_chol_info = models.CharField(choices=YES_NO_BINARY_CHOICES, max_length=5,
+                    default="no",
+                    verbose_name=_("Do you have recent blood pressure and cholesterol numbers available?"),)
+    
+    
+    
     #Optional Fields ---------------------------------------------------------
     systolic    = models.CharField(max_length=3,blank=True, default="",
                     verbose_name = _("What is your Systolic blood pressure (80-220) ?"))

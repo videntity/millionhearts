@@ -63,11 +63,26 @@ def patient_dashboard(request, patient_id):
     if patient.smoker=="yes":
         smoking=1
     
+    print "risks", risks['ratingForAge'], risks['rating']
+    if not risks['cvdrisk_upper']['ratingForAge']:
+        age_risk = risks['ratingForAge']
+    else:
+        age_risk = risks['cvdrisk_upper']['ratingForAge']
+    
+    
+    if not risks['cvdrisk_upper']['rating']:
+        absolute_risk = risks['rating']
+    else:
+        absolute_risk = risks['cvdrisk_upper']['ratingForAge']
+    
+    
+    #risks['cvdrisk_upper']['rating']
+    
     
     return render_to_response("dashboard/index.html",
                               RequestContext(request,{'patient':patient,
-                                'absolute_risk': risks['cvdrisk_upper']['rating'],
-                                'age_risk':  risks['cvdrisk_upper']['ratingForAge'],
+                                'absolute_risk': absolute_risk,
+                                'age_risk':  age_risk,
                                 "smoking risk": 1,
                                 'weight' : patient.weight,
                                 'ideal_low' : ideal_low,

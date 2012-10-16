@@ -73,7 +73,7 @@ def archimedes_step2(request, patient_id):
         if form.is_valid():  
             patient_id = form.save()
 
-            return HttpResponseRedirect(reverse('archimedes_step3',
+            return HttpResponseRedirect(reverse('patient_dashboard',
                                                 args=(patient.patient_id,)))
 
         else:
@@ -84,7 +84,6 @@ def archimedes_step2(request, patient_id):
     #Just a GET Display a bound form
     return render_to_response("generic/bootstrapform.html",
                              {'name': "Tell us some basic information",
-                              'submit_button_text': "Go On",
                               'form': ArchimedesStep2Form(instance=patient),},
                               context_instance = RequestContext(request))
 
