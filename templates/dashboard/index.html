@@ -64,11 +64,11 @@
 <div class="hero-unit">
   
 
-  <h1>Dashboard</h1>
+  <h1>Your risk is {{age_risk}} out of 5. </h1>
   
   <div id='risk_chart_div'></div>
   
-  <h3>Your risk is {{age_risk}} out of 5. The lowest risk category is 1 and the highest is 5.
+  <h3>The lowest risk category is 1 and the highest is 5.
   {% if age_risk > 2 %}
      We encourage you to seek out a medical professional for an assessment.
   {% endif%}
@@ -81,7 +81,7 @@
            You have not yet added your blood pressure and cholesterol infomation.
            For a more accurate assessment, please complete all of the sections below,
            although the blood pressure and cholesterol numbers are especially important.
-           If you don't have this information, we can  <a HREF="/pharmacy/find">help you find it at a participating nearby pharmacy.</a>
+           If you need your blood pressure and cholesterol checked we can <a HREF="/pharmacy/find">help you find it at a participating nearby pharmacy.</a>
       {% endif %}
   
   {% endif %}
