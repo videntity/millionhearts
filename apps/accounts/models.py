@@ -43,7 +43,7 @@ CONTACT_CHOICES = ( ('sms','Send a text message to my phone.'),
                     ('person-phone','Have someone call me.'),
                     ('sms','Send a text message to my phone.'),
                     ('email','Send me an email.'),
-                    ('','Do not send me a reminder.'),
+                    ('none','Do not send me a reminder.'),
                     
                     )
 

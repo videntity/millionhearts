@@ -68,101 +68,115 @@
   
   <div id='risk_chart_div'></div>
   
-  <h3>The lowest risk category is 1 and the highest is 5.
+  <h4>The lowest risk category is 1 and the highest is 5.
   {% if age_risk > 2 %}
-     We encourage you to seek out a medical professional for an assessment.
+     At {{ age_risk }}, you are at elevated risk. We encourage you to seek out a medical professional for an assessment.
   {% endif%}
   {% if patient.framingham_risk %}
     You have a {{ patient.framingham_risk }} chance of having heart disease in the next 10 years.
   {% endif %}
-  
   {% if not patient.blood_pressure_complete %}
       {% if not patient.cholesterol_complete %}
-           You have not yet added your blood pressure and cholesterol infomation.
-           For a more accurate assessment, please complete all of the sections below,
-           although the blood pressure and cholesterol numbers are especially important.
-           If you need your blood pressure and cholesterol checked we can <a HREF="/pharmacy/find">help you find it at a participating nearby pharmacy.</a>
+           Although the blood pressure and cholesterol numbers are most important,
+           please complete all of the information below.
+           
+    If you need your blood pressure and cholesterol checked we can <a HREF="/pharmacy/find">help you find it at a participating nearby pharmacy.</a>
       {% endif %}
-  
   {% endif %}
   {% if not user.is_authenticated %}
   If you don't have blood pressure and cholesterol numbers now, you can <a HREF="/accounts/signup/{{patient.patient_id}}">create an account
   so you can retreive you infomation later.</a> 
   {% endif %}
+  We have some <a href="/dashboard/reccomendations/{{patient.patient_id}}">reccomendations for you.</a>
 
-  </h3>
+  </h4>
   
 
-
-  <p>
-    <a class="btn btn-primary btn-large" href="/risk-assessments/blood-pressure/{{patient.patient_id}}">
+<p>
+    
+    {% if patient.blood_pressure_complete %}
+       <a class="btn btn-success btn-large" href="/risk-assessments/blood-pressure/{{patient.patient_id}}">
       Blood Pressure
     </a>
-    {% if patient.blood_pressure_complete %}
-       complete
+       
+    {% else %}
+    
+    <a class="btn btn-warning btn-large" href="/risk-assessments/blood-pressure/{{patient.patient_id}}">
+      Blood Pressure
+    </a>
+    
     {% endif %}
     
-
-    <a class="btn btn-primary btn-large" href="/risk-assessments/cholesterol/{{patient.patient_id}}">
-      Cholesterol
-    </a>
     {% if patient.cholesterol_complete %}
-       complete
+       <a class="btn btn-success btn-large" href="/risk-assessments/cholesterol/{{patient.patient_id}}">
+           Cholesterol
+        </a>
+    {% else %}
+    <a class="btn btn-warning btn-large" href="/risk-assessments/cholesterol/{{patient.patient_id}}">
+           Cholesterol
+        </a>
+    
+       
+       
     {% endif %}
 
 
 
   {% ifequal patient.diabetes "yes" %}
    
-    <a class="btn btn-primary btn-large" href="/risk-assessments/diabetes/{{patient.patient_id}}">
+    
+    {% if patient.diabetes_complete %}
+      <a class="btn btn-success btn-large" href="/risk-assessments/diabetes/{{patient.patient_id}}">
       Diabetes
     </a>
-    {% if patient.diabetes_complete %}
-       complete
+      {% else %}
+       <a class="btn btn-warning btn-large" href="/risk-assessments/diabetes/{{patient.patient_id}}">
+      Diabetes
+    </a>
     {% endif %}    
     
   {% endifequal %}
    
-
-    <a class="btn btn-primary btn-large" href="/risk-assessments/more/{{patient.patient_id}}">
-      More
-    </a>
+    
     {% if patient.more_complete %}
-       complete
+       <a class="btn btn-success btn-large" href="/risk-assessments/more/{{patient.patient_id}}">
+    Additional Information
+    </a>
+      {% else %} 
+        <a class="btn btn-warning btn-large" href="/risk-assessments/more/{{patient.patient_id}}">
+    Additional Information
+    </a>
     {% endif %}
   
-    <a class="btn btn-primary btn-large" href="/risk-assessments/basic-info/{{patient.patient_id}}">
+  
+  
+  
+
+    {% if patient.basic_info_complete %}
+           <a class="btn btn-success btn-large" href="/risk-assessments/basic-info/{{patient.patient_id}}">
       Basic Information
     </a>
-    {% if patient.basic_info_complete %}
-       complete
+    {% else %}
+    <a class="btn btn-warning btn-large" href="/risk-assessments/basic-info/{{patient.patient_id}}">
+      Basic Information
+    </a>
+    
+    
     {% endif %}
   </p>
-  
-  
-  <p>
-  <h2>Body Mass Index:</h2>
-  <div id='bmi_chart_div'></div> 
-   {% if bmi > 25 %}
-       Consider talking to your health care provider about stategies to loose weight.
-  {% endif %}
-  </p>
-  {%if patient.smoker %}
-  <p>
-  <h2>Smoking:</h2> 
-    Consider talking to your health care provider about ways to quit smoking.
-  </p>
-  {% endif %}
-  
-  
-<p>    
 
-<h2>Assesment Progress: {{ progress_percent }}%<h2>
+    
+    
+{% if patient.progress_percent > 99 %}
+
+<p>
+<h2>You are {{ progress_percent }}% complete.<h2>
 <div class="progress progress-info progress-striped">
 <div class="bar" style="width: {{ progress_percent }}%"></div>
 </div>
   </p>     
 
+{% endif %}
 
 
 </div>

@@ -87,8 +87,6 @@ class SignupForm(forms.Form):
                         username=self.cleaned_data['username'],
                         password=self.cleaned_data['password1'],
                         email=self.cleaned_data['email'])
-        new_user.first_name = self.cleaned_data.get('first_name', "")
-        new_user.last_name = self.cleaned_data.get('last_name', "")
         new_user.save()
         
         up=UserProfile.objects.create(
@@ -121,8 +119,8 @@ class AccountSettingsForm(forms.Form):
         return twitter
     
     def clean_email(self):
+        email = self.cleaned_data.get('email', "")
         if email:
-            email = self.cleaned_data.get('email', "")
             username = self.cleaned_data.get('username')
             if email and User.objects.filter(email=email).exclude(email=email).count():
                 raise forms.ValidationError(_('This email address is already registered.'))   

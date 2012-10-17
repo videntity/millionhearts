@@ -171,9 +171,7 @@ def account_settings(request):
             data = form.cleaned_data
             #update the user info
             request.user.username   = data['username']
-            request.user.email       = data['email']
-            request.user.first_name = data['first_name']
-            request.user.last_name  = data['last_name']  
+            request.user.email       = data['email'] 
             request.user.save()
             #update the user profile
             up.preferred_contact_method = data['preferred_contact_method']

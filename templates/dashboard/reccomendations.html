@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+    {% block extra_head %}
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['gauge']});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['BMI', {{ bmi }}],
+        
+        ]);
+
+        var options = {
+         min: 10,
+         max: 40,
+         width: 400, height: 240,
+         greenFrom: 18.6, greenTo: 24.9,
+         redFrom: 25, redTo: 40,
+         yellowFrom:10, yellowTo: 18.5,
+         minorTicks: 2
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('bmi_chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+
+     {% endblock %}
+
+{% block content %}
+
+ 
+<div class="hero-unit">
+  
+
+  <h1>Your Body Mass Index is {{bmi}}.</h1>
+  
+  <div id='bmi_chart_div'></div> 
+   <h4>
+   
+   {% if bmi > 25 %}
+       Consider talking to your health care provider about stategies to loose weight.
+  {% endif %}
+  </p>
+  </h4>
+  
+  {%if patient.smoker %}
+  <h1>Quit Smoking.</h1>
+
+    <h4>Consider talking to your health care provider about ways to quit smoking.</h4>
+  </p>
+  {% endif %}
+  
+    
+
+<input class="btn btn-primary btn-large"  TYPE="button" VALUE="Back to the Dashboard" onClick="history.go(-1);return true;">
+
+  </p>     
+
+
+
+</div>
+
+
+
+
+
+
+{% endblock %}
