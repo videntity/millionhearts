@@ -214,7 +214,7 @@ class ArchimedesRiskAssessment(models.Model):
                     verbose_name = _("What is your HbA1c (2-16) ?"))
     
     cholesterolmeds = models.CharField(choices=YES_NO_BINARY_CHOICES,
-                        max_length=5, default="", blank=True,
+                        max_length=5,
                         verbose_name =_("Are you currently taking medication to control cholesterol?"))
 
     
@@ -347,7 +347,7 @@ class ArchimedesRiskAssessment(models.Model):
     
         if  self.bloodpressuremeds and self.cholesterol and self.hdl  and \
             self.age and self.sex and  self.systolic and self.smoker:
-            print "calc framingham"
+            #print "calc framingham"
             fresult = framingham_10year_risk(self.sex,
                                          int(self.age),
                                         self.cholesterol,
@@ -356,7 +356,7 @@ class ArchimedesRiskAssessment(models.Model):
                                         self.smoker,
                                         self.bloodpressuremeds
                                         )
-            print fresult
+            #print fresult
             if fresult.has_key("percent_risk"):
                 self.framingham_risk = fresult["percent_risk"]
     

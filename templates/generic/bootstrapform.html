@@ -4,7 +4,7 @@
 {% block content %}
 <section id="register">
   <div class="page-header">
-    <h1>{% trans "Risk Assessment" %}</h1>
+    <h1>{{ name }}</h1>
   </div>
 
   
@@ -21,7 +21,9 @@
 
 
         </table>
-        <input type="submit" class="btn large btn-primary" value="{% trans 'Continue' %}" />
+	<input type="submit" class="btn btn-primary btn-large"  value="{% trans 'Continue' %}" />
+	<input class="btn btn-primary btn-large"  TYPE="button" VALUE="Cancel" onClick="history.go(-1);return true;">
+	         
       </form>
     </div>
   </div>

@@ -36,10 +36,17 @@ class FindPharmacyForm(Form):
         geocode_addr_str = "%s+%s+%s" % (address, city, state)
         geocode_addr_str=geocode_addr_str.replace(" ", "+")         
         result = GoogleGeoCode(geocode_addr_str)
+        
+        gresult = json.loads(result)
+        
         sresult = SureScriptsPharmacy(result)
+        sresult = json.loads(sresult)
         
-        result = {'googlejson': result, 'surescriptsjson': sresult}
+        result = {'google': gresult,
+                  'surescripts': sresult}
         
+        js = json.dumps(result, indent=4)
+        print js
         
         return result
         

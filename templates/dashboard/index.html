@@ -65,7 +65,17 @@
   
 
   <h1>Dashboard</h1>
-  <h4>Your risk is {{age_risk}} out of 5. The lowest risk category is 1 and the highest is 5.
+  
+  <div id='risk_chart_div'></div>
+  
+  <h3>Your risk is {{age_risk}} out of 5. The lowest risk category is 1 and the highest is 5.
+  {% if age_risk > 2 %}
+     We encourage you to seek out a medical professional for an assessment.
+  {% endif%}
+  {% if patient.framingham_risk %}
+    You have a {{ patient.framingham_risk }} chance of having heart disease in the next 10 years.
+  {% endif %}
+  
   {% if not patient.blood_pressure_complete %}
       {% if not patient.cholesterol_complete %}
            You have not yet added your blood pressure and cholesterol infomation.
@@ -73,14 +83,14 @@
            although the blood pressure and cholesterol numbers are especially important.
            If you don't have this information, we can  <a HREF="/pharmacy/find">help you find it at a participating nearby pharmacy.</a>
       {% endif %}
-        
+  
   {% endif %}
   {% if not user.is_authenticated %}
-  If you don't have all of this information now, you can <a HREF="/accounts/signup/{{patient.patient_id}}">create an account
+  If you don't have blood pressure and cholesterol numbers now, you can <a HREF="/accounts/signup/{{patient.patient_id}}">create an account
   so you can retreive you infomation later.</a> 
   {% endif %}
 
-  </h4>
+  </h3>
   
 
 
@@ -92,9 +102,7 @@
        complete
     {% endif %}
     
-  </p>
-  
-   <p>
+
     <a class="btn btn-primary btn-large" href="/risk-assessments/cholesterol/{{patient.patient_id}}">
       Cholesterol
     </a>
@@ -102,10 +110,10 @@
        complete
     {% endif %}
 
-  </p>
+
 
   {% ifequal patient.diabetes "yes" %}
-   <p>
+   
     <a class="btn btn-primary btn-large" href="/risk-assessments/diabetes/{{patient.patient_id}}">
       Diabetes
     </a>
@@ -113,11 +121,9 @@
        complete
     {% endif %}    
     
-    
-  </p>
   {% endifequal %}
    
-    <p>
+
     <a class="btn btn-primary btn-large" href="/risk-assessments/more/{{patient.patient_id}}">
       More
     </a>
@@ -125,9 +131,8 @@
        complete
     {% endif %}
   
-  <p>
     <a class="btn btn-primary btn-large" href="/risk-assessments/basic-info/{{patient.patient_id}}">
-      Change Basic Info
+      Basic Information
     </a>
     {% if patient.basic_info_complete %}
        complete
@@ -135,8 +140,8 @@
   </p>
   
   
-  <div id='risk_chart_div'></div>
-  <div id='smoking_chart_div'></div> 
+  
+  <h1>Additional Information About Your Health</h1>
   <div id='bmi_chart_div'></div> 
     
   </p>

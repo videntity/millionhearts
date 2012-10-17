@@ -25,7 +25,36 @@ class ArchimedesRiskAssessmentForm(ModelForm):
 class ArchimedesRequiredForm(ModelForm):
     class Meta:
         model = ArchimedesRiskAssessment
-        fields = ('sex', 'height', 'age', 'weight','smoker',)
+        fields = ('sex', 'cholesterolmeds', 'smoker', 'height', 'age', 'weight',)
+    required_css_class = 'required'
+    
+    #sex  = forms.TypedChoiceField(choices = GENDER_CHOICES, initial = None,
+    #                              widget=forms.RadioSelect())
+    def clean_age(self):
+        age     = self.cleaned_data.get("age", "")
+        if age:
+            if not 18 <= int(age) <= 130:
+                raise forms.ValidationError(_("Age must be between 18 and 130 years."))
+        return age
+
+
+    def clean_weight(self):
+        weight     = self.cleaned_data.get("weight", "")
+        if weight:
+            if not 80 <= float(weight) <= 600:
+                raise forms.ValidationError(_("Weight must be between 80 and 600 lbs."))
+        return weight
+
+
+
+class ArchimedesBasicInfoForm(ModelForm):
+    class Meta:
+        model = ArchimedesRiskAssessment
+        fields = ('sex', 'cholesterolmeds', 'smoker', 'height', 'age', 'weight',
+                  'diabetes', 'stroke', 'mi', 'bloodpressuremeds',
+                  'have_bp_chol_info',
+                  
+                  )
     required_css_class = 'required'
     
     #sex  = forms.TypedChoiceField(choices = GENDER_CHOICES, initial = None,
@@ -121,9 +150,9 @@ class ArchimedesMoreForm(ModelForm):
     
     class Meta:
         model = ArchimedesRiskAssessment
-        fields = ('cholesterolmeds', 'bloodpressuremedcount',         
-                  'aspirin', 'moderateexercise', 'vigorousexercise',
-                  'familymihistory',)
+        fields = ('cholesterolmeds', 'aspirin', 'familymihistory', 'bloodpressuremedcount',         
+                  'moderateexercise', 'vigorousexercise',
+                  )
     required_css_class = 'required'
 
 

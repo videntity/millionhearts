@@ -40,15 +40,15 @@ class LoginForm(forms.Form):
     
 class SignupForm(forms.Form):
     username = forms.CharField(max_length=30, label=_("Username"))
-    email = forms.EmailField(max_length=75, label=_("Email"))
-    first_name = forms.CharField(max_length=30, label=_("First Name"), required=False)
-    last_name = forms.CharField(max_length=60, label=_("Last Name"), required=False)
+    
+
     mobile_phone_number = USPhoneNumberField(max_length=15,
                                              label=_("Mobile Phone Number"),
                                              required=False)
     preferred_contact_method = forms.TypedChoiceField(
                 label =_("Preferred Contact Method"),
                 choices = CONTACT_CHOICES)
+    email = forms.EmailField(max_length=75, label=_("Email"), required=False)
     password1 = forms.CharField(widget=forms.PasswordInput, max_length=30,
                                 label=_("Password"))
     password2 = forms.CharField(widget=forms.PasswordInput, max_length=30,
@@ -66,11 +66,14 @@ class SignupForm(forms.Form):
         return password2
     
     def clean_email(self):
-        email = self.cleaned_data.get('email')
-        username = self.cleaned_data.get('username')
-        if email and User.objects.filter(email=email).exclude(username=username).count():
-            raise forms.ValidationError(_('This email address is already registered.'))
-        return email
+        email = self.cleaned_data.get('email', "")
+        if email:
+            username = self.cleaned_data.get('username')
+            if email and User.objects.filter(email=email).exclude(username=username).count():
+                raise forms.ValidationError(_('This email address is already registered.'))
+            return email
+        else:
+            return "foo@bar.com"
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
@@ -99,17 +102,14 @@ class SignupForm(forms.Form):
 class AccountSettingsForm(forms.Form):
 
     username = forms.CharField(max_length=30, label=_("Username"))
-    email = forms.CharField(max_length=30, label=_("Email"))
-    first_name = forms.CharField(max_length=30, label=_("First Name"), required=False)
-    last_name = forms.CharField(max_length=60, label=_("Last Name"), required=False)
     preferred_contact_method = forms.TypedChoiceField(
-                                label =_("Preferred Contact Method"),
+                                label =_("How do you prefer to be contacted for a follow up?"),
                                 choices = CONTACT_CHOICES,)
     mobile_phone_number = USPhoneNumberField(max_length=12,
                     label=_("Mobile Phone Number"),
-                    required=False)
-    twitter = forms.CharField(max_length=15, label=_("Twitter"),
-                              required=False)
+                    required=False)    
+    email = forms.CharField(max_length=30, label=_("Email"), required=False)
+
     
     required_css_class = 'required'
     
@@ -121,12 +121,14 @@ class AccountSettingsForm(forms.Form):
         return twitter
     
     def clean_email(self):
-        email = self.cleaned_data.get('email')
-        username = self.cleaned_data.get('username')
-        if email and User.objects.filter(email=email).exclude(email=email).count():
-            raise forms.ValidationError(_('This email address is already registered.'))
-                
-        return email
+        if email:
+            email = self.cleaned_data.get('email', "")
+            username = self.cleaned_data.get('username')
+            if email and User.objects.filter(email=email).exclude(email=email).count():
+                raise forms.ValidationError(_('This email address is already registered.'))   
+            return email
+        else:
+            return "foo@bar.com"
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
