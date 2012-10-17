@@ -8,18 +8,18 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Label', 'Value'],
-          ['Risk', {{age_risk}}*20],
+          ['Risk', {{age_risk}}],
         
         ]);
 
         var options = {
           width: 800, height: 240,
-          min: 1,
-          max: 100,
-          redFrom:  3*20, redTo: 5*20,
-          yellowFrom:2*20, yellowTo: 3*20,
-          greenFrom: 0, greenTo: 2*20,
-          minorTicks: 10
+          min: 0,
+          max: 5,
+          redFrom:  3, redTo: 5,
+          yellowFrom:2, yellowTo: 3,
+          greenFrom: 0, greenTo: 2,
+          minorTicks: 1
         };
 
         var chart = new google.visualization.Gauge(document.getElementById('risk_chart_div'));
@@ -140,11 +140,21 @@
   </p>
   
   
-  
-  <h1>Additional Information About Your Health</h1>
+  <p>
+  <h2>Body Mass Index:</h2>
   <div id='bmi_chart_div'></div> 
-    
+   {% if bmi > 25 %}
+       Consider talking to your health care provider about stategies to loose weight.
+  {% endif %}
   </p>
+  {%if patient.smoker %}
+  <p>
+  <h2>Smoking:</h2> 
+    Consider talking to your health care provider about ways to quit smoking.
+  </p>
+  {% endif %}
+  
+  
 <p>    
 
 <h2>Assesment Progress: {{ progress_percent }}%<h2>
