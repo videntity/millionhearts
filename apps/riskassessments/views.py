@@ -56,7 +56,7 @@ def archimedes_hello(request):
     
     #Just a GET Display and unbound form
     return render_to_response("generic/bootstrapform.html",
-                             {'name': _("Step 1 - Please probide some basic information."),
+                             {'name': _("Step 1 - Please provide some basic information."),
                               'submit_button_text': "Go On",
                               'form': ArchimedesRequiredForm(),},
                               context_instance = RequestContext(request))
