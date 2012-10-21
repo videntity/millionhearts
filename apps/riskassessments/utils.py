@@ -26,9 +26,9 @@ def ArchimedesAssessmentAPI(post_dict):
 
 
     body = StringIO()
-    outfile = "out.json"
-    f = open(outfile, "wb")
-    URL = settings.ARCHIMEDES_API_URL + "?age=55"
+    #outfile = "db/out.json"
+    #f = open(outfile, "wb")
+    URL = settings.ARCHIMEDES_API_URL #+ "?age=55"
     print URL
 
     #format query post dict
@@ -37,19 +37,19 @@ def ArchimedesAssessmentAPI(post_dict):
         nv = "%s=%s&" % (k,v)
         querystr+=  nv
     querystr = str(querystr[:-1])
-    print querystr
-    print type( querystr)
+    #print querystr
+    #print type( querystr)
        
     c = pycurl.Curl()
     c.setopt(c.SSL_VERIFYPEER, False) 
     c.setopt(pycurl.URL, URL)
     #c.setopt(c.HTTPPOST, "age=55&weight=200")
     c.setopt(c.POSTFIELDS, querystr)
-    c.setopt(c.WRITEDATA, f) 
+    #c.setopt(c.WRITEDATA, f) 
     c.setopt(pycurl.HTTPHEADER, ["Accept:"])
     c.setopt(c.WRITEFUNCTION, body.write)
     c.perform()
-    f.close()
+    #f.close()
     body = body.getvalue()
     
     result = json.loads(body)

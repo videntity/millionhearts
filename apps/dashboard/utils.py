@@ -9,11 +9,12 @@ def fetch_risks(achimedes_risk_assessment):
     ra = json.loads(achimedes_risk_assessment)
     
     resp_dict = {
-        'cvdrisk'         : ra["Risk"][0],
         'ratingForAge'    : ra["Risk"][0]['ratingForAge'],
         'rating'          : ra["Risk"][0]['rating'],
-        'cvdrisk_upper'   : ra["Risk"][1],
-        'cvdrisk_lower'   : ra["Risk"][2],
+        'cvdrisk_upper_age' : ra["Risk"][1]['ratingForAge'],
+        'cvdrisk_lower_age' : ra["Risk"][2]['ratingForAge'],
+        'cvdrisk_age' : (float(ra["Risk"][1]['ratingForAge']) + \
+                         float(ra["Risk"][2]['ratingForAge']))/2,
     }
-
+    
     return resp_dict

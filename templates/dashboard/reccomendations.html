@@ -42,11 +42,13 @@
    
    {% if bmi > 25 %}
        Consider talking to your health care provider about stategies to loose weight.
+    {% else %}
+       It looks like you are in good shape weight-wise.  Keep it up.
   {% endif %}
   </p>
   </h4>
   
-  {%if patient.smoker %}
+  {%if smoking %}
   <h1>Quit Smoking.</h1>
 
     <h4>Consider talking to your health care provider about ways to quit smoking.</h4>

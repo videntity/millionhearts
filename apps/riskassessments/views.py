@@ -56,7 +56,7 @@ def archimedes_hello(request):
     
     #Just a GET Display and unbound form
     return render_to_response("generic/bootstrapform.html",
-                             {'name': _("Step 1"),
+                             {'name': _("Step 1 - Please probide some basic information."),
                               'submit_button_text': "Go On",
                               'form': ArchimedesRequiredForm(),},
                               context_instance = RequestContext(request))
@@ -81,7 +81,7 @@ def archimedes_step2(request, patient_id):
             return render_to_response("generic/bootstrapform.html",
                               RequestContext(request,
                                              {'form': form,
-                                             'name':_('Step 2')}))
+                                             'name':_('Step 2 - Tell us a little more')}))
     
     #Just a GET Display a bound form
     return render_to_response("generic/bootstrapform.html",

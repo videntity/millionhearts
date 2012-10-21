@@ -1,0 +1,72 @@
+[
+    {
+        "pk": 1, 
+        "model": "auth.user", 
+        "fields": {
+            "username": "alan", 
+            "first_name": "", 
+            "last_name": "", 
+            "is_active": true, 
+            "is_superuser": true, 
+            "is_staff": true, 
+            "last_login": "2012-10-17T19:24:24.878Z", 
+            "groups": [], 
+            "user_permissions": [], 
+            "password": "pbkdf2_sha256$10000$pffKWhpcOP9R$9vVhF0bRKOGOA90ulemCypyH66Fx/hHoZQjIDiAailk=", 
+            "email": "a@v.com", 
+            "date_joined": "2012-10-17T00:47:34.907Z"
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "accounts.userprofile", 
+        "fields": {
+            "mobile_phone_number": "", 
+            "pin": "", 
+            "twitter": "", 
+            "patient_id": "123456789", 
+            "user": 1, 
+            "preferred_contact_method": "sms"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "riskassessments.archimedesriskassessment", 
+        "fields": {
+            "more_complete": false, 
+            "weight": 150, 
+            "sex": "M", 
+            "bloodpressuremeds": "no", 
+            "stroke": "no", 
+            "vigorousexercise": "", 
+            "bloodpressuremedcount": "", 
+            "cholesterol_complete": true, 
+            "framingham_risk": "<1%", 
+            "blood_pressure_complete": true, 
+            "aspirin": "", 
+            "follow_up_complete": false, 
+            "signup_complete": false, 
+            "creation_date": "2012-10-17", 
+            "basic_info_complete": true, 
+            "hba1c": "", 
+            "trackingid": "333886A667AD4", 
+            "have_bp_chol_info": "yes", 
+            "ldl": "94", 
+            "diabetes": "no", 
+            "familymihistory": "", 
+            "diabetes_complete": false, 
+            "age": 35, 
+            "mi": "no", 
+            "smoker": "no", 
+            "patient_id": "333886A667AD4", 
+            "height": 69, 
+            "systolic": "120", 
+            "cholesterolmeds": "no", 
+            "cholesterol": "156", 
+            "archimedes_json_result": "{\n    \"ElevatedCholesterol\": false, \n    \"ElevatedBloodPressure\": false, \n    \"code\": 200, \n    \"Risk\": [\n        {\n            \"rating\": \"1\", \n            \"risk\": \"0.5\", \n            \"riskType\": \"CVD\", \n            \"comparisonRisk\": \"0.95\", \n            \"ratingForAge\": \"2\", \n            \"riskPercentile\": \"10\"\n        }, \n        {\n            \"rating\": \"\", \n            \"risk\": \"\", \n            \"riskType\": \"UpperBoundCVD\", \n            \"comparisonRisk\": \"\", \n            \"ratingForAge\": \"\", \n            \"riskPercentile\": \"\"\n        }, \n        {\n            \"rating\": \"\", \n            \"risk\": \"\", \n            \"riskType\": \"LowerBoundCVD\", \n            \"comparisonRisk\": \"\", \n            \"ratingForAge\": \"\", \n            \"riskPercentile\": \"\"\n        }\n    ], \n    \"Interventions\": {\n        \"PercentReductionInRiskWithWeightLoss\": \"\", \n        \"PercentReductionInRiskWithAdditionalModerateExercise\": \"25.18\", \n        \"PercentReductionInRiskWithAdditionalVigorousExercise\": \"40.44\", \n        \"PercentReductionWithSmokingCessation\": \"0\", \n        \"PoundsOfWeightLossRequired\": \"\", \n        \"IncreaseInRisk\": \"0\", \n        \"PercentReductionWithAllInterventions\": \"55.2\", \n        \"PercentReductionInRiskWithMedication\": \"0\"\n    }, \n    \"DoctorRecommendation\": \"1\", \n    \"Recommendation\": \"\", \n    \"WarningCode\": \"0\", \n    \"ErrorMessageHashMap\": {}\n}", 
+            "hdl": "52", 
+            "moderateexercise": "", 
+            "diastolic": "80"
+        }
+    }
+]

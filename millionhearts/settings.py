@@ -68,6 +68,16 @@ MEDIA_URL = '/media/'
 
 AUTH_PROFILE_MODULE = 'accounts.userprofile'
 
+
+
+AUTHENTICATION_BACKENDS = (#'django.contrib.auth.backends.ModelBackend',
+                           'apps.accounts.auth.EmailBackend',
+                            'apps.accounts.auth.MobilePhoneBackend',
+                           'apps.accounts.auth.HTTPAuthBackend',
+                           )
+
+
+
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'

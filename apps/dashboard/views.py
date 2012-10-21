@@ -58,22 +58,23 @@ def patient_dashboard(request, patient_id):
         guage_min= float(ideal_low) - 20
               
 
-    risks = fetch_risks(patient.archimedes_json_result)
+   
     smoking=0
     if patient.smoker=="yes":
         smoking=1
     
-    print "risks", risks['ratingForAge'], risks['rating']
-    if not risks['cvdrisk_upper']['ratingForAge']:
+    risks = fetch_risks(patient.archimedes_json_result)
+    age_risk = risks['cvdrisk_age']
+    
+    if risks['ratingForAge']:
         age_risk = risks['ratingForAge']
-    else:
-        age_risk = risks['cvdrisk_upper']['ratingForAge']
     
+    print "agerisk is ", age_risk  #,risks
     
-    if not risks['cvdrisk_upper']['rating']:
-        absolute_risk = risks['rating']
-    else:
-        absolute_risk = risks['cvdrisk_upper']['ratingForAge']
+    #if not risks['cvdrisk_upper']['rating']:
+    #    absolute_risk = risks['rating']
+    #else:
+    #    absolute_risk = risks['cvdrisk_age']
     
     
     #risks['cvdrisk_upper']['rating']
@@ -81,8 +82,8 @@ def patient_dashboard(request, patient_id):
     
     return render_to_response("dashboard/index.html",
                               RequestContext(request,{'patient':patient,
-                                'absolute_risk': absolute_risk,
-                                'age_risk':  int(age_risk),
+                                #'absolute_risk': absolute_risk,
+                                'age_risk':  float(age_risk),
                                 "smoking risk": 1,
                                 'weight' : patient.weight,
                                 'ideal_low' : ideal_low,
@@ -91,6 +92,8 @@ def patient_dashboard(request, patient_id):
                                 'guage_max': guage_max,
                                 'smoking': smoking,
                                 'bmi' : float(bmi),
+                                'cvdrisk_upper_age': risks['cvdrisk_upper_age'],
+                                'cvdrisk_lower_age': risks['cvdrisk_lower_age'],
                                 'progress_percent' : calc_progress_percent(patient),
                                 'height' : patient.height}))
 
@@ -131,26 +134,11 @@ def recommendations(request, patient_id):
     if patient.smoker=="yes":
         smoking=1
     
-    print "risks", risks['ratingForAge'], risks['rating']
-    if not risks['cvdrisk_upper']['ratingForAge']:
-        age_risk = risks['ratingForAge']
-    else:
-        age_risk = risks['cvdrisk_upper']['ratingForAge']
-    
-    
-    if not risks['cvdrisk_upper']['rating']:
-        absolute_risk = risks['rating']
-    else:
-        absolute_risk = risks['cvdrisk_upper']['ratingForAge']
-    
-    
-    #risks['cvdrisk_upper']['rating']
+   
     
     
     return render_to_response("dashboard/reccomendations.html",
                               RequestContext(request,{'patient':patient,
-                                'absolute_risk': absolute_risk,
-                                'age_risk':  int(age_risk),
                                 "smoking risk": 1,
                                 'weight' : patient.weight,
                                 'ideal_low' : ideal_low,
