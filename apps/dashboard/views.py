@@ -100,6 +100,8 @@ def patient_dashboard(request, patient_id):
 
 
 def recommendations(request, patient_id):
+    
+    print "here"
     patient = get_latest_object_or_404(ArchimedesRiskAssessment,
                                  patient_id=patient_id)
     
@@ -137,7 +139,7 @@ def recommendations(request, patient_id):
    
     
     
-    return render_to_response("dashboard/reccomendations.html",
+    return render_to_response("dashboard/recommendations.html",
                               RequestContext(request,{'patient':patient,
                                 "smoking risk": 1,
                                 'weight' : patient.weight,

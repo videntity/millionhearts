@@ -93,7 +93,7 @@
   {% endif %}
   {% if not user.is_authenticated %}
   You can <a HREF="/accounts/signup/{{patient.patient_id}}">create an account
-  so you can retreive you infomation later.</a> 
+  so you can retrieve your information later.</a> 
   {% endif %}
   
   </h4>
@@ -121,10 +121,7 @@
     {% else %}
     <a class="btn btn-warning btn-large" href="/risk-assessments/cholesterol/{{patient.patient_id}}">
            Cholesterol
-        </a>
-    
-       
-       
+        </a>  
     {% endif %}
 
 
@@ -167,9 +164,20 @@
     <a class="btn btn-warning btn-large" href="/risk-assessments/basic-info/{{patient.patient_id}}">
       Basic Information
     </a>
-    
-    
     {% endif %}
+    
+    {% if not user.is_authenticated %}
+    
+       <a class="btn btn-success btn-large" HREF="/accounts/signup/{{patient.patient_id}}">
+           Create Account
+        </a>
+    {% else %}
+    <a class="btn btn-warning btn-large" href="/accounts/account/">
+           Account
+        </a>  
+    {% endif %}
+    
+    
   </p>
 
   <h4>We have some <a href="/dashboard/recommendations/{{patient.patient_id}}">additional information and recommendations for you.</a></h4>
