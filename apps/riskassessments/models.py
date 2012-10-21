@@ -183,7 +183,7 @@ class ArchimedesRiskAssessment(models.Model):
                     verbose_name=_("Has a doctor ever told you that you had a stroke?"))
     mi          = models.CharField(choices=YES_NO_BINARY_CHOICES, max_length=5,
                     default="no",
-                    verbose_name=_("Has a doctor ever told you that you had a heart attack (sometimes call a myocardial Infraction or MI)?"))
+                    verbose_name=_("Has a doctor ever told you that you had a heart attack (sometimes call a Myocardial Infarction or MI)?"))
     
     bloodpressuremeds = models.CharField(choices=YES_NO_BINARY_CHOICES,
                             max_length=5, default="no",
