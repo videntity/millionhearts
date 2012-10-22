@@ -104,6 +104,18 @@
 
 <p>
     
+   {% if patient.basic_info_complete %}
+           <a class="btn btn-success btn-large" href="/risk-assessments/basic-info/{{patient.patient_id}}" alt="Green-Complete">
+      Basic Information
+    </a>
+    {% else %}
+    <a class="btn btn-warning btn-large" href="/risk-assessments/basic-info/{{patient.patient_id}}" alt="Yellow-Incomplete">
+      Basic Information
+    </a>
+    {% endif %}
+  
+  
+  
     {% if patient.blood_pressure_complete %}
        <a class="btn btn-success btn-large" href="/risk-assessments/blood-pressure/{{patient.patient_id}}">
       Blood Pressure
@@ -154,19 +166,6 @@
     </a>
     {% endif %}
   
-  
-  
-  
-
-    {% if patient.basic_info_complete %}
-           <a class="btn btn-success btn-large" href="/risk-assessments/basic-info/{{patient.patient_id}}">
-      Basic Information
-    </a>
-    {% else %}
-    <a class="btn btn-warning btn-large" href="/risk-assessments/basic-info/{{patient.patient_id}}">
-      Basic Information
-    </a>
-    {% endif %}
     
     {% if not user.is_authenticated %}
     
@@ -187,10 +186,30 @@
 
 
 <p>
-<h2>You are {{ progress_percent }}% complete.<h2>
+<h2>You are {{ progress_percent }}% complete.</h2>
 <div class="progress progress-info progress-striped">
 <div class="bar" style="width: {{ progress_percent }}%"></div>
 </div>
+<h4>You still need to complete the following:
+
+{% if not patient.blood_pressure_complete %}
+ <a href="/risk-assessments/blood-pressure/{{patient.patient_id}}">Blood Pressure, </a>
+{% endif %}
+
+{% if not patient.cholesterol_complete %}
+    <a href="/risk-assessments/blood-pressure/{{patient.patient_id}}">Cholesterol, </a>
+{% endif %}
+
+{% if not patient.more_complete %}
+    <a href="/risk-assessments/more/{{patient.patient_id}}">Additional Information, </a>
+{% endif %}
+
+{% if not user.is_authenticated %}
+    <a href="/accounts/signup/{{patient.patient_id}}">Create Account </a>
+{% endif %}
+
+</h4>
+
   </p>     
 
 
