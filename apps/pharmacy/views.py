@@ -11,6 +11,7 @@ from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from ..utils import get_latest_object_or_404
+from django.utils.translation import ugettext_lazy as _
 from forms import *
 from ..riskassessments.models import ArchimedesRiskAssessment
 
@@ -40,14 +41,15 @@ def find_pharmacy(request, patient_id=None):
             return render_to_response("pharmacy/find.html",
                               RequestContext(request,
                                              {'form': form,
+                                              'name': _("Find a Participating Pharmacy that Provides Blood Pressure and Cholesterol Screens."),
+                                               "patient": patient,
                                               'patient':patient,}))
     
     
     
     #Just a GET Display and unbound form
     return render_to_response("generic/bootstrapform.html",
-                             {'name': "Tell us some basic information",
-                              'submit_button_text': "Go On",
+                             {'name': _("Find a Participating Pharmacy that Provides Blood Pressure and Cholesterol Screens."),
                               "patient": patient,
                               'form': FindPharmacyForm(),},
                               context_instance = RequestContext(request))

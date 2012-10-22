@@ -183,7 +183,8 @@ class ArchimedesRiskAssessment(models.Model):
                     verbose_name=_("Has a doctor ever told you that you had a stroke?"))
     mi          = models.CharField(choices=YES_NO_BINARY_CHOICES, max_length=5,
                     default="no",
-                    verbose_name=_("Has a doctor ever told you that you had a heart attack (sometimes call a Myocardial Infarction or MI)?"))
+                    verbose_name=_("Has a doctor ever told you that you had a heart attack?"),
+                    help_text = _("This is sometimes called a Myocardial Infarction or MI."))
     
     bloodpressuremeds = models.CharField(choices=YES_NO_BINARY_CHOICES,
                             max_length=5, default="no",
@@ -193,7 +194,6 @@ class ArchimedesRiskAssessment(models.Model):
     have_bp_chol_info = models.CharField(choices=YES_NO_BINARY_CHOICES, max_length=5,
                     default="no",
                     verbose_name=_("Do you have recent blood pressure and cholesterol numbers available?"),)
-    
     
     
     #Optional Fields ---------------------------------------------------------
@@ -214,15 +214,14 @@ class ArchimedesRiskAssessment(models.Model):
                     verbose_name = _("What is your HbA1c (2-16) ?"))
     
     cholesterolmeds = models.CharField(choices=YES_NO_BINARY_CHOICES,
-                        max_length=5,
+                        max_length=5, default="0",
                         verbose_name =_("Are you currently taking medication to control cholesterol?"))
 
-    
-    bloodpressuremedcount = models.CharField(max_length=3, blank=True, default="",
+    bloodpressuremedcount = models.CharField(max_length=3, blank=True, default="0",
                                 choices = BLOOD_PRES_MEDS_CHOICES,
-                                verbose_name = _("Blood Pressure Med Count (0-4)?"))
+                                verbose_name = _("If you answered yes to the previous question, how many blood pressure medications do you take each day?"))
     aspirin = models.CharField(choices=YES_NO_BINARY_CHOICES,
-                            max_length=5, default="", blank=True,
+                            max_length=5, default="no", blank=True,
                             verbose_name =_("Do you take aspirin regularly?"))
     moderateexercise = models.CharField(max_length=3,  blank=True, default="",
                             verbose_name = _("How many hours of moderate exercise do you get per week (0-60)?"))
@@ -230,8 +229,11 @@ class ArchimedesRiskAssessment(models.Model):
                             verbose_name = _("How many hours of vigorous exercise do you get per week (0-30)?"))
     familymihistory = models.CharField(choices=YES_NO_BINARY_CHOICES, max_length=5,
                             default="", blank=True,
-                            verbose_name=_("Immediate family history of MI before age 55?"))
+                            verbose_name=_("Has anyone in your immediate family had a hear attack before the age 55?"),
+                            help_text = _("This is sometimes called a Myocardial Infarction or MI"))
     
+    
+    # status flags ------------------------------------------------------------
     basic_info_complete = models.BooleanField(default=True)
     
     blood_pressure_complete = models.BooleanField()

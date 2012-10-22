@@ -150,10 +150,22 @@ class ArchimedesMoreForm(ModelForm):
     
     class Meta:
         model = ArchimedesRiskAssessment
-        fields = ('cholesterolmeds', 'aspirin', 'familymihistory', 'bloodpressuremedcount',         
-                  'moderateexercise', 'vigorousexercise',
+        fields = ('aspirin', 'cholesterolmeds', 'bloodpressuremeds',
+                  'bloodpressuremedcount',  'familymihistory', 'moderateexercise',
+                  'vigorousexercise',
                   )
     required_css_class = 'required'
+    
+    def clean(self):
+        cleaned_data            = super(ArchimedesMoreForm, self).clean()
+        bloodpressuremeds       = cleaned_data.get("bloodpressuremeds", "")
+        bloodpressuremedcount   = cleaned_data.get("bloodpressuremedcount", "")
+    
+        if bloodpressuremeds:
+            if bloodpressuremeds=="yes" and  \
+             (bloodpressuremedcount == "0" or bloodpressuremedcount == ""):
+                raise forms.ValidationError(_("You indicated that you take blood pressure medications, but did not indicate how many you take each day."))
+        return cleaned_data
 
 
 class ArchimedesDiabetesForm(ModelForm):
