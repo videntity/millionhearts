@@ -18,16 +18,16 @@ def GoogleGeoCode(geocode_addr_str):
     URL ="http://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false" % (geocode_addr_str)
     URL=str(URL)
     body = StringIO()
-    outfile = "out.json"
-    f = open(outfile, "wb")
+    #outfile = "out.json"
+    #f = open(outfile, "wb")
     c = pycurl.Curl()
     c.setopt(c.SSL_VERIFYPEER, False) 
     c.setopt(pycurl.URL, URL)
-    c.setopt(c.WRITEDATA, f) 
+    #c.setopt(c.WRITEDATA, f) 
     c.setopt(pycurl.HTTPHEADER, ["Accept:"])
     c.setopt(c.WRITEFUNCTION, body.write)
     c.perform()
-    f.close()
+    #f.close()
     body = body.getvalue()
     
     #result = json.loads(body)
@@ -47,16 +47,16 @@ def SureScriptsPharmacy(google_geocode_json):
                                         settings.SURESCRIPTS_API_TOKEN, lat,lng)
     URL=str(URL)
     body = StringIO()
-    outfile = "out.json"
-    f = open(outfile, "wb")
+    #outfile = "out.json"
+    #f = open(outfile, "wb")
     c = pycurl.Curl()
     c.setopt(c.SSL_VERIFYPEER, False) 
     c.setopt(pycurl.URL, URL)
-    c.setopt(c.WRITEDATA, f) 
+    #c.setopt(c.WRITEDATA, f) 
     c.setopt(pycurl.HTTPHEADER, ["Accept:"])
     c.setopt(c.WRITEFUNCTION, body.write)
     c.perform()
-    f.close()
+    #f.close()
     body = body.getvalue()
     
     #result = json.loads(body)
