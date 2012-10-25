@@ -198,6 +198,10 @@ TWILIO_AUTH_TOKEN = "d623565a60e77bb5902e1971948c6f17"
 TWILIO_API_VERSION = '2010-04-01'
 SMS_LOGIN_TIMEOUT_MIN = 10
 
+#Google MAPS API keu
+
+GOOGLE_API_KEY = "AIzaSyATX4Joc0aP0_V0YTiIT8uvWbRbmSvBFrQ"
+
 
 #Backup settings ----------------------------------------------------------
 AWS_BUCKET  = "beheartsmartbackup"

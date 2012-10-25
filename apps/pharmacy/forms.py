@@ -42,7 +42,26 @@ class FindPharmacyForm(Form):
         sresult = SureScriptsPharmacy(result)
         sresult = json.loads(sresult)
         
-        result = {'google': gresult,
+        for i in sresult['providers']:
+            #print "addr", i['address1'], i['city'], i['state'], i['zip']
+            encoded_address = "%s+%s+%s" % (i['address1'], i['city'], i['state'])
+            encoded_address = encoded_address.replace(" ", "+")
+            i['ea'] = encoded_address
+        
+        
+        encoded_address = "%s+%s+%s" % (address, city, state)
+        encoded_address = encoded_address.replace(" ", "+")
+        
+        home ={'address': address,
+               'city': city,
+               'state': state,
+               'zip': zip,
+               'ea' :  encoded_address,
+               }
+                
+        
+        result = {'home': home,
+                  'google': gresult,
                   'surescripts': sresult}
         
         js = json.dumps(result, indent=4)

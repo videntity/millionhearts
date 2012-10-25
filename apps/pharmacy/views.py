@@ -19,6 +19,20 @@ def show_pharmacy(request, patient_id=None):
     pass
 
 
+def directions(request, origin=None, destination=None):
+    origin = origin.replace("+", " ")
+    destination = destination.replace("+", " ")
+    
+    print origin, destination
+    
+    
+    return render_to_response("pharmacy/directions.html",
+                              RequestContext(request,
+                                             {"origin": origin,
+                                              "destination": destination}))
+
+
+
 def find_pharmacy(request, patient_id=None):
     
     if patient_id:
@@ -31,6 +45,7 @@ def find_pharmacy(request, patient_id=None):
         
         if form.is_valid():  
             result = form.save()
+            #print result
             
             return render_to_response("pharmacy/show.html",
                               RequestContext(request,
@@ -42,10 +57,8 @@ def find_pharmacy(request, patient_id=None):
                               RequestContext(request,
                                              {'form': form,
                                               'name': _("Find a Participating Pharmacy that Provides Blood Pressure and Cholesterol Screens."),
-                                               "patient": patient,
                                               'patient':patient,}))
-    
-    
+
     
     #Just a GET Display and unbound form
     return render_to_response("generic/bootstrapform.html",

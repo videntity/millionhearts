@@ -43,7 +43,7 @@ def SureScriptsPharmacy(google_geocode_json):
     lat = result['results'][0]['geometry']['location']['lat']
     lng = result['results'][0]['geometry']['location']['lng']
     
-    URL ="%s?apikey=%s&lat=%s&lon=%s&radius=10&maxResults=5" % (settings.SURESCRIPTS_API_URL,
+    URL ="%s?apikey=%s&lat=%s&lon=%s&radius=10&maxResults=10" % (settings.SURESCRIPTS_API_URL,
                                         settings.SURESCRIPTS_API_TOKEN, lat,lng)
     URL=str(URL)
     body = StringIO()

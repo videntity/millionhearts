@@ -3,8 +3,30 @@
 
 
 <div class="hero-unit">
-  <h1>Find a Pharmacy to get your Cholesterol and Blood Pressure</h1>
+  <h1>Pharmacies Near You</h1>
+<h5>
+      <table class="table table-hover">
+      
+        <tr>
+          <td>Name</td>
+          <td>Address</td>
+          <td>Coupon</td>
+          <td>Schedule</td>
+         </tr>
+    </h5>
+<h7>
+     {% for i in result.surescripts.providers  %}
+      <tr>
+        <td>{{ i.name }}</td>
+        <td><a href="/pharmacy/directions/{{ result.home.ea }}/{{ i.ea }}" target="_blank">>{{ i.address1 }} {{ i.city }}, {{i.state}}</a></td>
+        <td><a href="/pharmacy/coupon/{{ i.ea }}">Yes</a></td>
+        <td><a href="/pharmacy/schedule/{{patient_id}}">schedule</a></td>
+      </tr>
+      {% endfor %}
+    </h7>
+        <caption>These pharmacies and provders offer cholesterol and blood pressure screens.</caption>
+    </table>
   
-    {{result}}
+
 
 {% endblock %}
