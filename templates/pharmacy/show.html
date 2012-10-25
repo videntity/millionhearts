@@ -18,7 +18,7 @@
      {% for i in result.surescripts.providers  %}
       <tr>
         <td>{{ i.name }}</td>
-        <td><a href="/pharmacy/directions/{{ result.home.ea }}/{{ i.ea }}" target="_blank">>{{ i.address1 }} {{ i.city }}, {{i.state}}</a></td>
+        <td><a href="/pharmacy/directions/{{ result.home.ea }}/{{ i.ea }}" target="_blank">{{ i.address1 }} {{ i.city }}, {{i.state}}</a></td>
         <td><a href="/pharmacy/coupon/{{ i.ea }}">Yes</a></td>
         <td><a href="/pharmacy/schedule/{{patient_id}}">schedule</a></td>
       </tr>
