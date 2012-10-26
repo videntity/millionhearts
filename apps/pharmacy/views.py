@@ -16,8 +16,6 @@ from django.utils.translation import ugettext_lazy as _
 from forms import *
 from ..riskassessments.models import ArchimedesRiskAssessment
 
-def show_pharmacy(request, patient_id=None):
-    pass
 
 
 def directions(request, origin=None, destination=None):

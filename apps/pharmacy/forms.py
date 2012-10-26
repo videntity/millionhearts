@@ -40,6 +40,10 @@ class FindPharmacyForm(Form):
         gresult = json.loads(result)
         
         sresult = SureScriptsPharmacy(result)
+        
+        print "sresult=", sresult
+        
+        
         sresult = json.loads(sresult)
         
         for i in sresult['providers']:

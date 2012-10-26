@@ -4,13 +4,13 @@
 {% load i18n %}
 <div class="hero-unit">
   <h1>{% trans "Thanks for completing the initial assessment." %}</h1>
-  <h4>{% trans "We would like to help you find a pharmacy that offers blood pressure and cholesterol screens." %}</h4>
+  <h4>{% trans "Would you like to help you find a pharmacy that offers blood pressure and cholesterol screens?" %}</h4>
  
   <p>
-    <a class="btn btn-primary btn-large" href="/pharmacy/find/{{patient.patient_id}}">
-      {% trans "Help Me Find a Pharmacy" %}
+    <a class="btn btn-primary btn-large btn-block" href="/pharmacy/find/{{patient.patient_id}}">
+      {% trans "Yes. Help Me Find a Screening Location" %}
     </a>
-<a class="btn btn-primary btn-large" href="/dashboard/{{patient.patient_id}}">
+<a class="btn btn-primary btn-block btn-large" href="/dashboard/{{patient.patient_id}}">
       {% trans "No Thanks. Show Me My Risk Now" %}
     </a>
     

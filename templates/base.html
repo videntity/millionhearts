@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	{% load i18n %}
         <title>
         {% block pretitle %}{%  endblock %}
-        {% block title %}Be Heart Smart{% endblock %}
+        {% block title %} {% trans "Be Heart Smart" %} {% endblock %}
         </title>
-
+	
     {% block head %}
         {% include "include/head.html" %}
     {% endblock %}
