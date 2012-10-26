@@ -17,7 +17,7 @@ from framingham10yr.framingham10yr import framingham_10year_risk
 import json
 from utils import create_anonymous_patient_id
 from django.utils.translation import ugettext_lazy as _
-
+from datetime import timedelta
 
 YN_CHOICES = (('1', 'Yes'), ('0', 'No'))
 BOOL_CHOICES = ((True, "Yes"),(False, "No"))
@@ -151,6 +151,8 @@ AGE_CHOICES = zip(range(18, 131), range(18, 131))
 
 BLOOD_PRES_MEDS_CHOICES = (("0","0"),("1","1"),("2","2"),("3","3"),("4","4"),)
 
+def three_days_from_today():
+    return datetime.date.today() + timedelta(days=4)
 
 class ArchimedesRiskAssessment(models.Model):
     
@@ -251,9 +253,12 @@ class ArchimedesRiskAssessment(models.Model):
     #Framingham risk
     framingham_risk  = models.CharField(max_length=20, blank=True, default="")    
     
-    archimedes_json_result   = models.TextField(max_length=4096, default="",
+    archimedes_json_result  = models.TextField(max_length=4096, default="",
                                                 blank=True)
-
+    
+    #Follow Up -----------------------------------------------------------
+    followup_date           = models.DateField(default=three_days_from_today)
+    
     class Meta:
         unique_together = (("patient_id", "creation_date"),)
         get_latest_by   = "creation_date"
@@ -645,6 +650,8 @@ DIABETES_RISK_7_CHOICES = (#119-142 143-190 191+
                            (2, """6'04":  246-327 lbs"""),
                            (3, """6'04":  329 or more"""),
                         )
+
+
 
 
 class ADAType2DiabetesScreen(models.Model):

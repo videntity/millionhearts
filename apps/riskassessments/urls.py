@@ -8,7 +8,12 @@ urlpatterns = patterns('',
     
     #url(r'archimedes$', archimedes_assessment,
     #    name='archimedes_assessment'),
+
     
+    url(r'followup/(?P<patient_id>\S+)$', archimedes_followup,
+        name='archimedes_followup'),
+
+ 
     url(r'holler-back$', holler_back,
         name='holler_back'),
     
@@ -17,7 +22,6 @@ urlpatterns = patterns('',
     
     url(r'step2/(?P<patient_id>\S+)$', archimedes_step2,
         name='archimedes_step2'),
-    
     
     url(r'basic-info/(?P<patient_id>\S+)$', archimedes_basic_info,
         name='archimedes_blood_pressure'),

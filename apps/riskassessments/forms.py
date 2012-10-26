@@ -14,11 +14,22 @@ import datetime
 from django.utils.translation import ugettext_lazy as _
 
 
+
 class ArchimedesRiskAssessmentForm(ModelForm):
     class Meta:
         model = ArchimedesRiskAssessment
         exclude = ('creation_date', 'trackingid', 'archimedes_json_result')
     required_css_class = 'required'
+
+
+
+class ArchimedesFollowUpForm(ModelForm):
+    class Meta:
+        model = ArchimedesRiskAssessment
+        fields = ('followup_date', )
+    required_css_class = 'required'
+    #followup_date = forms.DateField(widget=SelectDateWidget())
+
 
 
 #The first form
@@ -28,8 +39,10 @@ class ArchimedesRequiredForm(ModelForm):
         fields = ('sex', 'cholesterolmeds', 'smoker', 'height', 'age', 'weight',)
     required_css_class = 'required'
     
-    #sex  = forms.TypedChoiceField(choices = GENDER_CHOICES, initial = None,
-    #                              widget=forms.RadioSelect())
+    
+    
+    sex  = forms.TypedChoiceField(choices = GENDER_CHOICES, initial = None,
+                                  widget=forms.RadioSelect())
     def clean_age(self):
         age     = self.cleaned_data.get("age", "")
         if age:

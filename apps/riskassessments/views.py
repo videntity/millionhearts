@@ -249,6 +249,36 @@ def archimedes_more(request, patient_id):
                               context_instance = RequestContext(request))
 
 
+def archimedes_followup(request, patient_id):
+
+    name = _('Please schedule a day to get you blood pressure and cholesterol')
+    patient = get_latest_object_or_404(ArchimedesRiskAssessment,
+                                       patient_id=patient_id)
+
+    if request.method == 'POST':
+        form =  ArchimedesFollowUpForm(request.POST, instance=patient)
+        
+        if form.is_valid():  
+            patient_id = form.save()
+            messages.success(request, _("Awesome!  Thanks for being heart smart."))
+            if UserProfile.objects.filter(patient_id=patient_id) > 0:
+                messages.success(request, _("Create an account to get a free follow up to your phone or email."))
+            return HttpResponseRedirect(reverse('patient_dashboard',
+                                                args=(patient.patient_id,)))
+        else:
+            return render_to_response("generic/bootstrapform.html",
+                              RequestContext(request,
+                                             {'form': form,
+                                             'name':name }))
+    
+    #Just a GET Display a bound form
+    return render_to_response("generic/bootstrapform.html",
+                             {'name': name,
+                              'form': ArchimedesFollowUpForm(instance=patient),},
+                              context_instance = RequestContext(request))
+
+
+
 def archimedes_assessment(request):
     if request.method == 'POST':
         form =  ArchimedesRiskAssessmentForm(request.POST)

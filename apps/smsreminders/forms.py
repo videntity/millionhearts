@@ -33,13 +33,3 @@ class SMSAppointmentReminderForm(ModelForm):
     required_css_class = 'required'
     
     
-class SMSAdherenceReminderForm(ModelForm):
-    class Meta:
-        model = SMSAdherenceReminder
-        exclude = ('patient','worker','next_execution_time',)
-    creation_date   = forms.DateField(initial=datetime.date.today,widget=SelectDateWidget())
-    start_date      = forms.DateField(initial=datetime.date.today,widget=SelectDateWidget())
-    end_date        = forms.DateField(initial=a_year_from_today, widget=SelectDateWidget())
-    reminder_time   = forms.TimeField(widget=forms.TextInput(
-                                        attrs={'class':'hive-time'})) 
-    required_css_class = 'required'    

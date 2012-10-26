@@ -2,6 +2,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # vim: ai ts=4 sts=4 et sw=4
+
 from django.conf import settings
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -22,10 +23,7 @@ def show_pharmacy(request, patient_id=None):
 def directions(request, origin=None, destination=None):
     origin = origin.replace("+", " ")
     destination = destination.replace("+", " ")
-    
-    print origin, destination
-    
-    
+    #print origin, destination
     return render_to_response("pharmacy/directions.html",
                               RequestContext(request,
                                              {"origin": origin,
@@ -40,6 +38,8 @@ def find_pharmacy(request, patient_id=None):
                                        patient_id=patient_id)
     else:
         patient=None
+        print "NO P[ATIENT"
+    
     if request.method == 'POST':
         form =  FindPharmacyForm(request.POST)
         

@@ -153,7 +153,6 @@ def cron_appointment_send(request, cron_key):
 
 
 @login_required
-@access_required("tester")
 def sms_send(request):       
     if request.method == 'POST':
     
@@ -166,105 +165,18 @@ def sms_send(request):
                              {'form': SMSSendForm()},
                                 context_instance = RequestContext(request))
         #the form has errors
-        return render_to_response('smsreminders/send.html', 
+        return render_to_response('generic/bootstrapform.html', 
                              {'form': form},
                                 context_instance = RequestContext(request))
     
     #request is a GET (not a POST)    
-    return render_to_response('smsreminders/send.html', 
+    return render_to_response('generic/bootstrapform.html', 
                              {'form': SMSSendForm()},
                                 context_instance = RequestContext(request))
 
 
-@login_required
-@access_required("tester")
-def sms_messages(request):       
-    smsmessages=get_messages()    
-    return render_to_response('smsreminders/messages.html', 
-                             {'smsmessages': smsmessages},
-                    context_instance = RequestContext(request))
 
 
-@login_required
-@access_required("tester")
-def sms_adherence_view(request, pk_id):
-    adherence = get_object_or_404(SMSAdherenceReminder, pk=pk_id)
-    
-    f = SMSAdherenceReminderForm(instance=adherence)
-    
-    data = build_pretty_data_view(form_instance=f,
-                                model_object=adherence,
-                                exclude=(),
-                                append=('worker','patient'))
-    return render_to_response('smsreminders/adherence/view.html', 
-                             {'data': data,
-                              'name': "Adherence Schedule for"},
-                    context_instance = RequestContext(request))
-
-
-@access_required("tester")
-@login_required
-def sms_appointment_view(request, pk_id):
-    appointment = get_object_or_404(SMSAppointmentReminder, pk=pk_id)
-    
-    f = SMSAppointmentReminderForm(instance=appointment)
-    
-    data = build_pretty_data_view(form_instance=f,
-                                model_object=appointment,
-                                exclude=(),
-                                append=('worker','patient'))
-    
-    return render_to_response('smsreminders/appointment/view.html', 
-                             {'data': data,
-                              'name': "Appointment Reminder for"},
-                    context_instance = RequestContext(request))
-
-
-
-@access_required("tester")
-@login_required
-def sms_appointment_reminder_search_by_name(request):
-    if request.method == 'POST':
-    
-        form = PatientSearchForm(request.POST)
-        
-        if form.is_valid():  
-            data = form.cleaned_data
-            first_name = data['first_name']
-            last_name = data['last_name']
-            
-            #so do a filter
-            pps = PatientProfile.objects.all()
-            if last_name:
-                pps = pps.filter(last_name__icontains=last_name)
-            
-            if first_name:
-                pps = pps.filter(first_name__icontains=first_name)
-                
-            #add messages about our results.
-            result_count = pps.count()
-                    
-            if (result_count == 0):
-                result_string = "%s results found." % (result_count)
-            elif (result_count == 1):
-                result_string = "%s result found." % (result_count)
-            else:
-                result_string = "%s results found" % (result_count)
-            return render_to_response('smsreminders/appointment/search-by-name.html', 
-                             {'form': PatientSearchForm(),
-                              'results': pps,
-                              'result_count': result_string},
-                              context_instance = RequestContext(request))
-            
-        #form is invalid    
-        return render_to_response('smsreminders/appointment/search-by-name.html', 
-                             {'form': form},
-                              context_instance = RequestContext(request))
-    
-    #request is a GET (not a POST)    
-    return render_to_response('smsreminders/appointment/search-by-name.html', 
-                             {'form': PatientSearchForm()},
-                                context_instance = RequestContext(request))
 
 
 @login_required
