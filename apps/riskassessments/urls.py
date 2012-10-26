@@ -22,6 +22,15 @@ urlpatterns = patterns('',
     
     url(r'step2/(?P<patient_id>\S+)$', archimedes_step2,
         name='archimedes_step2'),
+
+    url(r'archimedes-bp-and-cholesterol/(?P<patient_id>\S+)$',
+        archimedes_bp_and_cholesterol,
+        name='archimedes_bp_and_cholesterol'),
+    
+    url(r'dahsboard-or-pharmacy/(?P<patient_id>\S+)$',
+        archimedes_dashboard_or_pharmacy,
+        name='archimedes_dashboard_or_pharmacy'),
+    
     
     url(r'basic-info/(?P<patient_id>\S+)$', archimedes_basic_info,
         name='archimedes_blood_pressure'),

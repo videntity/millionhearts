@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
-
+{% load i18n %}
 <div class="hero-unit">
-  <h1>Pharmacies Near You</h1>
+  <h1>{% trans "Locations Near You" %}</h1>
 <h5>
       <table class="table table-hover">
       
         <tr>
-          <td>Name</td>
-          <td>Distance</td>
-          <td>Address</td>
-          <td>Schedule</td>
+          <td>{% trans "Name" %}</td>
+          <td>{% trans "Distance" %}</td>
+          <td>{% trans "Address" %}</td>
+          <td>{% trans "Schedule" %}</td>
          </tr>
     </h5>
 <h7>
@@ -20,11 +20,11 @@
         <td>{{ i.name }}</td>
         <td>{{ i.distance|floatformat }} mi.</td>
         <td><a href="/pharmacy/directions/{{ result.home.ea }}/{{ i.ea }}" target="_blank">{{ i.address1 }} {{ i.city }}, {{i.state}}</a></td>
-        <td><a href="/pharmacy/schedule/{{ i.ea }}/{{ patient.patient_id }}">schedule</a></td>
+        <td><a href="/pharmacy/schedule/{{ i.ea }}/{{ patient.patient_id }}">{% trans "Schedule" %}</a></td>
       </tr>
       {% endfor %}
     </h7>
-        <caption>These pharmacies and provders offer cholesterol and blood pressure screens. Many offer a coupon when you schedule online.</caption>
+        <caption>{% trans "These locations offer cholesterol and blood pressure screens. Many offer a coupon when you schedule online." %}</caption>
     </table>
   
 

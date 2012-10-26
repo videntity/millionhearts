@@ -56,24 +56,70 @@ def archimedes_hello(request):
     
     #Just a GET Display and unbound form
     return render_to_response("generic/bootstrapform.html",
-                             {'name': _("Step 1 - Please provide some basic information."),
+                             {'name': _("Step 1 - Please Provide Some Basic Information."),
                               'submit_button_text': "Go On",
                               'form': ArchimedesRequiredForm(),},
                               context_instance = RequestContext(request))
 
 
 def archimedes_step2(request, patient_id):
-
+    name = _('Step 2 - Plesee Tell Us a Little More.')
     
     patient = get_latest_object_or_404(ArchimedesRiskAssessment,
                                        patient_id=patient_id)
 
     if request.method == 'POST':
-        form =  ArchimedesStep2Form(request.POST, instance=patient)
+        form =  ArchimedesStep2Form(request.POST, instance = patient)
         
         if form.is_valid():  
             patient_id = form.save()
+            if request.POST['have_bp_chol_info'] == "yes":
+                return HttpResponseRedirect(reverse('archimedes_bp_and_cholesterol',
+                                                args=(patient.patient_id,)))
+            
+            
+            
+            return HttpResponseRedirect(reverse('archimedes_dashboard_or_pharmacy',
+                                                args=(patient.patient_id,)))
 
+        else:
+            return render_to_response("generic/bootstrapform.html",
+                              RequestContext(request,
+                                             {'form': form,
+                                             'name':name}))
+    
+    #Just a GET Display a bound form
+    return render_to_response("generic/bootstrapform.html",
+                             {'name': name,
+                              'form': ArchimedesStep2Form(instance=patient),},
+                              context_instance = RequestContext(request))
+
+
+
+def archimedes_dashboard_or_pharmacy(request, patient_id):
+    
+    patient = get_latest_object_or_404(ArchimedesRiskAssessment,
+                                       patient_id=patient_id)
+    return render_to_response("riskassessments/dashboard-or-pharmacy.html",
+                             {'patient': patient,},
+                              context_instance = RequestContext(request))
+    
+
+
+
+def archimedes_bp_and_cholesterol(request, patient_id):
+    name = _('Step 3 - Provide Your Blood Pressure and Cholesterol Numbers.')
+    
+    patient = get_latest_object_or_404(ArchimedesRiskAssessment,
+                                       patient_id=patient_id)
+
+    if request.method == 'POST':
+        form = ArchimedesBloodPressureAndCholesterolForm(request.POST,
+                                                         instance=patient)
+        
+        if form.is_valid():  
+            patient_id = form.save()
+            
             return HttpResponseRedirect(reverse('patient_dashboard',
                                                 args=(patient.patient_id,)))
 
@@ -81,13 +127,14 @@ def archimedes_step2(request, patient_id):
             return render_to_response("generic/bootstrapform.html",
                               RequestContext(request,
                                              {'form': form,
-                                             'name':_('Step 2 - Tell us a little more')}))
+                                             'name':name}))
     
     #Just a GET Display a bound form
     return render_to_response("generic/bootstrapform.html",
-                             {'name': "Step 2 - Tell us a little more",
-                              'form': ArchimedesStep2Form(instance=patient),},
-                              context_instance = RequestContext(request))
+            {'name': name,
+            'form': ArchimedesBloodPressureAndCholesterolForm(instance=patient),},
+            context_instance = RequestContext(request))
+
 
 
 

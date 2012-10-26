@@ -167,6 +167,11 @@ class ArchimedesRiskAssessment(models.Model):
                     verbose_name=_('Whats is your sex?'))
     age         = models.IntegerField(max_length=3, #choices = AGE_CHOICES,
                     verbose_name = _("What is your age?"))
+    
+    cholesterolmeds = models.CharField(choices=YES_NO_BINARY_CHOICES,
+                        max_length=5,
+                        verbose_name =_("Are you currently taking medication to control cholesterol?"))
+    
     height      = models.IntegerField(max_length=3, choices = HEIGHT_CHOICES,
                     verbose_name = _("What is your height?"))
     weight      = models.IntegerField(max_length=3, #choices = WEIGHT_CHOICES,
@@ -214,10 +219,6 @@ class ArchimedesRiskAssessment(models.Model):
     
     hba1c       = models.CharField(max_length=4, blank=True,
                     verbose_name = _("What is your HbA1c (2-16) ?"))
-    
-    cholesterolmeds = models.CharField(choices=YES_NO_BINARY_CHOICES,
-                        max_length=5, default="0",
-                        verbose_name =_("Are you currently taking medication to control cholesterol?"))
 
     bloodpressuremedcount = models.CharField(max_length=3, blank=True, default="0",
                                 choices = BLOOD_PRES_MEDS_CHOICES,

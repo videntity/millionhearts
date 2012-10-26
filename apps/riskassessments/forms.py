@@ -36,7 +36,7 @@ class ArchimedesFollowUpForm(ModelForm):
 class ArchimedesRequiredForm(ModelForm):
     class Meta:
         model = ArchimedesRiskAssessment
-        fields = ('sex', 'cholesterolmeds', 'smoker', 'height', 'age', 'weight',)
+        fields = ('sex', 'cholesterolmeds', 'smoker', 'height', 'weight', 'age', )
     required_css_class = 'required'
     
     
@@ -98,7 +98,52 @@ class ArchimedesStep2Form(ModelForm):
     required_css_class = 'required'
 
 
+class ArchimedesBloodPressureAndCholesterolForm(ModelForm):
+    class Meta:
+        model = ArchimedesRiskAssessment
+        fields = ('systolic', 'diastolic', 'cholesterol', 'hdl', 'ldl',)
+    required_css_class = 'required'
 
+    def clean(self):
+        cleaned_data  = super(ArchimedesBloodPressureForm, self).clean()
+        systolic      = cleaned_data.get("systolic", "")
+        diastolic     = cleaned_data.get("diastolic", "")
+        hdl           = cleaned_data.get("hdl", "")
+        ldl           = cleaned_data.get("ldl", "")
+        cholesterol   = cleaned_data.get("cholesterol", "")
+    
+        if systolic and diastolic:
+            if int(diastolic) > int(systolic):
+                raise forms.ValidationError(_("Distolic may not exceed Systolic."))
+        
+        if cholesterol:
+            combined = int(hdl) + int(ldl)
+        
+            if combined > int(cholesterol):
+                raise forms.ValidationError(_("Total cholesterol cannot exceed the sum of HDL + LDL cholesterol."))
+    
+        return cleaned_data
+
+
+    def clean_systolic(self):
+        systolic     = self.cleaned_data.get("systolic", "")
+        if systolic:
+            if not 80 <= int(systolic) <= 220:
+                raise forms.ValidationError(_("Systolic pressure must be between 80 and 220."))
+        return systolic
+    
+    def clean_diastolic(self):
+        diastolic  = self.cleaned_data.get("diastolic", "")
+        if diastolic:
+            if not 40 <= int(diastolic) <= 130:
+                raise forms.ValidationError(_("Distolic pressure must be between 40 and 130."))
+        return diastolic
+    
+    def clean_cholesterol(self):
+        cholesterol = self.cleaned_data.get("cholesterol", "")
+        if not 70 <= int(cholesterol) <= 500:    
+            raise forms.ValidationError(_("Total cholesterol must be between 70 and 500."))
+        return cholesterol
 
 
 class ArchimedesBloodPressureForm(ModelForm):
