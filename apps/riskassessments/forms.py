@@ -41,8 +41,8 @@ class ArchimedesRequiredForm(ModelForm):
     
     
     
-    sex  = forms.TypedChoiceField(choices = GENDER_CHOICES, initial = None,
-                                  widget=forms.RadioSelect())
+    #sex  = forms.TypedChoiceField(choices = GENDER_CHOICES, initial = None,
+    #                              widget=forms.RadioSelect())
     def clean_age(self):
         age     = self.cleaned_data.get("age", "")
         if age:
