@@ -6,7 +6,7 @@
   {% if not user.is_authenticated %}
   <li><a href="/risk-assessments/hello">{% trans "Take the Risk Assessment" %}</a></li>
   {% endif %}
-  <li><a href="/pharmacy/find">{% trans "Find a Pharmacy" %}</a></li>
+  <li><a href="/pharmacy/find/{{patient.patient_id}}">{% trans "Find a Screening Location" %}</a></li>
   {% if user.is_authenticated %}
       <li><a href="/accounts/account">{% trans "Account" %}</a></li>
       <li><a href="/accounts/logout">{% trans "Logout" %}</a></li>
@@ -14,10 +14,11 @@
       <li><a href="/accounts/login">{% trans "Login" %}</a></li>
       
       {% if  patient.patient_id %}
-      <li><a href="/accounts/signup/{{patient.patient_id}}">{% trans "Create" %}</a></li>
+      <li><a href="/accounts/signup/{{patient.patient_id}}">{% trans "Signup" %}</a></li>
       {% endif %}
   {% endif %}
-
+    
+  
 </ul>
 
 
