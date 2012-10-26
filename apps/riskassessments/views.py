@@ -22,8 +22,7 @@ import json
 from forms import *
 from models import *
 
-def holler_back(request):
-    
+def holler_back(request):    
     # Get these credentials from http://twilio.com/user/account
     client = TwilioRestClient(settings.TWILIO_SID, settings.TWILIO_AUTH_TOKEN)
     # Make the call
@@ -33,6 +32,71 @@ def holler_back(request):
     print call.sid
     return HttpResponseRedirect(reverse('patient_dashboard',
                                                 args=(patient.patient_id,)))
+
+
+
+
+def archimedes_schedule(request, patient_id):
+    """ """
+    name = _('Please schedule a day to get you blood pressure and cholesterol')
+    patient = get_latest_object_or_404(ArchimedesRiskAssessment,
+                                       patient_id=patient_id)
+
+    if request.method == 'POST':
+        form =  ArchimedesScheduleForm(request.POST, instance=patient)
+        
+        if form.is_valid():  
+            patient_id = form.save()
+            messages.success(request, _("Awesome!  Thanks for being heart smart."))
+            if UserProfile.objects.filter(patient_id=patient_id) > 0:
+                messages.success(request, _("Create an account to get a free follow up to your phone or email."))
+            return HttpResponseRedirect(reverse('patient_dashboard',
+                                                args=(patient.patient_id,)))
+        else:
+            return render_to_response("generic/bootstrapform.html",
+                              RequestContext(request,
+                                             {'form': form,
+                                             'name':name }))
+    
+    #Just a GET Display a bound form
+    return render_to_response("generic/bootstrapform.html",
+                             {'name': name,
+                              'form': ArchimedesFollowUpForm(instance=patient),},
+                              context_instance = RequestContext(request))
+
+
+
+
+def archimedes_followup(request, patient_id):
+    """ """
+    name = _('Please schedule a day to get you blood pressure and cholesterol')
+    patient = get_latest_object_or_404(ArchimedesRiskAssessment,
+                                       patient_id=patient_id)
+
+    if request.method == 'POST':
+        form =  ArchimedesFollowUpForm(request.POST, instance=patient)
+        
+        if form.is_valid():  
+            patient_id = form.save()
+            messages.success(request, _("Awesome!  Thanks for being heart smart."))
+            if UserProfile.objects.filter(patient_id=patient_id) > 0:
+                messages.success(request, _("Create an account to get a free follow up to your phone or email."))
+            return HttpResponseRedirect(reverse('patient_dashboard',
+                                                args=(patient.patient_id,)))
+        else:
+            return render_to_response("generic/bootstrapform.html",
+                              RequestContext(request,
+                                             {'form': form,
+                                             'name':name }))
+    
+    #Just a GET Display a bound form
+    return render_to_response("generic/bootstrapform.html",
+                             {'name': name,
+                              'form': ArchimedesFollowUpForm(instance=patient),},
+                              context_instance = RequestContext(request))
+
+
+
 
 
 def archimedes_hello(request):
@@ -134,21 +198,7 @@ def archimedes_bp_and_cholesterol(request, patient_id):
             {'name': name,
             'form': ArchimedesBloodPressureAndCholesterolForm(instance=patient),},
             context_instance = RequestContext(request))
-
-
-
-
-#def archimedes_step3(request, patient_id):
-#    """Do you have Blood pressure and cholesterol"""
-#    
-#    patient = get_latest_object_or_404(ArchimedesRiskAssessment,
-#                                       patient_id=patient_id)
-#    #Just a GET Display a bound form
-#    return render_to_response("riskassessments/step3.html",
-#                             {'patient': patient,},
-#                              context_instance = RequestContext(request))
-
-
+    
 def archimedes_basic_info(request, patient_id):
     
     patient = get_latest_object_or_404(ArchimedesRiskAssessment,
@@ -296,33 +346,6 @@ def archimedes_more(request, patient_id):
                               context_instance = RequestContext(request))
 
 
-def archimedes_followup(request, patient_id):
-
-    name = _('Please schedule a day to get you blood pressure and cholesterol')
-    patient = get_latest_object_or_404(ArchimedesRiskAssessment,
-                                       patient_id=patient_id)
-
-    if request.method == 'POST':
-        form =  ArchimedesFollowUpForm(request.POST, instance=patient)
-        
-        if form.is_valid():  
-            patient_id = form.save()
-            messages.success(request, _("Awesome!  Thanks for being heart smart."))
-            if UserProfile.objects.filter(patient_id=patient_id) > 0:
-                messages.success(request, _("Create an account to get a free follow up to your phone or email."))
-            return HttpResponseRedirect(reverse('patient_dashboard',
-                                                args=(patient.patient_id,)))
-        else:
-            return render_to_response("generic/bootstrapform.html",
-                              RequestContext(request,
-                                             {'form': form,
-                                             'name':name }))
-    
-    #Just a GET Display a bound form
-    return render_to_response("generic/bootstrapform.html",
-                             {'name': name,
-                              'form': ArchimedesFollowUpForm(instance=patient),},
-                              context_instance = RequestContext(request))
 
 
 

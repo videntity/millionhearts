@@ -48,6 +48,12 @@ class FindPharmacyForm(Form):
         
         for i in sresult['providers']:
             #print "addr", i['address1'], i['city'], i['state'], i['zip']
+            
+            encoded_name_address = "%s+%s+%s+%s" % (i['name'], i['address1'],
+                                                    i['city'], i['state'])
+            encoded_name_address = encoded_name_address.replace(" ", "+")
+            i['ean'] = encoded_name_address
+            
             encoded_address = "%s+%s+%s" % (i['address1'], i['city'], i['state'])
             encoded_address = encoded_address.replace(" ", "+")
             i['ea'] = encoded_address
