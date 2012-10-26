@@ -9,8 +9,8 @@
       
         <tr>
           <td>Name</td>
+          <td>Distance</td>
           <td>Address</td>
-          <td>Coupon</td>
           <td>Schedule</td>
          </tr>
     </h5>
@@ -18,13 +18,13 @@
      {% for i in result.surescripts.providers  %}
       <tr>
         <td>{{ i.name }}</td>
+        <td>{{ i.distance|floatformat }} mi.</td>
         <td><a href="/pharmacy/directions/{{ result.home.ea }}/{{ i.ea }}" target="_blank">{{ i.address1 }} {{ i.city }}, {{i.state}}</a></td>
-        <td><a href="/pharmacy/coupon/{{ i.ea }}/{{ patient.patient_id }}">Yes</a></td>
         <td><a href="/pharmacy/schedule/{{ i.ea }}/{{ patient.patient_id }}">schedule</a></td>
       </tr>
       {% endfor %}
     </h7>
-        <caption>These pharmacies and provders offer cholesterol and blood pressure screens.</caption>
+        <caption>These pharmacies and provders offer cholesterol and blood pressure screens. Many offer a coupon when you schedule online.</caption>
     </table>
   
 
