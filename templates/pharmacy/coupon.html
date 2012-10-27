@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% load i18n %}
+<div class="hero-unit">
+  <img alt="{% trans "Be Heart Smart Logo" %}" src="{{ STATIC_URL }}img/beheartsmart.png">
+  <h1>{% trans "Coupon" %}</h1>
+  
+
+   <h1> Your Appointment Details </h1>
+  
+  
+  {{ patient.origin }}
+  {{ patient.destination }}
+
+
+   <h1> Directions </h1>
+  
+  
+  {{ patient.origin }}
+  {{ patient.destination }}
+
+  
+  <h1>Coupon</h1>
+  
+  Blood Pressure and Cholesterol Check for $20.
+  
+  
+
+  
+  
+  
+  
+  <p>
+    <a class="btn btn-primary btn-large" href="/dashboard/{{patinet.patient_id}}">
+      {% trans "Continue to Your Risk Assessment" %}
+    </a>
+  </p>
+  
+   <h7>{% trans "DISCLAIMER: This product and the risk assessment scores it produces have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease." %}</h7>
+  
+</div>
+
+
+{% endblock %}
+

@@ -13,7 +13,21 @@ import datetime
 from utils import *
 
 from django.utils.translation import ugettext_lazy as _
+from django.forms import ModelForm
+from ..riskassessments.models import ArchimedesRiskAssessment
 
+class ScheduleForm(ModelForm):
+    class Meta:
+        model = ArchimedesRiskAssessment
+        fields = ('followup_date', 'origin', 'destination', 'patient_id')
+    required_css_class = 'required'
+    
+    origin          = forms.CharField(max_length=300, widget=forms.HiddenInput())
+    destination     = forms.CharField(max_length=300, widget=forms.HiddenInput())
+    patient_id      = forms.CharField(max_length=30, widget=forms.HiddenInput())
+                              
+    
+    
 
 class FindPharmacyForm(Form):
     address = forms.CharField(max_length=30, label=_("Address"),
@@ -31,7 +45,7 @@ class FindPharmacyForm(Form):
         address = self.cleaned_data.get('address', "")
         city = self.cleaned_data.get('city', "")
         state = self.cleaned_data.get('state', "")
-        zip = self.cleaned_data.get('state', "")
+        zip = self.cleaned_data.get('zip', "")
         
         geocode_addr_str = "%s+%s+%s" % (address, city, state)
         geocode_addr_str=geocode_addr_str.replace(" ", "+")         

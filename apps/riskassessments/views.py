@@ -127,7 +127,7 @@ def archimedes_hello(request):
 
 
 def archimedes_step2(request, patient_id):
-    name = _('Step 2 - Plesee Tell Us a Little More.')
+    name = _('Step 2 - Please Tell Us a Little More.')
     
     patient = get_latest_object_or_404(ArchimedesRiskAssessment,
                                        patient_id=patient_id)

@@ -4,7 +4,8 @@
 {% block content %}
 <section id="register">
   <div class="page-header">
-    <h1>{% trans "Find a Pharmacy" %}</h1>
+    <h1>{% trans "Find a Screening Location" %}</h1>
+    <h2>{% trans "Enter your home addess or your current location." %}</h2>
   </div>
 
   
@@ -20,7 +21,8 @@
         {{ form|bootstrap }}
 
         </table>
-        <input type="submit" class="btn large btn-primary" value="{% trans 'Continue' %}" />
+        <input type="submit" class="btn large btn-primary btn-large" value="{% trans 'Continue' %}" />
+	<input class="btn btn-primary btn-large"  TYPE="button" VALUE="Cancel" onClick="history.go(-1);return true;">
       </form>
     </div>
   </div>
