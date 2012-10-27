@@ -31,7 +31,7 @@ SMOKER_CHOICES = ((True, 'Yes'),
 
 YES_NO_CHOICES = ((True,'Yes'), (False, 'No'))
 
-YES_NO_BINARY_CHOICES = (("yes",'Yes'), ("no", 'No'),)
+YES_NO_BINARY_CHOICES = (("no", 'No'), ("yes",'Yes'), )
 
 
 class Framingham10yrHeartRiskTest(models.Model):
