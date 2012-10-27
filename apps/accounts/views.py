@@ -162,7 +162,7 @@ def verify_email(request, verification_key,
 
 @login_required
 def account_settings(request):
-
+    name = _("Account Settings")
     up = get_object_or_404(UserProfile, user=request.user)
 
     if request.method == 'POST':
@@ -179,24 +179,29 @@ def account_settings(request):
             up.save()
             messages.success(request,'Your account settings have been updated.')  
             return render_to_response('generic/bootstrapform.html',
-                            {'form': form,},
+                            {'form': form,
+                             'name': name,
+                             },
                             RequestContext(request))
         else:
             #the form had errors
             return render_to_response('generic/bootstrapform.html',
-                            {'form': form,},
+                            {'form': form,
+                             'name': name,
+                             },
                             RequestContext(request))
                
 
     #this is an HTTP GET        
     return render_to_response('generic/bootstrapform.html',
-        {'form': AccountSettingsForm(initial={ 'username':request.user.username,
-                                'email':request.user.email,
-                                'last_name':request.user.last_name,
-                                'first_name':request.user.first_name,
+        {'form': AccountSettingsForm(initial={ 'username':  request.user.username,
+                                'email':                    request.user.email,
+                                'last_name':                request.user.last_name,
+                                'first_name':               request.user.first_name,
                                 'preferred_contact_method': up.preferred_contact_method,
-                                'mobile_phone_number': up.mobile_phone_number,
-                                'twitter':up.twitter,
+                                'mobile_phone_number':      up.mobile_phone_number,
+                                'twitter':                  up.twitter,
+                                'name':                     name,
                                 })},
                               RequestContext(request))
 

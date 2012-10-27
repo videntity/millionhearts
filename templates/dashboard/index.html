@@ -54,8 +54,6 @@
       }
     </script>
 
-
-
      {% endblock %}
 
 {% block content %}
@@ -64,7 +62,7 @@
 <div class="hero-unit">
   
 
-  <h1>Your risk is {{age_risk}} out of 5. </h1>
+  <h1>Your risk is {{age_risk}} out of 5.0. </h1>
   
   <div id='risk_chart_div'></div>
   
@@ -95,8 +93,7 @@
  
   
   {% if not user.is_authenticated %}
-  You can <a HREF="/accounts/signup/{{patient.patient_id}}">create an account
-  so you can retrieve your information later.</a> 
+  You can <a HREF="/accounts/signup/{{patient.patient_id}}">create an account so you can retrieve your information later.</a> 
   {% endif %}
   Click on each of the yellow buttons below to complete the all sections risk assessment.  
   </h4>
@@ -172,7 +169,7 @@
            Create Account
         </a>
     {% else %}
-    <a class="btn btn-warning btn-large btn-block" href="/accounts/account/">
+    <a class="btn btn-success btn-large btn-block" href="/accounts/account/">
            Account
         </a>  
     {% endif %}
@@ -189,6 +186,9 @@
 <div class="progress progress-info progress-striped">
 <div class="bar" style="width: {{ progress_percent }}%"></div>
 </div>
+
+
+{% if progress_percent != 100 %}
 <h4>You still need to complete the following:
 
 {% if not patient.blood_pressure_complete %}
@@ -208,16 +208,13 @@
 {% endif %}
 
 </h4>
-
   </p>     
 
+{% endif %}
 
 
 
 </div>
-
-
-
 
 
 
