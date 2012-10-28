@@ -48,13 +48,21 @@ CONTACT_CHOICES = ( ('sms','Send a text message to my phone.'),
                     )
 
 class UserProfile(models.Model):
-    user                    = models.ForeignKey(User, unique=True)
-    pin                     = models.CharField(max_length=4, blank=True, default="")
-    mobile_phone_number     = PhoneNumberField(max_length=15, blank=True)
-    patient_id              = models.CharField(max_length=20,) #editable=False
-    twitter                 = models.CharField(max_length=20, blank=True, default="")
-    preferred_contact_method = models.CharField(max_length=5,
-                                choices = CONTACT_CHOICES)
+    user                        = models.ForeignKey(User, unique=True)
+    pin                         = models.CharField(max_length=4, blank=True,
+                                                   default="")
+    mobile_phone_number         = PhoneNumberField(max_length=15,
+                                                   blank=True)
+    patient_id                  = models.CharField(max_length=20,) #editable=False
+    twitter                     = models.CharField(max_length=20,
+                                                   blank=True,
+                                                   default="")
+    preferred_contact_method    = models.CharField( max_length=5,
+                                                    choices = CONTACT_CHOICES)
+    email_verified              = models.BooleanField(default = False)
+    sms_verified                = models.BooleanField(default = False)
+                                    
+
 
     def __unicode__(self):
         return '%s %s (%s)' % (self.user.first_name, self.user.last_name,

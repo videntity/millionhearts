@@ -8,4 +8,7 @@ pylibmc
 django-ses
 sorl-thumbnail
 pycurl
-PIL
+django-bootstrap-form
+python-framingham10yr
+#PIL
+#qrencode

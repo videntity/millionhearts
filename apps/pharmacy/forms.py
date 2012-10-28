@@ -36,7 +36,9 @@ class FindPharmacyForm(Form):
                             initial="MINNEAPOLIS")
     state = forms.TypedChoiceField(choices=US_STATES, label=_("State"),
                                    initial="MN")
-    zip   = forms.CharField(max_length=60, label=_("Zip"), required=False)
+    zip   = forms.CharField(max_length=60, label=_("Zip"), required=False,
+                             widget=forms.HiddenInput()
+                            )
     required_css_class = 'required'
 
 

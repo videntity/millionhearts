@@ -160,6 +160,7 @@ def verify_email(request, verification_key,
                               context_instance=context)
     
 
+
 @login_required
 def account_settings(request):
     name = _("Account Settings")
@@ -170,8 +171,8 @@ def account_settings(request):
         if form.is_valid():
             data = form.cleaned_data
             #update the user info
-            request.user.username   = data['username']
-            request.user.email       = data['email'] 
+            request.user.username       = data['username']
+            request.user.email          = data['email'] 
             request.user.save()
             #update the user profile
             up.preferred_contact_method = data['preferred_contact_method']

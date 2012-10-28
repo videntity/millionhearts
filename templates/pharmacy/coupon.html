@@ -1,43 +1,35 @@
 {% extends "base.html" %}
+
 {% block content %}
 
 {% load i18n %}
 <div class="hero-unit">
   <img alt="{% trans "Be Heart Smart Logo" %}" src="{{ STATIC_URL }}img/beheartsmart.png">
-  <h1>{% trans "Coupon" %}</h1>
   
-
-   <h1> Your Appointment Details </h1>
+   <h2> {% trans "Your Appointment is on " %}: </h2>
+   <h3>{{patient.followup_date}}.</h3>
+   <h5>{% trans "Walk-in between 9AM and 8PM." %} </h5>
   
-  
-  {{ patient.origin }}
-  {{ patient.destination }}
-
-
-   <h1> Directions </h1>
-  
-  
-  {{ patient.origin }}
-  {{ patient.destination }}
+ <p>
+    <a class="btn btn-primary btn-large" href="/pharmacy/directions/{{origin}}/{{destination}}"  target="_blank">
+      {% trans "Get Directions to " %} {{location_name}}
+    </a>
+  </p>
 
   
-  <h1>Coupon</h1>
-  
-  Blood Pressure and Cholesterol Check for $20.
-  
-  
-
+  <h2>Coupon</h2>
   
   
   
+  
+  <h4>{% trans "Blood Pressure and Cholesterol Check for $20." %}</h4>
   
   <p>
-    <a class="btn btn-primary btn-large" href="/dashboard/{{patinet.patient_id}}">
+    <a class="btn btn-primary btn-large" href="/dashboard/{{patient.patient_id}}">
       {% trans "Continue to Your Risk Assessment" %}
     </a>
   </p>
   
-   <h7>{% trans "DISCLAIMER: This product and the risk assessment scores it produces have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease." %}</h7>
   
 </div>
 
