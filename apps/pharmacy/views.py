@@ -26,7 +26,7 @@ def qrcode(request, patient_id):
     #jr=json.loads("HELLO-WORLD")
     #if jr['status'] != 200:
     #    return json_response
-    qrinfo = "https://beheartsmart.com/dashboard/%s" % (patient_i)
+    qrinfo = "https://beheartsmart.com/dashboard/%s" % (patient_id)
     response = HttpResponse(mimetype="image/png")
     image = qrencode.encode_scaled( qrinfo, 400)
     image[2].save(response, "PNG")
