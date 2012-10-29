@@ -12,7 +12,7 @@ import random
 from ..locations.models import LocationSetup
 import uuid
 from emails import send_password_reset_url_via_email
-
+from django.utils.translation import ugettext_lazy as _
 
 
 class ValidPasswordResetKey(models.Model):
@@ -56,6 +56,9 @@ class UserProfile(models.Model):
                                                    default="")
     preferred_contact_method    = models.CharField( max_length=5,
                                                     choices = CONTACT_CHOICES)
+    preferred_language          = models.CharField( max_length=2, blank=True,
+                                                   default="")
+    
     email_verified              = models.BooleanField(default = False)
     sms_verified                = models.BooleanField(default = False)
                                     

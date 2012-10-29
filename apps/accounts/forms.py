@@ -82,7 +82,7 @@ class SignupForm(forms.Form):
         return username
 
 
-    def save(self, patient_id):
+    def save(self, patient_id, language_code):
         new_user = User.objects.create_user(
                         username=self.cleaned_data['username'],
                         password=self.cleaned_data['password1'],
@@ -93,6 +93,7 @@ class SignupForm(forms.Form):
             user=new_user,
             patient_id = patient_id,
             preferred_contact_method=self.cleaned_data.get('preferred_contact_method', ""),
+            preferred_language=language_code,
             mobile_phone_number=self.cleaned_data.get('mobile_phone_number', ""),
             ) 
         return new_user

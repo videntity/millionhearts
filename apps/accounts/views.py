@@ -126,7 +126,7 @@ def signup(request, patient_id):
         
         pw = request.POST['password1']
         if form.is_valid():
-          new_user = form.save(patient_id)
+          new_user = form.save(patient_id, request.LANGUAGE_CODE)
           user = authenticate(username=new_user.username,
                             password=pw)
           login(request, user)
