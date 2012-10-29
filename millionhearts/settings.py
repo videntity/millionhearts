@@ -1,6 +1,6 @@
 # Django settings for millionhearts project.
 import os
-
+from django.utils.translation import ugettext_lazy as _
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -182,21 +182,27 @@ INSTALLED_APPS = (
 # Email Settings -----------------------------------------------------------
 
 EMAIL_HOST_USER = 'beheartsmart@videntity.com'
-#HOSTNAME_URL = 'https://beheartssmart.com'
-HOSTNAME_URL = 'http://127.0.0.1:8000'
+HOSTNAME_URL = 'https://beheartssmart.com'
+#HOSTNAME_URL = 'http://127.0.0.1:8000'
 EMAIL_BACKEND = 'django_ses.SESBackend'
-AWS_ACCESS_KEY_ID = 'AKIAIE5XDCZ5PNK4RGOQ'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'AKIAI3FSWI4AOSJKO6IA'
+AWS_SECRET_ACCESS_KEY = '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'
 DEFAULT_FROM_EMAIL='beheartsmart@videntity.com'
-SERVER_EMAIL='mneheartsmart@videntity.com'
+SERVER_EMAIL='beheartsmart@videntity.com'
 
 # Twilio SMS Login Settings -----------------------------------------------
-TWILIO_DEFAULT_FROM = "+12024992459"
+TWILIO_DEFAULT_FROM = "+14106967670"
 TWILIO_API_BASE = "https://api.twilio.com/2010-04-01"
-TWILIO_SID = "AC4d3f4dcee199445c45faa797c5c97898"
-TWILIO_AUTH_TOKEN = "d623565a60e77bb5902e1971948c6f17"
+TWILIO_SID = "ACccc139f8b71ff89e90678aa10988d3dc"
+TWILIO_AUTH_TOKEN = "416186fcde814074209dbb3c723432a9"
 TWILIO_API_VERSION = '2010-04-01'
 SMS_LOGIN_TIMEOUT_MIN = 10
+SMS_REMINDER_MESSAGE = _("Reminder from BeHeartSmart.com: Get you blood pressure and cholesterol screen tomorrow.")
+
+EMAIL_REMINDER_SUBJECT = _("Reminder from BeHeartSmart.com: Get you blood pressure and cholesterol screen tomorrow.")
+EMAIL_REMINDER_BODY    = _("This is a reminder to get you blood pressure and cholesterol sceen tomorrow.  Here are the details.")
+
+
 
 #Google MAPS API keu
 
@@ -222,15 +228,6 @@ MIN_PASSWORD_LEN = 5
 #Org details
 ORGANIZATION_NAME = "Be Heart Smart"
 LOCATION_NAME = "Baltimore, MD"
-
-
-#Twilio details
-# Twilio SMS Login Settings ---------------------------------------------------
-TWILIO_DEFAULT_FROM = "+12024992459"
-TWILIO_API_BASE = "https://api.twilio.com/2010-04-01"
-TWILIO_SID = "AC4d3f4dcee199445c45faa797c5c97898"
-TWILIO_AUTH_TOKEN = "d623565a60e77bb5902e1971948c6f17"
-TWILIO_API_VERSION = '2010-04-01'
 
 
 # Framingham

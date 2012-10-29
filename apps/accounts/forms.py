@@ -92,7 +92,7 @@ class SignupForm(forms.Form):
         up=UserProfile.objects.create(
             user=new_user,
             patient_id = patient_id,
-            preferred_contact_method=self.cleaned_data.get('preferred_contact_method=', ""),
+            preferred_contact_method=self.cleaned_data.get('preferred_contact_method', ""),
             mobile_phone_number=self.cleaned_data.get('mobile_phone_number', ""),
             ) 
         return new_user

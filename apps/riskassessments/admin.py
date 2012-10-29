@@ -5,8 +5,11 @@ from models import Framingham10yrHeartRiskTest, CardioDiabetesRiskTest, \
 
 
 class ArchimedesRiskAssessmentAdmin(admin.ModelAdmin):
-    list_display = ('patient_id', 'creation_date')
+    list_display = ('patient_id', 'followup_date', 'follow_up_complete',
+                    'cholesterol_complete',
+                    'blood_pressure_complete')
     search_fields = ['patient_id', 'creation_date']
+    ordering = ('followup_date','-follow_up_complete')
 admin.site.register(ArchimedesRiskAssessment,
                     ArchimedesRiskAssessmentAdmin)
 

@@ -263,7 +263,7 @@ class ArchimedesRiskAssessment(models.Model):
     
     #Follow Up -----------------------------------------------------------
     followup_date           = models.DateField(default=three_days_from_today,
-                                verbose_name = _("I commit to getting my blood pressure and cholesterol cheked by this date."))
+                                verbose_name = _("I commit to getting my blood pressure and cholesterol checked by this date."))
     
     class Meta:
         unique_together = (("patient_id", "creation_date"),)

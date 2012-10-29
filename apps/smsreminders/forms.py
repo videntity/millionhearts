@@ -6,12 +6,8 @@
 from django.forms import ModelForm
 from django import forms
 from models import *
-from django.forms.extras.widgets import SelectDateWidget
 import datetime
 from datetime import timedelta
-this_year = datetime.date.today().year
-years = range(this_year-80, this_year-10)
-this_year_only= range(this_year, this_year+1)
 from utils import send_sms_twilio
     
 
@@ -22,14 +18,3 @@ class SMSSendForm(forms.Form):
     def save(self):
         send_sms_twilio(self.cleaned_data['message'],
                         self.cleaned_data['to'])
-    
-class SMSAppointmentReminderForm(ModelForm):
-    class Meta:
-        model = SMSAppointmentReminder
-        exclude = ('patient','worker','sent', 'name')
-    creation_date=forms.DateField(initial=datetime.date.today,widget=SelectDateWidget())
-    reminder_datetime = forms.DateTimeField( widget=forms.TextInput(
-        attrs={'class':'hive-datetime'})) 
-    required_css_class = 'required'
-    
-    

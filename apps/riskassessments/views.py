@@ -17,21 +17,70 @@ from ..generic.views import generic_form_view, generic_view, generic_view2
 from django.db import IntegrityError
 from twilio.rest import TwilioRestClient
 from django.utils.translation import ugettext_lazy as _
-
+from utils import send_sms_twilio
+from django.core.mail import send_mail
 import json
 from forms import *
 from models import *
 
+def tomorrow():
+    return datetime.date.today() + timedelta(days=1)
+
 def holler_back(request):    
+    
+    t = tomorrow()
     # Get these credentials from http://twilio.com/user/account
-    client = TwilioRestClient(settings.TWILIO_SID, settings.TWILIO_AUTH_TOKEN)
+    reminders_to_send = ArchimedesRiskAssessment.objects.filter(followup_date = t,
+                                                                follow_up_complete=False)
+    for i in reminders_to_send:
+        print i.patient_id
+        try:
+            up = UserProfile.objects.get(patient_id=i.patient_id)
+            
+            #send a text message
+            if up.preferred_contact_method == "sms" and \
+               up.mobile_phone_number:
+                send_sms_twilio(settings.SMS_REMINDER_MESSAGE,
+                                up.mobile_phone_number)
+                i.follow_up_complete = True
+                i.save()
+            
+            #send an email if they prefer
+            if up.preferred_contact_method == "email" and \
+               up.user.email:
+                msg = """
+                %s
+                
+                %s/pharmacy/coupon/%s/%s/%s
+                """ % (settings.EMAIL_REMINDER_BODY, settings.HOSTNAME_URL,
+                       i.origin,  i.destination, i.patient_id)
+                
+                send_mail(settings.EMAIL_REMINDER_SUBJECT , msg,
+                          settings.DEFAULT_FROM_EMAIL,
+                          [up.user.email,], fail_silently=False)
+                
+                
+                send_sms_twilio(settings.SMS_REMINDER_MESSAGE,
+                                up.mobile_phone_number)
+                i.follow_up_complete = True
+                i.save()
+                
+            
+            
+        except(UserProfile.DoesNotExist):
+            pass
+            
+    
+        #send_sms_twilio("hello", "+13046853137")
+    
+    
+    #client = TwilioRestClient(settings.TWILIO_SID, settings.TWILIO_AUTH_TOKEN)
     # Make the call
-    call = client.calls.create(to="+13046853137", # Any phone number
-    from_=settings.TWILIO_DEFAULT_FROM , # Must be a valid Twilio number
-    url="http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient")
-    print call.sid
-    return HttpResponseRedirect(reverse('patient_dashboard',
-                                                args=(patient.patient_id,)))
+    #call = client.calls.create(to="+13046853137", # Any phone number
+    #from_=settings.TWILIO_DEFAULT_FROM , # Must be a valid Twilio number
+    #url="http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient")
+    #print call.sid
+    return HttpResponse("OK")
 
 
 
