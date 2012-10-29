@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-29 11:29-0400\n"
+"POT-Creation-Date: 2012-10-29 14:55-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,8 +130,8 @@ msgstr ""
 msgid "Commit to Getting Screened."
 msgstr ""
 
-#: apps/pharmacy/views.py:73 apps/riskassessments/views.py:50
-#: apps/riskassessments/views.py:81
+#: apps/pharmacy/views.py:73 apps/riskassessments/views.py:99
+#: apps/riskassessments/views.py:130
 msgid "Awesome!  Thanks for being heart smart."
 msgstr ""
 
@@ -319,60 +319,72 @@ msgstr ""
 
 #: apps/riskassessments/models.py:266
 msgid ""
-"I commit to getting my blood pressure and cholesterol cheked by this date."
+"I commit to getting my blood pressure and cholesterol checked by this date."
 msgstr ""
 
-#: apps/riskassessments/views.py:41 apps/riskassessments/views.py:72
+#: apps/riskassessments/views.py:90 apps/riskassessments/views.py:121
 msgid "Please schedule a day to get you blood pressure and cholesterol"
 msgstr ""
 
-#: apps/riskassessments/views.py:52 apps/riskassessments/views.py:83
+#: apps/riskassessments/views.py:101 apps/riskassessments/views.py:132
 msgid "Create an account to get a free follow up to your phone or email."
 msgstr ""
 
-#: apps/riskassessments/views.py:108
+#: apps/riskassessments/views.py:157
 msgid "Fantastic. You've taken the first step!"
 msgstr ""
 
-#: apps/riskassessments/views.py:117
+#: apps/riskassessments/views.py:166
 msgid "Step 1 - Please provide some basic information."
 msgstr ""
 
-#: apps/riskassessments/views.py:123
+#: apps/riskassessments/views.py:172
 msgid "Step 1 - Please Provide Some Basic Information."
 msgstr ""
 
-#: apps/riskassessments/views.py:130
+#: apps/riskassessments/views.py:179
 msgid "Step 2 - Please Tell Us a Little More."
 msgstr ""
 
-#: apps/riskassessments/views.py:175
+#: apps/riskassessments/views.py:224
 msgid "Step 3 - Provide Your Blood Pressure and Cholesterol Numbers."
 msgstr ""
 
-#: apps/riskassessments/views.py:212
+#: apps/riskassessments/views.py:261
 msgid "Your basic risk assessment information has been updated."
 msgstr ""
 
-#: apps/riskassessments/views.py:241
+#: apps/riskassessments/views.py:290
 msgid "Your blood pressure information has been created/updated."
 msgstr ""
 
-#: apps/riskassessments/views.py:271
+#: apps/riskassessments/views.py:320
 msgid "Your cholesterol information has been created/updated."
 msgstr ""
 
-#: apps/riskassessments/views.py:301
+#: apps/riskassessments/views.py:350
 msgid "Your HbA1c information has been created/updated."
 msgstr ""
 
-#: apps/riskassessments/views.py:332
+#: apps/riskassessments/views.py:381
 msgid "Additonal risk information has been created/updated."
 msgstr ""
 
-#: apps/riskassessments/views.py:340 apps/riskassessments/views.py:344
+#: apps/riskassessments/views.py:389 apps/riskassessments/views.py:393
 #: templates/dashboard/index.html:158 templates/dashboard/index.html.py:162
 msgid "Additional Information"
+msgstr ""
+
+#: millionhearts/settings.py:200 millionhearts/settings.py:202
+msgid ""
+"Reminder from BeHeartSmart.com: Get you blood pressure and cholesterol "
+"screen tomorrow."
+msgstr ""
+
+#: millionhearts/settings.py:203
+msgid ""
+"This is a reminder to get you blood pressure and cholesterol sceen "
+"tomorrow.  Here are the details."
 msgstr ""
 
 #: templates/base.html:7
