@@ -6,15 +6,12 @@
 <div class="hero-unit">
   <img alt="{% trans "Be Heart Smart Logo" %}" src="{{ STATIC_URL }}img/beheartsmart.png">
   
-   <h2> {% trans "Your Appointment is on " %}: </h2>
-   <h3>{{patient.followup_date}}.</h3>
-   <h5>{% trans "Walk-in between 9AM and 8PM." %} </h5>
-  
- <p>
-    <a class="btn btn-primary btn-large" href="/pharmacy/directions/{{origin}}/{{destination}}"  target="_blank">
+   <h2> {% trans "Your Appointment is on " %}: {{patient.followup_date}}</h2>
+   <h5>{% trans "Walk-in between 9AM and 8PM." %} 
+    <a href="/pharmacy/directions/{{origin}}/{{destination}}"  target="_blank">
       {% trans "Get Directions to " %} {{location_name}}
     </a>
-  </p>
+  </h5>
 
   
   <h2>Coupon</h2>
@@ -24,12 +21,11 @@
   
   <h4>{% trans "Blood Pressure and Cholesterol Check for $20." %}</h4>
   
-  <p>
-    <a class="btn btn-primary btn-large" href="/dashboard/{{patient.patient_id}}">
-      {% trans "Continue to Your Risk Assessment" %}
-    </a>
-  </p>
   
+    <a class="btn btn-primary btn-large" href="/accounts/signup/{{patient.patient_id}}">
+      {% trans "Signup for an Account" %}
+    </a><br>
+    <h7><a href="/dashboard/{{patient.patient_id}}" >{% trans "Continue to Your Risk Assessment without Signup" %}</a></h7>
   
 </div>
 
