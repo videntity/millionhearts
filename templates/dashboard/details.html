@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% load i18n %}
+ 
+<div class="hero-unit">
+  
+
+  <h1>{% trans "Details About Your Risk" %}</h1>
+  
+<h5>
+      <table class="table table-hover">
+      
+        <tr>
+          <td>{% trans "Risk" %}</td>
+          <td>{% trans "Value" %}</td>
+         </tr>
+    </h5>
+<h7>
+    
+      <tr>
+        <td>Age Risk</td>
+
+        <td>1-5</td>
+      </tr>
+      
+        <tr>
+        <td>Absolute Risk</td>
+
+        <td>1-5</td>
+      </tr>
+    
+    </h7>
+        <caption>{% trans "Absolute risk is your risk regardless of age, whereas age is the risk compared with others the same age as you." %}</caption>
+    </table>
+
+{% endblock %}

@@ -69,7 +69,10 @@ def patient_dashboard(request, patient_id):
     if risks['ratingForAge']:
         age_risk = risks['ratingForAge']
     
-    print "agerisk is ", age_risk  #,risks
+    #print "agerisk is ", age_risk  , risks
+    
+    if risks["risk"]:
+        age_risk = risks["risk"]
     
     #if not risks['cvdrisk_upper']['rating']:
     #    absolute_risk = risks['rating']
@@ -101,7 +104,6 @@ def patient_dashboard(request, patient_id):
 
 def recommendations(request, patient_id):
     
-    print "here"
     patient = get_latest_object_or_404(ArchimedesRiskAssessment,
                                  patient_id=patient_id)
     
@@ -151,3 +153,13 @@ def recommendations(request, patient_id):
                                 'bmi' : float(bmi),
                                 'progress_percent' : float(calc_progress_percent(patient)),
                                 'height' : patient.height}))
+    
+    
+def details(request, patient_id):
+    
+    patient = get_latest_object_or_404(ArchimedesRiskAssessment,
+                                 patient_id=patient_id)
+    
+    return render_to_response("dashboard/details.html",
+                              RequestContext(request,{'patient':patient,
+                              }))

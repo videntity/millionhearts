@@ -30,44 +30,36 @@
      {% endblock %}
 
 {% block content %}
-
+{% load i18n %}
  
 <div class="hero-unit">
   
 
-  <h1>Your Body Mass Index is {{bmi}}.</h1>
+  <h1>{% trans "Your Body Mass Index is" %} {{bmi}}.</h1>
   
   <div id='bmi_chart_div'></div> 
    <h4>
    
    {% if bmi > 25 %}
-       Consider talking to your health care provider about stategies to lose weight.
+       {% trans "Consider talking to your health care provider about stategies to lose weight." %}
     {% else %}
-       It looks like you are in good shape weight-wise.  Keep it up.
+       {% trans "It looks like you are in good shape weight-wise.  Keep it up." %}
   {% endif %}
   </p>
   </h4>
   
   {%if smoking %}
-  <h1>Quit Smoking.</h1>
+  <h1>{% trans "Quit Smoking.</h1>
 
-    <h4>Consider talking to your health care provider about ways to quit smoking.</h4>
+    <h4>{% trans "Consider talking to your health care provider about ways to quit smoking." %}</h4>
   </p>
   {% endif %}
   
-    
-
 <input class="btn btn-primary btn-large"  TYPE="button" VALUE="Back to the Dashboard" onClick="history.go(-1);return true;">
 
   </p>     
 
-
-
 </div>
-
-
-
-
 
 
 {% endblock %}

@@ -38,13 +38,10 @@ class ValidPasswordResetKey(models.Model):
         super(ValidPasswordResetKey, self).save(**kwargs)
 
 
-CONTACT_CHOICES = ( ('sms','Send a text message to my phone.'),
-                    ('auto-phone','Send me an automated phone remionder'),
+CONTACT_CHOICES = ( ('sms','Send a text message to my mobile phone.'),
                     ('person-phone','Have someone call me.'),
-                    ('sms','Send a text message to my phone.'),
                     ('email','Send me an email.'),
                     ('none','Do not send me a reminder.'),
-                    
                     )
 
 class UserProfile(models.Model):

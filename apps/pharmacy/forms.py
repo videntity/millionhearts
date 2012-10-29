@@ -57,7 +57,7 @@ class FindPharmacyForm(Form):
         
         sresult = SureScriptsPharmacy(result)
         
-        print "sresult=", sresult
+        #print "sresult=", sresult
         
         
         sresult = json.loads(sresult)
@@ -91,7 +91,7 @@ class FindPharmacyForm(Form):
                   'surescripts': sresult}
         
         js = json.dumps(result, indent=4)
-        print js
+        #print js
         
         return result
         

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-05 15:24-0400\n"
+"POT-Creation-Date: 2012-10-29 11:29-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,8 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: apps/accounts/forms.py:13 apps/accounts/forms.py:43
-#: apps/accounts/forms.py:102
+#: apps/accounts/forms.py:13 apps/accounts/forms.py:51
+#: apps/accounts/forms.py:109
 msgid "Email"
 msgstr ""
 
@@ -41,7 +41,7 @@ msgid "Password must be at least %s characters long. Be tricky!"
 msgstr ""
 
 #: apps/accounts/forms.py:35 apps/accounts/forms.py:42
-#: apps/accounts/forms.py:101
+#: apps/accounts/forms.py:102
 msgid "Username"
 msgstr ""
 
@@ -49,19 +49,11 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
-#: apps/accounts/forms.py:44 apps/accounts/forms.py:103
-msgid "First Name"
-msgstr ""
-
-#: apps/accounts/forms.py:45 apps/accounts/forms.py:104
-msgid "Last Name"
-msgstr ""
-
-#: apps/accounts/forms.py:47 apps/accounts/forms.py:109
+#: apps/accounts/forms.py:46 apps/accounts/forms.py:107
 msgid "Mobile Phone Number"
 msgstr ""
 
-#: apps/accounts/forms.py:50 apps/accounts/forms.py:106
+#: apps/accounts/forms.py:49
 msgid "Preferred Contact Method"
 msgstr ""
 
@@ -74,16 +66,16 @@ msgstr ""
 msgid "Password must be at least %s characters long.  Be tricky!"
 msgstr ""
 
-#: apps/accounts/forms.py:72 apps/accounts/forms.py:127
+#: apps/accounts/forms.py:73 apps/accounts/forms.py:126
 msgid "This email address is already registered."
 msgstr ""
 
-#: apps/accounts/forms.py:78 apps/accounts/forms.py:134
+#: apps/accounts/forms.py:81 apps/accounts/forms.py:134
 msgid "This username is already taken."
 msgstr ""
 
-#: apps/accounts/forms.py:111
-msgid "Twitter"
+#: apps/accounts/forms.py:104
+msgid "How do you prefer to be contacted for a follow up?"
 msgstr ""
 
 #: apps/accounts/views.py:28
@@ -106,43 +98,95 @@ msgstr ""
 msgid "Your account has been created and you have been logged in."
 msgstr ""
 
-#: apps/pharmacy/forms.py:19
+#: apps/accounts/views.py:166
+msgid "Account Settings"
+msgstr ""
+
+#: apps/pharmacy/forms.py:33 templates/pharmacy/show.html:12
 msgid "Address"
 msgstr ""
 
-#: apps/pharmacy/forms.py:21
+#: apps/pharmacy/forms.py:35
 msgid "City"
 msgstr ""
 
-#: apps/pharmacy/forms.py:23
+#: apps/pharmacy/forms.py:37
 msgid "State"
 msgstr ""
 
-#: apps/pharmacy/forms.py:25
+#: apps/pharmacy/forms.py:39
 msgid "Zip"
 msgstr ""
 
-#: apps/riskassessments/forms.py:56
+#: apps/pharmacy/views.py:31
+msgid "Coupon"
+msgstr ""
+
+#: apps/pharmacy/views.py:58
+msgid "Please complete the risk assessment before scheduling an appointment."
+msgstr ""
+
+#: apps/pharmacy/views.py:63
+msgid "Commit to Getting Screened."
+msgstr ""
+
+#: apps/pharmacy/views.py:73 apps/riskassessments/views.py:50
+#: apps/riskassessments/views.py:81
+msgid "Awesome!  Thanks for being heart smart."
+msgstr ""
+
+#: apps/pharmacy/views.py:75
+msgid "Remember to signup for a free reminder."
+msgstr ""
+
+#: apps/pharmacy/views.py:111
+msgid ""
+"Find a Participating Location Providing Blood Pressure and Cholesterol "
+"Screens."
+msgstr ""
+
+#: apps/pharmacy/views.py:126
+msgid ""
+"No results were found for you area.                                        "
+"This feature is beta and only provides                                       "
+"results in the state of Minnesota."
+msgstr ""
+
+#: apps/riskassessments/forms.py:50 apps/riskassessments/forms.py:79
+msgid "Age must be between 18 and 130 years."
+msgstr ""
+
+#: apps/riskassessments/forms.py:58 apps/riskassessments/forms.py:87
+msgid "Weight must be between 80 and 600 lbs."
+msgstr ""
+
+#: apps/riskassessments/forms.py:117 apps/riskassessments/forms.py:162
 msgid "Distolic may not exceed Systolic."
 msgstr ""
 
-#: apps/riskassessments/forms.py:64
-msgid "Systolic pressure must be between 80 and 220."
-msgstr ""
-
-#: apps/riskassessments/forms.py:71
-msgid "Distolic pressure must be between 40 and 130."
-msgstr ""
-
-#: apps/riskassessments/forms.py:92
+#: apps/riskassessments/forms.py:123 apps/riskassessments/forms.py:198
 msgid "Total cholesterol cannot exceed the sum of HDL + LDL cholesterol."
 msgstr ""
 
-#: apps/riskassessments/forms.py:98
+#: apps/riskassessments/forms.py:132 apps/riskassessments/forms.py:170
+msgid "Systolic pressure must be between 80 and 220."
+msgstr ""
+
+#: apps/riskassessments/forms.py:139 apps/riskassessments/forms.py:177
+msgid "Distolic pressure must be between 40 and 130."
+msgstr ""
+
+#: apps/riskassessments/forms.py:145 apps/riskassessments/forms.py:204
 msgid "Total cholesterol must be between 70 and 500."
 msgstr ""
 
-#: apps/riskassessments/forms.py:123
+#: apps/riskassessments/forms.py:225
+msgid ""
+"You indicated that you take blood pressure medications, but did not indicate "
+"how many you take each day."
+msgstr ""
+
+#: apps/riskassessments/forms.py:241
 msgid "HbA1c must be between 2 and 16."
 msgstr ""
 
@@ -150,7 +194,7 @@ msgstr ""
 msgid "What is your sex?"
 msgstr ""
 
-#: apps/riskassessments/models.py:45 apps/riskassessments/models.py:167
+#: apps/riskassessments/models.py:45 apps/riskassessments/models.py:169
 msgid "What is your age?"
 msgstr ""
 
@@ -166,7 +210,7 @@ msgstr ""
 msgid "What is your systolic blood pressure?"
 msgstr ""
 
-#: apps/riskassessments/models.py:53 apps/riskassessments/models.py:174
+#: apps/riskassessments/models.py:53 apps/riskassessments/models.py:181
 msgid "Do you smoke?"
 msgstr ""
 
@@ -178,180 +222,438 @@ msgstr ""
 msgid "Is the patient currently taking medication to lower blood pressure?"
 msgstr ""
 
-#: apps/riskassessments/models.py:165
+#: apps/riskassessments/models.py:167
 msgid "Whats is your sex?"
 msgstr ""
 
-#: apps/riskassessments/models.py:169
-msgid "What is your height?"
-msgstr ""
-
-#: apps/riskassessments/models.py:171
-msgid "What is your weight in pounds?"
-msgstr ""
-
-#: apps/riskassessments/models.py:175
-msgid "Answer yes if you have smoked at all in the past 30 days."
-msgstr ""
-
-#: apps/riskassessments/models.py:180
-msgid "Has a doctor ever told you that you have diabetes?"
-msgstr ""
-
-#: apps/riskassessments/models.py:183
-msgid "Has a doctor ever told you that you had a stroke?"
-msgstr ""
-
-#: apps/riskassessments/models.py:186
-msgid ""
-"Has a doctor ever told you that you had a heart attack (sometimes call a "
-"myocardial Infraction or MI)?"
-msgstr ""
-
-#: apps/riskassessments/models.py:190
-msgid "Are you currently taking medication to control your blood pressure?"
-msgstr ""
-
-#: apps/riskassessments/models.py:194
-msgid "What is your Systolic blood pressure (80-220) ?"
-msgstr ""
-
-#: apps/riskassessments/models.py:196
-msgid "What is your Diastolic blood pressure (40-130) ?"
-msgstr ""
-
-#: apps/riskassessments/models.py:199
-msgid "What is your HDL Cholesterol (20-130) ?"
-msgstr ""
-
-#: apps/riskassessments/models.py:201
-msgid "What is your LDL Cholesterol (40 -400) ?"
-msgstr ""
-
-#: apps/riskassessments/models.py:204
-msgid "What is your Total Cholesterol (70-500) ?"
-msgstr ""
-
-#: apps/riskassessments/models.py:207
-msgid "What is your HbA1c (2-16) ?"
-msgstr ""
-
-#: apps/riskassessments/models.py:211
+#: apps/riskassessments/models.py:173
 msgid "Are you currently taking medication to control cholesterol?"
 msgstr ""
 
+#: apps/riskassessments/models.py:176
+msgid "What is your height?"
+msgstr ""
+
+#: apps/riskassessments/models.py:178
+msgid "What is your weight in pounds?"
+msgstr ""
+
+#: apps/riskassessments/models.py:182
+msgid "Answer yes if you have smoked at all in the past 30 days."
+msgstr ""
+
+#: apps/riskassessments/models.py:187
+msgid "Has a doctor ever told you that you have diabetes?"
+msgstr ""
+
+#: apps/riskassessments/models.py:190
+msgid "Has a doctor ever told you that you had a stroke?"
+msgstr ""
+
+#: apps/riskassessments/models.py:193
+msgid "Has a doctor ever told you that you had a heart attack?"
+msgstr ""
+
+#: apps/riskassessments/models.py:194
+msgid "This is sometimes called a Myocardial Infarction or MI."
+msgstr ""
+
+#: apps/riskassessments/models.py:198
+msgid "Are you currently taking medication to control your blood pressure?"
+msgstr ""
+
+#: apps/riskassessments/models.py:202
+msgid "Do you have recent blood pressure and cholesterol numbers available?"
+msgstr ""
+
+#: apps/riskassessments/models.py:206
+msgid "What is your Systolic blood pressure (80-220) ?"
+msgstr ""
+
+#: apps/riskassessments/models.py:208
+msgid "What is your Diastolic blood pressure (40-130) ?"
+msgstr ""
+
+#: apps/riskassessments/models.py:211
+msgid "What is your HDL Cholesterol (20-130) ?"
+msgstr ""
+
+#: apps/riskassessments/models.py:213
+msgid "What is your LDL Cholesterol (40 -400) ?"
+msgstr ""
+
 #: apps/riskassessments/models.py:216
-msgid "Blood Pressure Med Count (0-4)?"
+msgid "What is your Total Cholesterol (70-500) ?"
 msgstr ""
 
 #: apps/riskassessments/models.py:219
-msgid "Do you take aspirin regularly?"
-msgstr ""
-
-#: apps/riskassessments/models.py:221
-msgid "How many hours of moderate exercise do you get per week (0-60)?"
+msgid "What is your HbA1c (2-16) ?"
 msgstr ""
 
 #: apps/riskassessments/models.py:223
-msgid "How many hours of vigorous exercise do you get per week (0-30)?"
+msgid ""
+"If you answered yes to the previous question, how many blood pressure "
+"medications do you take each day?"
 msgstr ""
 
 #: apps/riskassessments/models.py:226
-msgid "Immediate family history of MI before age 55?"
+msgid "Do you take aspirin regularly?"
 msgstr ""
 
-#: apps/riskassessments/views.py:44
+#: apps/riskassessments/models.py:228
+msgid "How many hours of moderate exercise do you get per week (0-60)?"
+msgstr ""
+
+#: apps/riskassessments/models.py:230
+msgid "How many hours of vigorous exercise do you get per week (0-30)?"
+msgstr ""
+
+#: apps/riskassessments/models.py:233
+msgid ""
+"Has anyone in your immediate family had a hear attack before the age 55?"
+msgstr ""
+
+#: apps/riskassessments/models.py:234
+msgid "This is sometimes called a Myocardial Infarction or MI"
+msgstr ""
+
+#: apps/riskassessments/models.py:266
+msgid ""
+"I commit to getting my blood pressure and cholesterol cheked by this date."
+msgstr ""
+
+#: apps/riskassessments/views.py:41 apps/riskassessments/views.py:72
+msgid "Please schedule a day to get you blood pressure and cholesterol"
+msgstr ""
+
+#: apps/riskassessments/views.py:52 apps/riskassessments/views.py:83
+msgid "Create an account to get a free follow up to your phone or email."
+msgstr ""
+
+#: apps/riskassessments/views.py:108
 msgid "Fantastic. You've taken the first step!"
 msgstr ""
 
 #: apps/riskassessments/views.py:117
+msgid "Step 1 - Please provide some basic information."
+msgstr ""
+
+#: apps/riskassessments/views.py:123
+msgid "Step 1 - Please Provide Some Basic Information."
+msgstr ""
+
+#: apps/riskassessments/views.py:130
+msgid "Step 2 - Please Tell Us a Little More."
+msgstr ""
+
+#: apps/riskassessments/views.py:175
+msgid "Step 3 - Provide Your Blood Pressure and Cholesterol Numbers."
+msgstr ""
+
+#: apps/riskassessments/views.py:212
 msgid "Your basic risk assessment information has been updated."
 msgstr ""
 
-#: apps/riskassessments/views.py:147
+#: apps/riskassessments/views.py:241
 msgid "Your blood pressure information has been created/updated."
 msgstr ""
 
-#: apps/riskassessments/views.py:177
+#: apps/riskassessments/views.py:271
 msgid "Your cholesterol information has been created/updated."
 msgstr ""
 
-#: apps/riskassessments/views.py:207
+#: apps/riskassessments/views.py:301
 msgid "Your HbA1c information has been created/updated."
 msgstr ""
 
-#: apps/riskassessments/views.py:238
+#: apps/riskassessments/views.py:332
 msgid "Additonal risk information has been created/updated."
 msgstr ""
 
-#: templates/index.html:6
+#: apps/riskassessments/views.py:340 apps/riskassessments/views.py:344
+#: templates/dashboard/index.html:158 templates/dashboard/index.html.py:162
+msgid "Additional Information"
+msgstr ""
+
+#: templates/base.html:7
 msgid "Be Heart Smart"
 msgstr "Beooo heartooo smartooo"
 
-#: templates/index.html:7
-msgid "Hello. Use this service to learn about your risk for heart disease."
-msgstr "Im in spain"
+#: templates/index.html:6 templates/pharmacy/coupon.html:7
+#, fuzzy
+msgid "Be Heart Smart Logo"
+msgstr "Beooo heartooo smartooo"
 
-#: templates/index.html:10
+#: templates/index.html:7
+msgid ""
+"Welcome to BeHeartSmart.com. Are you at risk for heart disease? We are here "
+"to help you find out your level of risk. When you know your risk you can do "
+"something about it."
+msgstr ""
+
+#: templates/index.html:8
+msgid ""
+"Make a plan to live a longer and healthier life. Do it for family. Do it for "
+"friends. Do it for you! Ready to get started?"
+msgstr ""
+
+#: templates/index.html:11 templates/include/top-nav.html:7
 msgid "Take the Risk Assessment"
 msgstr ""
 
-#: templates/accounts/login.html:7
-msgid "Sign In"
+#: templates/accounts/login.html:7 templates/accounts/login.html.py:21
+#: templates/include/top-nav.html:14
+msgid "Login"
 msgstr ""
 
-#: templates/accounts/login.html:21 templates/accounts/signup.html:21
-#: templates/generic/bootstrapform.html:26
-#: templates/generic/millionhearts-generic-form.html:35
-#: templates/pharmacy/find.html:23
+#: templates/accounts/signup.html:7 templates/include/top-nav.html:17
+msgid "Signup"
+msgstr ""
+
+#: templates/accounts/signup.html:21 templates/generic/bootstrapform.html:24
+#: templates/generic/millionhearts-generic-form.html:34
+#: templates/pharmacy/find.html:24
 msgid "Continue"
 msgstr ""
 
-#: templates/accounts/signup.html:7
-msgid "Signup for a Follow Up"
+#: templates/admin/base_site.html:4
+#, fuzzy
+msgid "BeHeartSmart Site Admin"
+msgstr "Beooo heartooo smartooo"
+
+#: templates/admin/base_site.html:7
+msgid "BeHeartSmart Administration"
 msgstr ""
 
-#: templates/generic/bootstrapform.html:7
-msgid "Risk Assessment"
+#: templates/dashboard/details.html:10
+msgid "Details About Your Risk"
 msgstr ""
 
-#: templates/generic/bootstrapform.html:15
-#: templates/generic/millionhearts-generic-form.html:15
-msgid "Fields marked wth an asterisk (*) are required."
+#: templates/dashboard/details.html:16
+msgid "Risk"
 msgstr ""
 
-#: templates/generic/bootstrapform.html:25
-#: templates/generic/millionhearts-generic-form.html:34
-msgid "Disclaimer."
+#: templates/dashboard/details.html:17
+msgid "Value"
+msgstr ""
+
+#: templates/dashboard/details.html:35
+msgid ""
+"Absolute risk is your risk regardless of age, whereas age is the risk "
+"compared with others the same age as you."
+msgstr ""
+
+#: templates/dashboard/index.html:69
+msgid "The lowest risk category is 1 and the highest is 5."
+msgstr ""
+
+#: templates/dashboard/index.html:71
+msgid "At"
+msgstr ""
+
+#: templates/dashboard/index.html:71
+msgid ""
+"you are at elevated risk. We encourage you to seek out a medical "
+"professional for an assessment."
+msgstr ""
+
+#: templates/dashboard/index.html:74
+msgid "You have a"
+msgstr ""
+
+#: templates/dashboard/index.html:74
+msgid "chance of having heart disease in the next 10 years."
+msgstr ""
+
+#: templates/dashboard/index.html:82
+msgid ""
+"Since you have not yet provided us with your blood pressure and cholesterol "
+"numbers, your actual risk could be anywhere between"
+msgstr ""
+
+#: templates/dashboard/index.html:85
+msgid "Complete these sections for a more exact risk assessment."
+msgstr ""
+
+#: templates/dashboard/index.html:90
+msgid ""
+"Although the blood pressure and cholesterol numbers are the most important, "
+"please complete all of the information below by clicking on the yellow "
+"buttons below."
+msgstr ""
+
+#: templates/dashboard/index.html:92
+msgid "If you need your blood pressure and cholesterol checked we can"
+msgstr ""
+
+#: templates/dashboard/index.html:92
+msgid "help you find it at a participating nearby pharmacy."
+msgstr ""
+
+#: templates/dashboard/index.html:98
+msgid "Signup an account so you can retrieve your information later."
+msgstr ""
+
+#: templates/dashboard/index.html:106 templates/dashboard/index.html.py:110
+msgid "Basic Information"
+msgstr ""
+
+#: templates/dashboard/index.html:118 templates/dashboard/index.html.py:124
+msgid "Blood Pressure"
+msgstr ""
+
+#: templates/dashboard/index.html:131 templates/dashboard/index.html.py:135
+msgid "Cholesterol"
+msgstr ""
+
+#: templates/dashboard/index.html:145 templates/dashboard/index.html.py:149
+msgid "Diabetes"
+msgstr ""
+
+#: templates/dashboard/index.html:170
+msgid "Signup for an Account"
+msgstr ""
+
+#: templates/dashboard/index.html:174 templates/include/top-nav.html:11
+msgid "Account"
+msgstr ""
+
+#: templates/dashboard/index.html:181
+msgid "We have some recommendations for you."
+msgstr ""
+
+#: templates/dashboard/index.html:186
+msgid "You are "
+msgstr ""
+
+#: templates/dashboard/index.html:186
+msgid "complete."
+msgstr ""
+
+#: templates/dashboard/index.html:193
+msgid "You still need to complete the following:"
+msgstr ""
+
+#: templates/dashboard/index.html:196
+msgid "Blood Pressure, "
+msgstr ""
+
+#: templates/dashboard/index.html:200
+msgid "Cholesterol, "
+msgstr ""
+
+#: templates/dashboard/index.html:204
+msgid "Additional Information, "
+msgstr ""
+
+#: templates/dashboard/index.html:208
+msgid "Signup for an Account "
+msgstr ""
+
+#: templates/dashboard/recommendations.html:38
+msgid "Your Body Mass Index is"
+msgstr ""
+
+#: templates/dashboard/recommendations.html:44
+msgid ""
+"Consider talking to your health care provider about stategies to lose weight."
+msgstr ""
+
+#: templates/dashboard/recommendations.html:46
+msgid "It looks like you are in good shape weight-wise.  Keep it up."
+msgstr ""
+
+#: templates/dashboard/recommendations.html:54
+msgid ""
+"Consider talking to your health care provider about ways to quit smoking."
 msgstr ""
 
 #: templates/generic/millionhearts-generic-form.html:7
-#: templates/include/top-nav.html:7
 msgid "Take the Survey"
+msgstr ""
+
+#: templates/generic/millionhearts-generic-form.html:15
+msgid "Fields marked wth an asterisk (*) are required."
 msgstr ""
 
 #: templates/include/top-nav.html:4
 msgid "Home"
 msgstr ""
 
-#: templates/include/top-nav.html:9 templates/pharmacy/find.html:7
-msgid "Find a Pharmacy"
-msgstr ""
-
-#: templates/include/top-nav.html:11
-msgid "Account"
+#: templates/include/top-nav.html:9
+msgid "Find a Screening Location"
 msgstr ""
 
 #: templates/include/top-nav.html:12
 msgid "Logout"
 msgstr ""
 
-#: templates/include/top-nav.html:15
-msgid "Login"
+#: templates/pharmacy/coupon.html:9
+msgid "Your Appointment is on "
 msgstr ""
 
-#: templates/include/top-nav.html:18
-msgid "Español"
+#: templates/pharmacy/coupon.html:11
+msgid "Walk-in between 9AM and 8PM."
+msgstr ""
+
+#: templates/pharmacy/coupon.html:15
+msgid "Get Directions to "
+msgstr ""
+
+#: templates/pharmacy/coupon.html:25
+msgid "Blood Pressure and Cholesterol Check for $20."
+msgstr ""
+
+#: templates/pharmacy/coupon.html:29
+msgid "Continue to Your Risk Assessment"
+msgstr ""
+
+#: templates/pharmacy/find.html:7
+msgid "Find a Heart Screen Location"
+msgstr ""
+
+#: templates/pharmacy/find.html:8
+msgid "Enter your home addess or your current location."
+msgstr ""
+
+#: templates/pharmacy/show.html:6
+msgid "Locations Near You"
+msgstr ""
+
+#: templates/pharmacy/show.html:11
+msgid "Distance"
+msgstr ""
+
+#: templates/pharmacy/show.html:13
+msgid "Schedule"
+msgstr ""
+
+#: templates/pharmacy/show.html:31
+msgid "Plan a Heart Risk Screen"
+msgstr ""
+
+#: templates/pharmacy/show.html:35
+msgid ""
+"These locations offer cholesterol and blood pressure screens. Many offer a "
+"coupon when you schedule online."
+msgstr ""
+
+#: templates/riskassessments/dashboard-or-pharmacy.html:6
+msgid "Thanks for completing the initial assessment."
+msgstr ""
+
+#: templates/riskassessments/dashboard-or-pharmacy.html:7
+msgid ""
+"Would you like us to help you find a location that offers blood pressure and "
+"cholesterol screens?"
+msgstr ""
+
+#: templates/riskassessments/dashboard-or-pharmacy.html:11
+msgid "Yes. Help Me Find a Heart Risk Screen Location"
+msgstr ""
+
+#: templates/riskassessments/dashboard-or-pharmacy.html:14
+msgid "No Thanks. Show Me My Risk Now"
 msgstr ""
 
 #: templates/riskassessments/step3.html:6
@@ -365,3 +667,6 @@ msgstr ""
 #: templates/riskassessments/step3.html:12
 msgid "No. Help me get it"
 msgstr ""
+
+#~ msgid "Hello. Use this service to learn about your risk for heart disease."
+#~ msgstr "Im in spain"

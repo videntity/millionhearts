@@ -58,7 +58,7 @@
 
 {% block content %}
 
- 
+ {% load i18n %}
 <div class="hero-unit">
   
 
@@ -66,47 +66,48 @@
   
   <div id='risk_chart_div'></div>
   
-  <h4>The lowest risk category is 1 and the highest is 5.
+  <h4>{% trans "The lowest risk category is 1 and the highest is 5." %}
   {% if age_risk > 2 %}
-     At {{ age_risk }}, you are at elevated risk. We encourage you to seek out a medical professional for an assessment.
+    {% trans "At" %} {{ age_risk }} {% trans "you are at elevated risk. We encourage you to seek out a medical professional for an assessment." %}
   {% endif%}
   {% if patient.framingham_risk %}
-    You have a {{ patient.framingham_risk }} chance of having heart disease in the next 10 years.
+    {% trans "You have a" %} {{ patient.framingham_risk }} {% trans "chance of having heart disease in the next 10 years." %} 
   {% endif %}
-
+  </h4>
   {% if not patient.blood_pressure_complete %}
       {% if not patient.cholesterol_complete %}
            {% if cvdrisk_upper_age %}
                {% if cvdrisk_lower_age %}
-                  Since you have not yet provided us with your blood pressure and cholesterol numbers, your actual risk could be
-                  anywhere between {{cvdrisk_lower_age}} - {{cvdrisk_upper_age}}.
-                  Complete these sections for a more exact risk assessment.
-
+                  <h4>
+                  {% trans "Since you have not yet provided us with your blood pressure and cholesterol numbers, your actual risk could be anywhere between" %}
+                  
+                  {{cvdrisk_lower_age}} - {{cvdrisk_upper_age}}.
+                  {% trans "Complete these sections for a more exact risk assessment." %}
+                  </h4>
                {% endif %}
            {% endif %}
-      
-           Although the blood pressure and cholesterol numbers are the most important, please complete all of the information below.
+           <h4>
+           {% trans "Although the blood pressure and cholesterol numbers are the most important, please complete all of the information below by clicking on the yellow buttons below." %}
            
-    If you need your blood pressure and cholesterol checked we can <a HREF="/pharmacy/find/{{patient.patient_id}}">help you find it at a participating nearby pharmacy.</a>
+    {% trans "If you need your blood pressure and cholesterol checked we can" %} <a HREF="/pharmacy/find/{{patient.patient_id}}">{% trans "help you find it at a participating nearby pharmacy." %}</a>
       {% endif %}
   {% endif %}
  
   
   {% if not user.is_authenticated %}
-  You can <a HREF="/accounts/signup/{{patient.patient_id}}">create an account so you can retrieve your information later.</a> 
+  <h4><a HREF="/accounts/signup/{{patient.patient_id}}">{% trans "Signup an account so you can retrieve your information later." %}</a> 
   {% endif %}
-  Click on each of the yellow buttons below to complete the all sections risk assessment.  
   </h4>
 
 <p>
     
    {% if patient.basic_info_complete %}
            <a class="btn btn-success btn-large btn-block" href="/risk-assessments/basic-info/{{patient.patient_id}}" alt="Green-Complete">
-      Basic Information
+      {% trans "Basic Information" %} 
     </a>
     {% else %}
     <a class="btn btn-warning btn-large btn-block" href="/risk-assessments/basic-info/{{patient.patient_id}}" alt="Yellow-Incomplete">
-      Basic Information
+      {% trans "Basic Information" %} 
     </a>
     {% endif %}
   
@@ -114,24 +115,24 @@
   
     {% if patient.blood_pressure_complete %}
        <a class="btn btn-success btn-large btn-block" href="/risk-assessments/blood-pressure/{{patient.patient_id}}">
-      Blood Pressure
+      {% trans "Blood Pressure" %} 
     </a>
        
     {% else %}
     
     <a class="btn btn-warning btn-large btn-block" href="/risk-assessments/blood-pressure/{{patient.patient_id}}">
-      Blood Pressure
+      {% trans "Blood Pressure" %} 
     </a>
     
     {% endif %}
     
     {% if patient.cholesterol_complete %}
        <a class="btn btn-success btn-large btn-block" href="/risk-assessments/cholesterol/{{patient.patient_id}}">
-           Cholesterol
+           {% trans "Cholesterol" %} 
         </a>
     {% else %}
     <a class="btn btn-warning btn-large btn-block" href="/risk-assessments/cholesterol/{{patient.patient_id}}">
-           Cholesterol
+           {% trans "Cholesterol" %} 
         </a>  
     {% endif %}
 
@@ -141,11 +142,11 @@
     
     {% if patient.diabetes_complete %}
       <a class="btn btn-success btn-large btn-block" href="/risk-assessments/diabetes/{{patient.patient_id}}">
-      Diabetes
+      {% trans "Diabetes" %} 
     </a>
       {% else %}
        <a class="btn btn-warning btn-large btn-block" href="/risk-assessments/diabetes/{{patient.patient_id}}">
-      Diabetes
+      {% trans "Diabetes" %} 
     </a>
     {% endif %}    
     
@@ -154,11 +155,11 @@
     
     {% if patient.more_complete %}
        <a class="btn btn-success btn-large btn-block" href="/risk-assessments/more/{{patient.patient_id}}">
-    Additional Information
+    {% trans "Additional Information" %} 
     </a>
       {% else %} 
         <a class="btn btn-warning btn-large btn-block" href="/risk-assessments/more/{{patient.patient_id}}">
-    Additional Information
+    {% trans "Additional Information" %} 
     </a>
     {% endif %}
   
@@ -166,45 +167,45 @@
     {% if not user.is_authenticated %}
     
        <a class="btn btn-warning btn-large btn-block" HREF="/accounts/signup/{{patient.patient_id}}">
-           Create Account
+           {% trans "Signup for an Account" %} 
         </a>
     {% else %}
     <a class="btn btn-success btn-large btn-block" href="/accounts/account/">
-           Account
+           {% trans "Account" %} 
         </a>  
     {% endif %}
     
     
   </p>
 
-  <h4>We have some <a href="/dashboard/recommendations/{{patient.patient_id}}">recommendations for you.</a></h4>
+  <h4><a href="/dashboard/recommendations/{{patient.patient_id}}">{% trans "We have some recommendations for you." %} </a></h4>
     
 
 
 <p>
-<h2>You are {{ progress_percent }}% complete.</h2>
+<h2>{% trans "You are " %} {{ progress_percent }}% {% trans "complete." %}</h2>
 <div class="progress progress-info progress-striped">
 <div class="bar" style="width: {{ progress_percent }}%"></div>
 </div>
 
 
 {% if progress_percent != 100 %}
-<h4>You still need to complete the following:
+<h4>{% trans "You still need to complete the following:" %}
 
 {% if not patient.blood_pressure_complete %}
- <a href="/risk-assessments/blood-pressure/{{patient.patient_id}}">Blood Pressure, </a>
+ <a href="/risk-assessments/blood-pressure/{{patient.patient_id}}">{% trans "Blood Pressure, " %}</a>
 {% endif %}
 
 {% if not patient.cholesterol_complete %}
-    <a href="/risk-assessments/blood-pressure/{{patient.patient_id}}">Cholesterol, </a>
+    <a href="/risk-assessments/blood-pressure/{{patient.patient_id}}">{% trans "Cholesterol, " %}</a>
 {% endif %}
 
 {% if not patient.more_complete %}
-    <a href="/risk-assessments/more/{{patient.patient_id}}">Additional Information, </a>
+    <a href="/risk-assessments/more/{{patient.patient_id}}">{% trans "Additional Information, " %}</a>
 {% endif %}
 
 {% if not user.is_authenticated %}
-    <a href="/accounts/signup/{{patient.patient_id}}">Create Account </a>
+    <a href="/accounts/signup/{{patient.patient_id}}">{% trans "Signup for an Account " %}</a>
 {% endif %}
 
 </h4>

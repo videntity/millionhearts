@@ -7,6 +7,9 @@ from views import *
 urlpatterns = patterns('',
     url(r'recommendations/(?P<patient_id>\S+)$', recommendations,
         name='recommendations'),
+    
+    url(r'details/(?P<patient_id>\S+)$', details,
+        name='details'),
 
     url(r'(?P<patient_id>\S+)$', patient_dashboard,
         name='patient_dashboard'),

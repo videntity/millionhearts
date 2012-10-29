@@ -21,11 +21,6 @@ import qrencode
 
 
 def qrcode(request, patient_id):
-    
-    
-    #jr=json.loads("HELLO-WORLD")
-    #if jr['status'] != 200:
-    #    return json_response
     qrinfo = "https://beheartsmart.com/dashboard/%s" % (patient_id)
     response = HttpResponse(mimetype="image/png")
     image = qrencode.encode_scaled( qrinfo, 400)
@@ -60,12 +55,12 @@ def coupon(request, origin, destination, patient_id):
                               context_instance = RequestContext(request))
     
 def schedule_no_risk_assessment(request, origin, destination):
-    messages.info(request, _("Please complete the risk assessment before scheduling scheduling an appointment."))
+    messages.info(request, _("Please complete the risk assessment before scheduling an appointment."))
     return HttpResponseRedirect(reverse('archimedes_hello',))
 
 def schedule(request, origin, destination, patient_id):
     
-    name = _('Schedule a day to get your heart disease screen.')
+    name = _('Commit to Getting Screened.')
         
     patient = get_latest_object_or_404(ArchimedesRiskAssessment,
                                        patient_id=patient_id)
@@ -83,7 +78,6 @@ def schedule(request, origin, destination, patient_id):
                                                 args=(origin, destination,
                                                       patient.patient_id,)))
         else:
-            
             print form.errors
             return render_to_response("generic/bootstrapform.html",
                               RequestContext(request,
@@ -114,7 +108,7 @@ def directions(request, origin=None, destination=None):
 
 
 def find_pharmacy(request, patient_id=None):
-    name =  _("Find a Participating Pharmacy that Provides Blood Pressure and Cholesterol Screens.")
+    name =  _("Find a Participating Location Providing Blood Pressure and Cholesterol Screens.")
     if patient_id:
         patient = get_latest_object_or_404(ArchimedesRiskAssessment,
                                        patient_id=patient_id)
@@ -131,9 +125,7 @@ def find_pharmacy(request, patient_id=None):
             if not result['surescripts']['providers']:
                 messages.error(request, _("No results were found for you area.  \
                                       This feature is beta and only provides \
-                                      results in the state of Ministoa."))
-            
-            
+                                      results in the state of Minnesota."))
             
             return render_to_response("pharmacy/show.html",
                               RequestContext(request,
@@ -146,7 +138,6 @@ def find_pharmacy(request, patient_id=None):
                                              {'form': form,
                                               'name':name,
                                               'patient':patient,}))
-
     
     #Just a GET Display and unbound form
     return render_to_response("pharmacy/find.html",
