@@ -165,7 +165,7 @@ class ArchimedesRiskAssessment(models.Model):
         
     #Required assessment question fields ---------------------------------
     sex         = models.CharField(choices=GENDER_CHOICES, max_length=6,
-                    verbose_name=_('Whats is your sex?'))
+                    verbose_name=_('What is your sex?'))
     age         = models.IntegerField(max_length=3, #choices = AGE_CHOICES,
                     verbose_name = _("What is your age?"))
     
