@@ -154,6 +154,7 @@ BLOOD_PRES_MEDS_CHOICES = (("0","0"),("1","1"),("2","2"),("3","3"),("4","4"),)
 def three_days_from_today():
     return datetime.date.today() + timedelta(days=4)
 
+
 class ArchimedesRiskAssessment(models.Model):
     
     #Control fields
@@ -264,6 +265,11 @@ class ArchimedesRiskAssessment(models.Model):
     #Follow Up -----------------------------------------------------------
     followup_date           = models.DateField(default=three_days_from_today,
                                 verbose_name = _("I commit to getting my blood pressure and cholesterol checked by this date."))
+    
+    
+    language_code = models.CharField(max_length=4, blank=True, default="")
+    client_ip     = models.CharField(max_length=32, blank=True, default="")
+    
     
     class Meta:
         unique_together = (("patient_id", "creation_date"),)

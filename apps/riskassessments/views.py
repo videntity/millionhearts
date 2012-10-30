@@ -153,7 +153,11 @@ def archimedes_hello(request):
         form =  ArchimedesRequiredForm(request.POST)
         
         if form.is_valid():  
-            patient = form.save()
+            patient = form.save(commit = False)
+            patient.client_ip         = request.META.get('REMOTE_ADDR')
+            patient.language_code     = request.LANGUAGE_CODE
+            patient.save()
+            
             messages.success(request, _("Fantastic. You've taken the first step!"))
             
             return HttpResponseRedirect(reverse('archimedes_step2',
