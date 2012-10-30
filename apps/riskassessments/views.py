@@ -281,7 +281,7 @@ def archimedes_basic_info(request, patient_id):
 
 
 def archimedes_blood_pressure(request, patient_id):
-
+    name = _("Enter Your Cholesterol Information.")
     
     patient = get_latest_object_or_404(ArchimedesRiskAssessment,
                                        patient_id=patient_id)
@@ -298,12 +298,12 @@ def archimedes_blood_pressure(request, patient_id):
         else:
             return render_to_response("generic/bootstrapform.html",
                               RequestContext(request,
-                                             {'form': form,}))
+                                             { 'name': name,
+                                                'form': form,}))
     
     #Just a GET Display a bound form
     return render_to_response("generic/bootstrapform.html",
-                             {'name': "Tell us some basic information",
-                              'submit_button_text': "Go On",
+                             {'name': name,
                               'form': ArchimedesBloodPressureForm(instance=patient),},
                               context_instance = RequestContext(request))
 
@@ -311,7 +311,7 @@ def archimedes_blood_pressure(request, patient_id):
 
 
 def archimedes_cholesterol(request, patient_id):
-
+    name = _("Enter Your Cholesterol Information")
     
     patient = get_latest_object_or_404(ArchimedesRiskAssessment,
                                        patient_id=patient_id)
@@ -328,20 +328,20 @@ def archimedes_cholesterol(request, patient_id):
         else:            
             return render_to_response("generic/bootstrapform.html",
                               RequestContext(request,
-                                             {'form': form,}))
+                                             {'form': form,
+                                              'name': name,}))
     
     
     #Just a GET Display a bound form
     return render_to_response("generic/bootstrapform.html",
-                        {'name': "Tell us some basic information",
-                        'submit_button_text': "Go On",
+                        {'name': name,
                         'form': ArchimedesCholesterolForm(instance=patient),},
                               context_instance = RequestContext(request))
 
 
 
 def archimedes_diabetes(request, patient_id):
-
+    name = _("Enter Your Diabetes Information")
     
     patient = get_latest_object_or_404(ArchimedesRiskAssessment,
                                        patient_id=patient_id)
@@ -358,13 +358,13 @@ def archimedes_diabetes(request, patient_id):
         else:            
             return render_to_response("generic/bootstrapform.html",
                               RequestContext(request,
-                                             {'form': form,}))
+                                             {'form': form,
+                                              "name": name}))
     
     
     #Just a GET Display a bound form
     return render_to_response("generic/bootstrapform.html",
-                        {'name': "Tell us some basic information",
-                        'submit_button_text': "Go On",
+                        {'name': name,
                         'form': ArchimedesDiabetesForm(instance=patient),},
                               context_instance = RequestContext(request))
 
