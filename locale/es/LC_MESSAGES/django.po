@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-30 10:26-0400\n"
+"POT-Creation-Date: 2012-10-30 14:18-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -239,11 +239,11 @@ msgstr ""
 msgid "HbA1c must be between 2 and 16."
 msgstr "HbA1c debe ser entre 2 y 16."
 
-#: apps/riskassessments/models.py:43
+#: apps/riskassessments/models.py:43 apps/riskassessments/models.py:168
 msgid "What is your sex?"
 msgstr "Cuál es su sexo?"
 
-#: apps/riskassessments/models.py:45 apps/riskassessments/models.py:169
+#: apps/riskassessments/models.py:45 apps/riskassessments/models.py:170
 msgid "What is your age?"
 msgstr "Cuál es su edad?"
 
@@ -259,7 +259,7 @@ msgstr "Cuál es su nivel de colesterol HDL?"
 msgid "What is your systolic blood pressure?"
 msgstr "Cuál es su presión arterial sistólica?"
 
-#: apps/riskassessments/models.py:53 apps/riskassessments/models.py:181
+#: apps/riskassessments/models.py:53 apps/riskassessments/models.py:182
 msgid "Do you smoke?"
 msgstr "Usted Fuma?"
 
@@ -272,75 +272,71 @@ msgstr "Responda SÍ, si usted ha fumado todo en los últimos 30 días"
 msgid "Is the patient currently taking medication to lower blood pressure?"
 msgstr "Está el paciente tomando medicamentos para bajar la presión arterial?"
 
-#: apps/riskassessments/models.py:167
-msgid "Whats is your sex?"
-msgstr "Cuál es su sexo?"
-
-#: apps/riskassessments/models.py:173
+#: apps/riskassessments/models.py:174
 msgid "Are you currently taking medication to control cholesterol?"
 msgstr "Está tomando medicamentos para controlar el colesterol?"
 
-#: apps/riskassessments/models.py:176
+#: apps/riskassessments/models.py:177
 msgid "What is your height?"
 msgstr "Cuál es su estatura?"
 
-#: apps/riskassessments/models.py:178
+#: apps/riskassessments/models.py:179
 msgid "What is your weight in pounds?"
 msgstr "Cuál es su peso en libras?"
 
-#: apps/riskassessments/models.py:182
+#: apps/riskassessments/models.py:183
 msgid "Answer yes if you have smoked at all in the past 30 days."
 msgstr "Responder sí, si ha fumado en los últimos 30 días"
 
-#: apps/riskassessments/models.py:187
+#: apps/riskassessments/models.py:188
 msgid "Has a doctor ever told you that you have diabetes?"
 msgstr "Alguna vez un médico le ha dicho que tiene diabetes?"
 
-#: apps/riskassessments/models.py:190
+#: apps/riskassessments/models.py:191
 msgid "Has a doctor ever told you that you had a stroke?"
 msgstr "Alguna vez un médico le dijo que usted tenía un derrame cerebral?"
 
-#: apps/riskassessments/models.py:193
+#: apps/riskassessments/models.py:194
 msgid "Has a doctor ever told you that you had a heart attack?"
 msgstr "Alguna vez un médico le dijo que usted ha tenido un ataque al corazón?"
 
-#: apps/riskassessments/models.py:194
+#: apps/riskassessments/models.py:195
 msgid "This is sometimes called a Myocardial Infarction or MI."
 msgstr "Esto a veces se llama un infarto de miocardio o IM"
 
-#: apps/riskassessments/models.py:198
+#: apps/riskassessments/models.py:199
 msgid "Are you currently taking medication to control your blood pressure?"
 msgstr "Está tomando medicamentos para controlar su presión arterial?"
 
-#: apps/riskassessments/models.py:202
+#: apps/riskassessments/models.py:203
 msgid "Do you have recent blood pressure and cholesterol numbers available?"
 msgstr "Tiene la presión arterial y colesterol reciente disponible?"
 
-#: apps/riskassessments/models.py:206
+#: apps/riskassessments/models.py:207
 msgid "What is your Systolic blood pressure (80-220) ?"
 msgstr "Cuál es su presión arterial sistólica (80-220) ?"
 
-#: apps/riskassessments/models.py:208
+#: apps/riskassessments/models.py:209
 msgid "What is your Diastolic blood pressure (40-130) ?"
 msgstr "Cuál es su presión arterial diastólica (40-130) ?"
 
-#: apps/riskassessments/models.py:211
+#: apps/riskassessments/models.py:212
 msgid "What is your HDL Cholesterol (20-130) ?"
 msgstr "Cuál es su colesterol HDL (20-130)?"
 
-#: apps/riskassessments/models.py:213
+#: apps/riskassessments/models.py:214
 msgid "What is your LDL Cholesterol (40 -400) ?"
 msgstr "Cuál es su nivel de colesterol LDL (40 -400) ?"
 
-#: apps/riskassessments/models.py:216
+#: apps/riskassessments/models.py:217
 msgid "What is your Total Cholesterol (70-500) ?"
 msgstr "Cuál es su colesterol total (70-500) ?"
 
-#: apps/riskassessments/models.py:219
+#: apps/riskassessments/models.py:220
 msgid "What is your HbA1c (2-16) ?"
 msgstr "Cuál es su HbA1c (2-16) ?"
 
-#: apps/riskassessments/models.py:223
+#: apps/riskassessments/models.py:224
 msgid ""
 "If you answered yes to the previous question, how many blood pressure "
 "medications do you take each day?"
@@ -348,30 +344,30 @@ msgstr ""
 "Si usted contestó sí a la pregunta anterior,cuántos medicamentos de presión "
 "arterial toma cada día?"
 
-#: apps/riskassessments/models.py:226
+#: apps/riskassessments/models.py:227
 msgid "Do you take aspirin regularly?"
 msgstr "Toma aspirina regularmente?"
 
-#: apps/riskassessments/models.py:228
+#: apps/riskassessments/models.py:229
 msgid "How many hours of moderate exercise do you get per week (0-60)?"
 msgstr "Cuántas horas de ejercicio moderado haces por semana (0-60)"
 
-#: apps/riskassessments/models.py:230
+#: apps/riskassessments/models.py:231
 msgid "How many hours of vigorous exercise do you get per week (0-30)?"
 msgstr "Cuántas horas de ejercicio vigoroso haces por semana (0-30)?"
 
-#: apps/riskassessments/models.py:233
+#: apps/riskassessments/models.py:234
 msgid ""
 "Has anyone in your immediate family had a hear attack before the age 55?"
 msgstr ""
 "Algún miembro de su familia inmediata ha tenido un ataque del corazón antes "
 "de los 55 años de edad?"
 
-#: apps/riskassessments/models.py:234
+#: apps/riskassessments/models.py:235
 msgid "This is sometimes called a Myocardial Infarction or MI"
 msgstr "Esto a veces se llama un infarto de miocardio o IM"
 
-#: apps/riskassessments/models.py:266
+#: apps/riskassessments/models.py:267
 msgid ""
 "I commit to getting my blood pressure and cholesterol checked by this date."
 msgstr ""
@@ -388,48 +384,48 @@ msgid "Create an account to get a free follow up to your phone or email."
 msgstr ""
 "Cree una cuenta para obtener un libre seguimiento a su teléfono o email."
 
-#: apps/riskassessments/views.py:157
+#: apps/riskassessments/views.py:161
 msgid "Fantastic. You've taken the first step!"
 msgstr "Fantástico. Usted ha dado el primer paso!"
 
-#: apps/riskassessments/views.py:166
+#: apps/riskassessments/views.py:170
 msgid "Step 1 - Please provide some basic information."
 msgstr "Paso 1 - Por favor proporcione algunos datos básicos."
 
-#: apps/riskassessments/views.py:172
+#: apps/riskassessments/views.py:176
 msgid "Step 1 - Please Provide Some Basic Information."
 msgstr "Paso 1 - Por favor proporcione algunos datos básicos."
 
-#: apps/riskassessments/views.py:179
+#: apps/riskassessments/views.py:183
 msgid "Step 2 - Please Tell Us a Little More."
 msgstr "Paso 2 - Por favor, cuéntanos un poco más."
 
-#: apps/riskassessments/views.py:224
+#: apps/riskassessments/views.py:228
 msgid "Step 3 - Provide Your Blood Pressure and Cholesterol Numbers."
 msgstr "Paso 3 - Proporcione su presión arterial y niveles de colesterol"
 
-#: apps/riskassessments/views.py:261
+#: apps/riskassessments/views.py:265
 msgid "Your basic risk assessment information has been updated."
 msgstr "Tu información básica de evaluación de riesgos ha sido actualizada"
 
-#: apps/riskassessments/views.py:290
+#: apps/riskassessments/views.py:294
 msgid "Your blood pressure information has been created/updated."
 msgstr "La información de su presión arterial se ha creado / modificado"
 
-#: apps/riskassessments/views.py:320
+#: apps/riskassessments/views.py:324
 msgid "Your cholesterol information has been created/updated."
 msgstr "La información de su colesterol se ha creado / modificado"
 
-#: apps/riskassessments/views.py:350
+#: apps/riskassessments/views.py:354
 msgid "Your HbA1c information has been created/updated."
 msgstr "Su información HbA1c se ha creado / modificado"
 
-#: apps/riskassessments/views.py:381
+#: apps/riskassessments/views.py:385
 #, fuzzy
 msgid "Additonal risk information has been created/updated."
 msgstr "Información sobre el riesgo adicional se ha creado / modificado"
 
-#: apps/riskassessments/views.py:389 apps/riskassessments/views.py:393
+#: apps/riskassessments/views.py:393 apps/riskassessments/views.py:397
 #: templates/dashboard/index.html:158 templates/dashboard/index.html.py:162
 msgid "Additional Information"
 msgstr "Información adicional"
@@ -462,44 +458,51 @@ msgid "Be Heart Smart Logo"
 msgstr "sea inteligente acerca de su corazón"
 
 #: templates/index.html:7
+msgid "Welcome to BeHeartSmart.com."
+msgstr "Bienvenidos a BeHeartSmart.com."
+
+#: templates/index.html:8
+#, fuzzy
 msgid ""
-"Welcome to BeHeartSmart.com. Are you at risk for heart disease? We are here "
-"to help you find out your level of risk. When you know your risk you can do "
-"something about it."
+"Are you at risk for heart disease? We're here to help you discover your "
+"level of risk. Know your risk, do something about it!"
 msgstr ""
 "Bienvenido a BeHeartSmart.com. Está usted en riesgo de enfermedades del "
 "corazón? Estamos aquí para ayudarle a encontrar su nivel de riesgo. Cuando "
 "se conoce el riesgo usted puede hacer algo al respecto."
 
-#: templates/index.html:8
+#: templates/index.html:9
+#, fuzzy
 msgid ""
 "Make a plan to live a longer and healthier life. Do it for family. Do it for "
-"friends. Do it for you! Ready to get started?"
+"friends. Do it for you."
 msgstr ""
 "Haga un plan para vivir una vida más larga y saludable.Hágalo por su "
 "familia. Hazlo por amigos. Hazlo por ti! Listo para comenzar?"
 
-#: templates/index.html:11 templates/include/top-nav.html:7
+#: templates/index.html:10
+msgid "Let's get started..."
+msgstr "Vamos..."
+
+#: templates/index.html:13 templates/include/top-nav.html:7
 msgid "Take the Risk Assessment"
 msgstr "Tome la Evaluación de Riesgos"
 
-#: templates/index.html:14
+#: templates/index.html:16
 msgid ""
 "DISCLAIMER: This product and the risk assessment scores it produces have not "
 "been evaluated by the Food and Drug Administration. This product is not "
 "intended to diagnose, treat, cure, or prevent any disease."
 msgstr ""
 "Exención de responsabilidad: Este producto y la evaluación del riesgo las "
-"puntuaciones que produce no han sido evaluadas por la Food and Drug Administration."
-"Este producto no tiene la intención de diagnosticar, tratar, curar o prevenir"
-"ninguna enfermedad."
-
-
+"puntuaciones que produce no han sido evaluadas por la Food and Drug "
+"Administration.Este producto no tiene la intención de diagnosticar, tratar, "
+"curar o prevenirninguna enfermedad."
 
 #: templates/accounts/login.html:7 templates/accounts/login.html.py:21
 #: templates/include/top-nav.html:14
 msgid "Login"
-msgstr "iniciar sesión"
+msgstr "Iniciar Sesión"
 
 #: templates/accounts/signup.html:7 templates/include/top-nav.html:17
 msgid "Signup"
@@ -509,12 +512,12 @@ msgstr "Regístrese"
 #: templates/generic/millionhearts-generic-form.html:34
 #: templates/pharmacy/find.html:24
 msgid "Continue"
-msgstr "continuar"
+msgstr "Continuar"
 
 #: templates/admin/base_site.html:4
 #, fuzzy
 msgid "BeHeartSmart Site Admin"
-msgstr "Beooo heartooo smartooo"
+msgstr "BeHeartSmart Administrador"
 
 #: templates/admin/base_site.html:7
 msgid "BeHeartSmart Administration"
@@ -553,7 +556,7 @@ msgid ""
 "you are at elevated risk. We encourage you to seek out a medical "
 "professional for an assessment."
 msgstr ""
-"Usted está en riesgo elevado. Le recomendamos que busque un profesional "
+"usted está en riesgo elevado. Le recomendamos que busque un profesional "
 "médico para una evaluación"
 
 #: templates/dashboard/index.html:74
@@ -577,10 +580,10 @@ msgid "Complete these sections for a more exact risk assessment."
 msgstr "Completar estas secciones para una evaluación del riesgo más exacta"
 
 #: templates/dashboard/index.html:90
+#, fuzzy
 msgid ""
-"Although the blood pressure and cholesterol numbers are the most important, "
-"please complete all of the information below by clicking on the yellow "
-"buttons below."
+"Although blood pressure and cholesterol numbers are the most important, each "
+"section by clicking on the yellow buttons below."
 msgstr ""
 "Aunque la cifras de presión arterial y el colesterol son las más "
 "importantes, por favor complete toda la información a continuación, haga "
@@ -597,7 +600,8 @@ msgid "help you find it at a participating nearby pharmacy."
 msgstr "Ayudarle a encontrarlo en una farmacia participante cercana"
 
 #: templates/dashboard/index.html:98
-msgid "Signup an account so you can retrieve your information later."
+#, fuzzy
+msgid "Signup for an account to retrieve your information later."
 msgstr "Regístrese una cuenta para que pueda recuperar su información después."
 
 #: templates/dashboard/index.html:106 templates/dashboard/index.html.py:110
@@ -628,33 +632,33 @@ msgstr "Cuenta"
 msgid "We have some recommendations for you."
 msgstr "Tenemos algunas recomendaciones para usted"
 
-#: templates/dashboard/index.html:186
+#: templates/dashboard/index.html:184
 msgid "You are "
 msgstr "Estás"
 
-#: templates/dashboard/index.html:186
+#: templates/dashboard/index.html:184
 msgid "complete."
-msgstr "Completo"
+msgstr "completo."
 
-#: templates/dashboard/index.html:193
+#: templates/dashboard/index.html:191
 msgid "You still need to complete the following:"
-msgstr "Usted todavía tiene que completar el lo siguiente"
+msgstr "Usted todavía tiene que completar el lo siguiente:"
 
-#: templates/dashboard/index.html:196
+#: templates/dashboard/index.html:194
 msgid "Blood Pressure, "
-msgstr "Presión arterial,"
+msgstr "Presión arterial, "
 
-#: templates/dashboard/index.html:200
+#: templates/dashboard/index.html:198
 msgid "Cholesterol, "
-msgstr "colesterol,"
+msgstr "colesterol, "
 
-#: templates/dashboard/index.html:204
+#: templates/dashboard/index.html:202
 msgid "Additional Information, "
-msgstr "Información adicional"
+msgstr "Información adicional, "
 
-#: templates/dashboard/index.html:208
+#: templates/dashboard/index.html:206
 msgid "Signup for an Account "
-msgstr "Regístrese para obtener una cuenta"
+msgstr "Regístrese para obtener una cuenta "
 
 #: templates/dashboard/recommendations.html:38
 msgid "Your Body Mass Index is"
@@ -665,18 +669,18 @@ msgid ""
 "Consider talking to your health care provider about stategies to lose weight."
 msgstr ""
 "Considere la posibilidad de hablar con su proveedor de atención médica "
-"acerca de las estrategias para perder peso"
+"acerca de las estrategias para perder peso."
 
 #: templates/dashboard/recommendations.html:46
 msgid "It looks like you are in good shape weight-wise.  Keep it up."
-msgstr "Parece que esta en buena forma referido a su peso. Siga así"
+msgstr "Parece que esta en buena forma referido a su peso. Siga así."
 
 #: templates/dashboard/recommendations.html:54
 msgid ""
 "Consider talking to your health care provider about ways to quit smoking."
 msgstr ""
 "Considere la posibilidad de hablar con su médico acerca de maneras de dejar "
-"de fumar"
+"de fumar."
 
 #: templates/generic/millionhearts-generic-form.html:7
 msgid "Take the Survey"
@@ -684,7 +688,7 @@ msgstr "Tome la Encuesta"
 
 #: templates/generic/millionhearts-generic-form.html:15
 msgid "Fields marked wth an asterisk (*) are required."
-msgstr "Los campos marcados con un asterisco (*) son requeridos "
+msgstr "Los campos marcados con un asterisco (*) son requeridos."
 
 #: templates/include/top-nav.html:4
 msgid "Home"
@@ -712,7 +716,7 @@ msgstr "Conseguir direcciones a"
 
 #: templates/pharmacy/coupon.html:22
 msgid "Blood Pressure and Cholesterol Check for $20."
-msgstr "Chequeo de La presión arterial y el colesterol por $20"
+msgstr "Chequeo de La presión arterial y el colesterol por $20."
 
 #: templates/pharmacy/coupon.html:28
 #, fuzzy
@@ -729,19 +733,19 @@ msgstr "Ingrese su dirección de casa o de su ubicación actual"
 
 #: templates/pharmacy/show.html:6
 msgid "Locations Near You"
-msgstr "Lugares cerca de usted"
+msgstr "Lugares Cerca de Usted"
 
 #: templates/pharmacy/show.html:11
 msgid "Distance"
-msgstr "distancia"
+msgstr "Distancia"
 
 #: templates/pharmacy/show.html:13
 msgid "Schedule"
-msgstr "horario"
+msgstr "Horario"
 
 #: templates/pharmacy/show.html:31
 msgid "Plan a Heart Risk Screen"
-msgstr "Planee un examen de riesgo cardiaco"
+msgstr "Planee un Examen de Riesgo Cardiaco"
 
 #: templates/pharmacy/show.html:35
 msgid ""
@@ -749,11 +753,11 @@ msgid ""
 "coupon when you schedule online."
 msgstr ""
 "Estos lugares ofrecen examenes de colesterol y la presión arterial. Muchos "
-"ofrecen un cupón cuando se programa en línea"
+"ofrecen un cupón cuando se programa en línea."
 
 #: templates/riskassessments/dashboard-or-pharmacy.html:6
 msgid "Thanks for completing the initial assessment."
-msgstr "Gracias por completar la evaluación inicial"
+msgstr "Gracias por completar la evaluación inicial."
 
 #: templates/riskassessments/dashboard-or-pharmacy.html:7
 msgid ""
@@ -761,15 +765,15 @@ msgid ""
 "cholesterol screens?"
 msgstr ""
 "Quieres que te ayudemos a encontrar un lugar que ofrece examenes de la "
-"presión arterial y el colesterol"
+"presión arterial y el colesterol?"
 
 #: templates/riskassessments/dashboard-or-pharmacy.html:11
 msgid "Yes. Help Me Find a Heart Risk Screen Location"
-msgstr "Sí. Ayúdame a encontrar una ubicación de examenes de riesgo cardiaco"
+msgstr "Sí. Ayúdame a Encontrar una Ubicación de Examenes de Riesgo Cardiaco"
 
 #: templates/riskassessments/dashboard-or-pharmacy.html:14
 msgid "No Thanks. Show Me My Risk Now"
-msgstr "No, gracias. Muéstrame Mi riesgo ahora"
+msgstr "No, gracias. Muéstrame Mi Riesgo Ahora"
 
 #: templates/riskassessments/step3.html:6
 msgid "Do you have recent blood pressure and cholesterol information handy?"
@@ -782,7 +786,10 @@ msgstr "Sí lo tengo"
 
 #: templates/riskassessments/step3.html:12
 msgid "No. Help me get it"
-msgstr "No. Ayúdame a conseguirlo"
+msgstr "No. Ayúdame a Conseguirlo"
+
+#~ msgid "Whats is your sex?"
+#~ msgstr "Cuál es su sexo?"
 
 #~ msgid "Hello. Use this service to learn about your risk for heart disease."
 #~ msgstr ""
