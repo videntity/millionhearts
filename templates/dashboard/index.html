@@ -80,14 +80,14 @@
                {% if cvdrisk_lower_age %}
                   <h4>
                   {% trans "Since you have not yet provided us with your blood pressure and cholesterol numbers, your actual risk could be anywhere between" %}
-                  
+
                   {{cvdrisk_lower_age}} - {{cvdrisk_upper_age}}.
                   {% trans "Complete these sections for a more exact risk assessment." %}
                   </h4>
                {% endif %}
            {% endif %}
            <h4>
-           {% trans "Although the blood pressure and cholesterol numbers are the most important, please complete all of the information below by clicking on the yellow buttons below." %}
+           {% trans "Although blood pressure and cholesterol numbers are the most important, each section by clicking on the yellow buttons below." %}
            
     {% trans "If you need your blood pressure and cholesterol checked we can" %} <a HREF="/pharmacy/find/{{patient.patient_id}}">{% trans "help you find it at a participating nearby pharmacy." %}</a>
       {% endif %}
@@ -95,7 +95,7 @@
  
   
   {% if not user.is_authenticated %}
-  <h4><a HREF="/accounts/signup/{{patient.patient_id}}">{% trans "Signup an account so you can retrieve your information later." %}</a> 
+  <h4><a HREF="/accounts/signup/{{patient.patient_id}}">{% trans "Signup for an account to retrieve your information later." %}</a> 
   {% endif %}
   </h4>
 
@@ -179,8 +179,6 @@
   </p>
 
   <h4><a href="/dashboard/recommendations/{{patient.patient_id}}">{% trans "We have some recommendations for you." %} </a></h4>
-    
-
 
 <p>
 <h2>{% trans "You are " %} {{ progress_percent }}% {% trans "complete." %}</h2>
