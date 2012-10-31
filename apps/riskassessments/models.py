@@ -229,15 +229,15 @@ class ArchimedesRiskAssessment(models.Model):
                             max_length=5, default="no", blank=True,
                             verbose_name =_("Do you take aspirin regularly?"),
                             help_text = _("Answer yes if you take either full \
-                                          strength or junior aspirin daily"))
+                                          strength or junior aspirin daily."))
     
     moderateexercise      = models.CharField(max_length=3,  blank=True, default="",
                             verbose_name = _("How many hours of moderate exercise \
                                              do you get per week (0-60)?"),
                             help_text = _("Moderate physical activities are ones \
                                           that cause a slight elevation in heart \
-                                          rate or breathing such as raking leaves \
-                                            mowing the lawn, or heavy cleaning"))
+                                          rate or breathing such as raking leaves, \
+                                            mowing the lawn, or heavy cleaning."))
     
     vigorousexercise     = models.CharField(max_length=3,  blank=True, default="",
                             verbose_name = _("How many hours of vigorous exercise \
@@ -247,12 +247,12 @@ class ArchimedesRiskAssessment(models.Model):
                                          increases in breathing or heart rate \
                                          for at least 10 minutes at a time. \
                                          Some examples are running, lap swimming, \
-                                         aerobics classes or fast bicycling"))
+                                         aerobics classes, or fast bicycling."))
     
     familymihistory      = models.CharField(choices=YES_NO_BINARY_CHOICES, max_length=5,
                             default="no", blank=True,
-                            verbose_name=_("Has any of your first degree releatives (parents, full-blooded brother or sister, or child) had a heart attack before the age 55?"),
-                            help_text = _("This is sometimes called a Myocardial Infarction or MI"))
+                            verbose_name=_("Have any of your first degree releatives (parents, full-blooded brother or sister, or child) had a heart attack before age 55?"),
+                            help_text = _("This is sometimes called a Myocardial Infarction or MI."))
 
 
 
