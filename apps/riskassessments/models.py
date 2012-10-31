@@ -220,19 +220,42 @@ class ArchimedesRiskAssessment(models.Model):
 
     bloodpressuremedcount = models.CharField(max_length=3, blank=True, default="0",
                                 choices = BLOOD_PRES_MEDS_CHOICES,
-                                verbose_name = _("If you answered yes to the previous question, how many blood pressure medications do you take each day?"))
+                                verbose_name = _("If you answered yes to the \
+                                                 previous question, how many \
+                                                 blood pressure medications \
+                                                 do you take each day?"))
+    
     aspirin               = models.CharField(choices=YES_NO_BINARY_CHOICES,
                             max_length=5, default="no", blank=True,
-                            verbose_name =_("Do you take aspirin regularly?"))
+                            verbose_name =_("Do you take aspirin regularly?"),
+                            help_text = _("Answer yes if you take either full \
+                                          strength or junior aspirin daily"))
+    
     moderateexercise      = models.CharField(max_length=3,  blank=True, default="",
-                            verbose_name = _("How many hours of moderate exercise do you get per week (0-60)?"))
+                            verbose_name = _("How many hours of moderate exercise \
+                                             do you get per week (0-60)?"),
+                            help_text = _("Moderate physical activities	are ones \
+                                          that cause a slight elevation in heart \
+                                          rate or breathing such as raking leaves \
+                                            mowing the lawn, or heavy cleaning"))
+    
     vigorousexercise     = models.CharField(max_length=3,  blank=True, default="",
-                            verbose_name = _("How many hours of vigorous exercise do you get per week (0-30)?"))
+                            verbose_name = _("How many hours of vigorous exercise \
+                                             do you get per week (0-30)?"),
+                            help_text =_("Vigorous physical activities are ones \
+                                         that cause heavy sweating or large \
+                                         increases in breathing or heart rate \
+                                         for at least 10 minutes at a time. \
+                                         Some examples are running, lap swimming, \
+                                         aerobics classes or fast bicycling"))
+    
     familymihistory      = models.CharField(choices=YES_NO_BINARY_CHOICES, max_length=5,
                             default="no", blank=True,
-                            verbose_name=_("Has anyone in your immediate family had a heart attack before the age 55?"),
+                            verbose_name=_("Has any of your first degree releatives (parents, full-blooded brother or sister, or child) had a heart attack before the age 55?"),
                             help_text = _("This is sometimes called a Myocardial Infarction or MI"))
-    
+
+
+
     
     # status flags ------------------------------------------------------------
     basic_info_complete = models.BooleanField(default=True)
