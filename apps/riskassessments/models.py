@@ -234,7 +234,7 @@ class ArchimedesRiskAssessment(models.Model):
     moderateexercise      = models.CharField(max_length=3,  blank=True, default="",
                             verbose_name = _("How many hours of moderate exercise \
                                              do you get per week (0-60)?"),
-                            help_text = _("Moderate physical activities	are ones \
+                            help_text = _("Moderate physical activities are ones \
                                           that cause a slight elevation in heart \
                                           rate or breathing such as raking leaves \
                                             mowing the lawn, or heavy cleaning"))

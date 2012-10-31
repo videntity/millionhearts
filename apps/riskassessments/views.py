@@ -281,7 +281,14 @@ def archimedes_basic_info(request, patient_id):
 
 
 def archimedes_blood_pressure(request, patient_id):
-    name = _("Enter Your Blood Pressure Information.")
+    name = _("Enter Your Blood Pressure Information")
+    
+    additional_info = _("The first number in your blood pressure reading is your \
+                        systolic blood pressure and the second number is your \
+                        diastolic blood pressure. For example, if your blood \
+                        pressure is 125/82 (125 over 82) your systolic pressure \
+                        is 125 and your diastolic pressure is 82.")
+    
     
     patient = get_latest_object_or_404(ArchimedesRiskAssessment,
                                        patient_id=patient_id)
@@ -299,11 +306,13 @@ def archimedes_blood_pressure(request, patient_id):
             return render_to_response("generic/bootstrapform.html",
                               RequestContext(request,
                                              { 'name': name,
+                                              'additional_info':additional_info,
                                                 'form': form,}))
     
     #Just a GET Display a bound form
     return render_to_response("generic/bootstrapform.html",
                              {'name': name,
+                               'additional_info':additional_info,
                               'form': ArchimedesBloodPressureForm(instance=patient),},
                               context_instance = RequestContext(request))
 
