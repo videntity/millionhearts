@@ -281,7 +281,7 @@ def archimedes_basic_info(request, patient_id):
 
 
 def archimedes_blood_pressure(request, patient_id):
-    name = _("Enter Your Cholesterol Information.")
+    name = _("Enter Your Blood Pressure Information.")
     
     patient = get_latest_object_or_404(ArchimedesRiskAssessment,
                                        patient_id=patient_id)
