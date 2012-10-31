@@ -23,8 +23,7 @@ YN_CHOICES = (('1', 'Yes'), ('0', 'No'))
 BOOL_CHOICES = ((True, "Yes"),(False, "No"))
 
 
-GENDER_CHOICES = (('M', 'Male'), 
-                 ('F', 'Female'),)
+GENDER_CHOICES = (('F', 'Female'), ('M', 'Male'), )
 
 SMOKER_CHOICES = ((True, 'Yes'), 
                  (False, 'No'),)
@@ -204,17 +203,17 @@ class ArchimedesRiskAssessment(models.Model):
     
     #Optional Fields ---------------------------------------------------------
     systolic    = models.CharField(max_length=3,blank=True, default="",
-                    verbose_name = _("What is your Systolic blood pressure (80-220) ?"))
+                    verbose_name = _("What is your systolic blood pressure (80-220) ?"))
     diastolic   = models.CharField(max_length=3,  blank=True, default="",
-                    verbose_name = _("What is your Diastolic blood pressure (40-130) ?"))
+                    verbose_name = _("What is your diastolic blood pressure (40-130) ?"))
         
     hdl         = models.CharField(max_length=3,blank=True, default="",
-                    verbose_name = _("What is your HDL Cholesterol (20-130) ?"))
+                    verbose_name = _("What is your HDL cholesterol (20-130) ?"))
     ldl         = models.CharField(max_length=3, blank=True, default="",
-                    verbose_name = _("What is your LDL Cholesterol (40 -400) ?"))    
+                    verbose_name = _("What is your LDL cholesterol (40-400) ?"))    
     
     cholesterol = models.CharField(max_length=3,  blank=True, default="",
-                    verbose_name = _("What is your Total Cholesterol (70-500) ?"))
+                    verbose_name = _("What is your total cholesterol (70-500) ?"))
     
     hba1c       = models.CharField(max_length=4, blank=True,
                     verbose_name = _("What is your HbA1c (2-16) ?"))
@@ -230,8 +229,8 @@ class ArchimedesRiskAssessment(models.Model):
     vigorousexercise     = models.CharField(max_length=3,  blank=True, default="",
                             verbose_name = _("How many hours of vigorous exercise do you get per week (0-30)?"))
     familymihistory      = models.CharField(choices=YES_NO_BINARY_CHOICES, max_length=5,
-                            default="", blank=True,
-                            verbose_name=_("Has anyone in your immediate family had a hear attack before the age 55?"),
+                            default="no", blank=True,
+                            verbose_name=_("Has anyone in your immediate family had a heart attack before the age 55?"),
                             help_text = _("This is sometimes called a Myocardial Infarction or MI"))
     
     

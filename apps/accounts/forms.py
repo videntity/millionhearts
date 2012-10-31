@@ -39,7 +39,7 @@ class LoginForm(forms.Form):
     required_css_class = 'required'
     
 class SignupForm(forms.Form):
-    username = forms.CharField(max_length=30, label=_("Username"))
+    username = forms.CharField(max_length=30, label=_("User Name"))
     
 
     mobile_phone_number = USPhoneNumberField(max_length=15,
@@ -100,7 +100,7 @@ class SignupForm(forms.Form):
     
 class AccountSettingsForm(forms.Form):
 
-    username = forms.CharField(max_length=30, label=_("Username"))
+    username = forms.CharField(max_length=30, label=_("User Name"))
     preferred_contact_method = forms.TypedChoiceField(
                                 label =_("How do you prefer to be contacted for a follow up?"),
                                 choices = CONTACT_CHOICES,)

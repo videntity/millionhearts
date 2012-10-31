@@ -173,14 +173,14 @@ def archimedes_hello(request):
     
     #Just a GET Display and unbound form
     return render_to_response("generic/bootstrapform.html",
-                             {'name': _("Step 1 - Please Provide Some Basic Information."),
+                             {'name': _("Step 1 - Please Provide Some Basic Information"),
                               'submit_button_text': "Go On",
                               'form': ArchimedesRequiredForm(),},
                               context_instance = RequestContext(request))
 
 
 def archimedes_step2(request, patient_id):
-    name = _('Step 2 - Please Tell Us a Little More.')
+    name = _('Step 2 - Please Tell Us a Little More')
     
     patient = get_latest_object_or_404(ArchimedesRiskAssessment,
                                        patient_id=patient_id)
@@ -372,7 +372,7 @@ def archimedes_diabetes(request, patient_id):
 
 
 def archimedes_more(request, patient_id):
-
+    name = _("Additional Information")
     
     patient = get_latest_object_or_404(ArchimedesRiskAssessment,
                                        patient_id=patient_id)
@@ -390,11 +390,11 @@ def archimedes_more(request, patient_id):
             return render_to_response("generic/bootstrapform.html",
                               RequestContext(request,
                                              {'form': form,
-                                              'name': _("Additional Information")}))
+                                              'name': name, }))
     
     #Just a GET Display and unbound form
     return render_to_response("generic/bootstrapform.html",
-                        {'name': _("Additional Information"),
+                        {'name': name,
                         'form': ArchimedesMoreForm(instance=patient),},
                               context_instance = RequestContext(request))
 
@@ -402,6 +402,8 @@ def archimedes_more(request, patient_id):
 
 
 
+
+@login_required
 def archimedes_assessment(request):
     if request.method == 'POST':
         form =  ArchimedesRiskAssessmentForm(request.POST)

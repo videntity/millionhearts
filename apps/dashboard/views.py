@@ -69,10 +69,9 @@ def patient_dashboard(request, patient_id):
     if risks['ratingForAge']:
         age_risk = risks['ratingForAge']
     
-    #print "agerisk is ", age_risk  , risks
     
-    if risks["risk"]:
-        age_risk = risks["risk"]
+    print "risk is ", age_risk  , risks
+
     
     #if not risks['cvdrisk_upper']['rating']:
     #    absolute_risk = risks['rating']

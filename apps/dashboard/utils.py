@@ -11,7 +11,7 @@ def fetch_risks(achimedes_risk_assessment):
     resp_dict = {
         'ratingForAge'    : ra["Risk"][0]['ratingForAge'],
         'rating'          : ra["Risk"][0]['rating'],
-        'risk'          : ra["Risk"][0]['risk'],
+        #'risk'            : ra["Risk"][0]['risk'],
         'cvdrisk_upper_age' : ra["Risk"][1]['ratingForAge'],
         'cvdrisk_lower_age' : ra["Risk"][2]['ratingForAge'],
         }
