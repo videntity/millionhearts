@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-31 17:36-0400\n"
+"POT-Creation-Date: 2012-11-12 10:33-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -173,7 +173,8 @@ msgid "Distolic may not exceed Systolic."
 msgstr "Diastólica no puede exceder sistólica"
 
 #: apps/riskassessments/forms.py:136 apps/riskassessments/forms.py:266
-msgid "Total cholesterol cannot exceed the sum of HDL + LDL cholesterol."
+#, fuzzy
+msgid "The sum of HDL + LDL cholesterol cannot exceed total cholesterol."
 msgstr "El colesterol total no puede superar la suma de HDL + LDL colesterol."
 
 #: apps/riskassessments/forms.py:147 apps/riskassessments/forms.py:152

@@ -133,7 +133,7 @@ class ArchimedesBloodPressureAndCholesterolForm(ModelForm):
             combined = int(hdl) + int(ldl)
         
             if combined > int(cholesterol):
-                raise forms.ValidationError(_("Thes sum of HDL + LDL cholesterol cannot exceed total cholesterol."))
+                raise forms.ValidationError(_("The sum of HDL + LDL cholesterol cannot exceed total cholesterol."))
     
         return cleaned_data
 
@@ -263,7 +263,7 @@ class ArchimedesCholesterolForm(ModelForm):
             combined = int(hdl) + int(ldl)
         
             if combined > int(cholesterol):
-                raise forms.ValidationError(_("Total cholesterol cannot exceed the sum of HDL + LDL cholesterol."))
+                raise forms.ValidationError(_("The sum of HDL + LDL cholesterol cannot exceed total cholesterol."))
     
         
         return cleaned_data
